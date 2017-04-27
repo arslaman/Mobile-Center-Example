@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let twitterConsumerKey = "TwitterConsumerKey"
         let twitterConsumerSecret = "TwitterConsumerSecret"
-        
-        
+
         Fabric.with( [Twitter.self] )
         
         if let path = Bundle.main.path(forResource: "AppConfig", ofType: "plist") {
