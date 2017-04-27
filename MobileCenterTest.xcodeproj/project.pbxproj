@@ -12,6 +12,12 @@
 		148E2B8B1EAE29FC00743BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B891EAE29FC00743BB1 /* Main.storyboard */; };
 		148E2B8D1EAE29FC00743BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */; };
 		148E2B901EAE29FC00743BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */; };
+		14B6BB741EB0A05300AA523D /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6BB731EB0A05300AA523D /* MainPageViewController.swift */; };
+		14B727561EAE363900D516E7 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14B727551EAE363900D516E7 /* AppConfig.plist */; };
+		14BC0BB71EAF41580073BF27 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB61EAF41580073BF27 /* CoreMotion.framework */; };
+		14BC0BB91EAF64B10073BF27 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB81EAF64B10073BF27 /* HealthKit.framework */; };
+		14BCA97A1EB0A69500492815 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCA9791EB0A69500492815 /* User.swift */; };
+		C88B5C5A1C5E98B3904B2F5F /* Pods_MobileCenterTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB0EA37E93F4C34B55984F2 /* Pods_MobileCenterTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,15 @@
 		148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		148E2B8F1EAE29FC00743BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		148E2B911EAE29FC00743BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		149BBD7D58B6EF38F9AE4945 /* Pods-MobileCenterTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterTest/Pods-MobileCenterTest.release.xcconfig"; sourceTree = "<group>"; };
+		14B6BB731EB0A05300AA523D /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		14B727551EAE363900D516E7 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
+		14BC0BB61EAF41580073BF27 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		14BC0BB81EAF64B10073BF27 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		14BC0BBA1EAF6CC70073BF27 /* MobileCenterTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileCenterTest.entitlements; sourceTree = "<group>"; };
+		14BCA9791EB0A69500492815 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8A587B4726CDBEC0132CED6F /* Pods-MobileCenterTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterTest/Pods-MobileCenterTest.debug.xcconfig"; sourceTree = "<group>"; };
+		BDB0EA37E93F4C34B55984F2 /* Pods_MobileCenterTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BC0BB91EAF64B10073BF27 /* HealthKit.framework in Frameworks */,
+				14BC0BB71EAF41580073BF27 /* CoreMotion.framework in Frameworks */,
+				C88B5C5A1C5E98B3904B2F5F /* Pods_MobileCenterTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +58,8 @@
 			children = (
 				148E2B841EAE29FC00743BB1 /* MobileCenterTest */,
 				148E2B831EAE29FC00743BB1 /* Products */,
+				75A97D6C31245D6389A13188 /* Pods */,
+				B30848137C178AF7DE39A9DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,45 @@
 		148E2B841EAE29FC00743BB1 /* MobileCenterTest */ = {
 			isa = PBXGroup;
 			children = (
+				14BC0BBA1EAF6CC70073BF27 /* MobileCenterTest.entitlements */,
 				148E2B851EAE29FC00743BB1 /* AppDelegate.swift */,
 				148E2B871EAE29FC00743BB1 /* ViewController.swift */,
+				14B6BB731EB0A05300AA523D /* MainPageViewController.swift */,
+				14BCA9791EB0A69500492815 /* User.swift */,
 				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
 				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
 				148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */,
 				148E2B911EAE29FC00743BB1 /* Info.plist */,
+				14B727541EAE362C00D516E7 /* Supporting Files */,
 			);
 			path = MobileCenterTest;
+			sourceTree = "<group>";
+		};
+		14B727541EAE362C00D516E7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14B727551EAE363900D516E7 /* AppConfig.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75A97D6C31245D6389A13188 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A587B4726CDBEC0132CED6F /* Pods-MobileCenterTest.debug.xcconfig */,
+				149BBD7D58B6EF38F9AE4945 /* Pods-MobileCenterTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B30848137C178AF7DE39A9DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14BC0BB81EAF64B10073BF27 /* HealthKit.framework */,
+				14BC0BB61EAF41580073BF27 /* CoreMotion.framework */,
+				BDB0EA37E93F4C34B55984F2 /* Pods_MobileCenterTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +122,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 148E2B941EAE29FC00743BB1 /* Build configuration list for PBXNativeTarget "MobileCenterTest" */;
 			buildPhases = (
+				E51BA34A0D28451E5B6A68C2 /* [CP] Check Pods Manifest.lock */,
 				148E2B7E1EAE29FC00743BB1 /* Sources */,
 				148E2B7F1EAE29FC00743BB1 /* Frameworks */,
 				148E2B801EAE29FC00743BB1 /* Resources */,
+				9455EEEA09F48E3332EFB628 /* [CP] Embed Pods Frameworks */,
+				A4160301E626BA783064F8C7 /* [CP] Copy Pods Resources */,
+				14B727571EAE538300D516E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -96,7 +151,13 @@
 				TargetAttributes = {
 					148E2B811EAE29FC00743BB1 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = B7SPFV653N;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -123,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B727561EAE363900D516E7 /* AppConfig.plist in Resources */,
 				148E2B901EAE29FC00743BB1 /* LaunchScreen.storyboard in Resources */,
 				148E2B8D1EAE29FC00743BB1 /* Assets.xcassets in Resources */,
 				148E2B8B1EAE29FC00743BB1 /* Main.storyboard in Resources */,
@@ -131,12 +193,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14B727571EAE538300D516E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 16c02e92cf0929d8fb22233d7e561cea398a61cb 59bc29eb4de6fe2a47a4d42bed8dfbd47489edd17e6debd52fa5bc3415fcacca";
+		};
+		9455EEEA09F48E3332EFB628 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobileCenterTest/Pods-MobileCenterTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4160301E626BA783064F8C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MobileCenterTest/Pods-MobileCenterTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E51BA34A0D28451E5B6A68C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		148E2B7E1EAE29FC00743BB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BCA97A1EB0A69500492815 /* User.swift in Sources */,
 				148E2B881EAE29FC00743BB1 /* ViewController.swift in Sources */,
+				14B6BB741EB0A05300AA523D /* MainPageViewController.swift in Sources */,
 				148E2B861EAE29FC00743BB1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +383,13 @@
 		};
 		148E2B951EAE29FC00743BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A587B4726CDBEC0132CED6F /* Pods-MobileCenterTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MobileCenterTest/MobileCenterTest.entitlements;
+				DEVELOPMENT_TEAM = B7SPFV653N;
 				INFOPLIST_FILE = MobileCenterTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Akvelon.MobileCenterTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -270,9 +399,13 @@
 		};
 		148E2B961EAE29FC00743BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 149BBD7D58B6EF38F9AE4945 /* Pods-MobileCenterTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MobileCenterTest/MobileCenterTest.entitlements;
+				DEVELOPMENT_TEAM = B7SPFV653N;
 				INFOPLIST_FILE = MobileCenterTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Akvelon.MobileCenterTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -299,6 +432,7 @@
 				148E2B961EAE29FC00743BB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
