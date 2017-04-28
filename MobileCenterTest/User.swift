@@ -88,7 +88,13 @@ class TimedData<T: Initable & Addable> {
     }
     
     func get( for day: Int, and hour: Int ) -> T? {
-        return (dataContainer[day]?[hour])!
+        if let dayContainer = dataContainer[day] {
+            if let result = dayContainer[hour] {
+                return result
+            }
+        }
+        
+        return nil
     }
     
     func get( for day: Int ) -> T {
