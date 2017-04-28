@@ -10,12 +10,15 @@ import UIKit
 
 import Charts
 
+import HealthKit
+
 class ProfilePageViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet var chartView: LineChartView?
     
     public var user: User? {
         didSet {
+            setChartData()
         }
     }
     
@@ -38,11 +41,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             
             chartView.leftAxis.setLabelCount( 5, force: false )
             chartView.rightAxis.enabled = false
-            
-            
         }
-        
-        
         
         setChartData()
     }
@@ -52,14 +51,28 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
         if let chartView = chartView {
             
             var values = Array<ChartDataEntry>()
-            let dataAmount = 24
-            let range = 200
             
-            for i in 0...dataAmount {
-                let value = arc4random_uniform(UInt32(range)) + 3
-                values.append( ChartDataEntry( x: Double(i), y: Double(value) ) )
+            if let user = user {
+                for i in 0...24 {
+                    if let stats = user.userStats.get(for: 0, and: i ) {
+                        let value = stats[HKQuantityTypeIdentifier.stepCount.rawValue]
+                        values.append( ChartDataEntry( x: Double(i), y: value ) )
+                    }
+                    else {
+                        values.append( ChartDataEntry( x: Double(i), y: 0 ) )
+                    }
+                    
+                }
             }
-            
+            else {
+                let dataAmount = 24
+                let range = 200
+                
+                for i in 0...dataAmount {
+                    let value = arc4random_uniform(UInt32(range)) + 3
+                    values.append( ChartDataEntry( x: Double(i), y: Double(value) ) )
+                }
+            }
             
             let set1 = LineChartDataSet( values: values, label: "" )
             set1.drawIconsEnabled = false
@@ -92,7 +105,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             let data = LineChartData(dataSets: dataSets)
             
             
-            chartView.xAxis.setLabelCount( dataAmount / 2, force: false )
+            chartView.xAxis.setLabelCount( values.count / 2, force: false )
             chartView.data = data;
         }
     }
