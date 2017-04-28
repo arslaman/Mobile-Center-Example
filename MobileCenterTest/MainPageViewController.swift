@@ -19,7 +19,6 @@ class MainPageViewController: UIViewController {
     @IBOutlet var distanceLabel: UILabel?
     @IBOutlet var greetingsLabel: UILabel?
     
-    var quantities = [String : Double]()
     var labels = [String : UILabel]()
     
     var healthStore = HKHealthStore()
@@ -80,7 +79,7 @@ class MainPageViewController: UIViewController {
             fatalError()
         }
         
-        if let value = quantities[type.identifier] {
+        if let value = self.user?.userStats.get( for: 0 )[type.identifier] {
             if let formatter = formatters[type.identifier] {
                 label.text = formatter.string(from: value as NSNumber)
             }
@@ -94,39 +93,51 @@ class MainPageViewController: UIViewController {
         self.updateLabel(for: type)
     }
     
-    func querySample( type: HKQuantityType ) -> Void {
+    func querySample( type: HKQuantityType, for days: Int ) -> Void {
         
-        let endDate = Date()
-        let startDate = NSCalendar.current.startOfDay(for: endDate )
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+        let calendar = NSCalendar.current
+        let startOfToday = Date().startOfDay
         
-        let statisticQuery = HKStatisticsQuery(quantityType: type,
-                                               quantitySamplePredicate: predicate,
-                                               options: [HKStatisticsOptions.cumulativeSum])
-        { ( query, result, error) in
-            if let sumQuantity = result?.sumQuantity() {
+        for day in 0...days {
+            for hour in 0...23 {
+                var dateComponents = DateComponents()
+                dateComponents.hour = hour
+                dateComponents.day = -day
                 
-                var unit: HKUnit
-                switch type.identifier {
-                case HKQuantityTypeIdentifier.stepCount.rawValue:
-                    unit = HKUnit.count()
-                case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
-                    unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
-                case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
-                    unit = HKUnit.kilocalorie()
-                default:
-                    fatalError()
+                let startDate = calendar.date( byAdding: dateComponents, to: startOfToday )
+                let endDate = calendar.date( byAdding: .hour, value: 1, to: startDate! )
+                
+                let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+                let statisticQuery = HKStatisticsQuery(quantityType: type,
+                                                       quantitySamplePredicate: predicate,
+                                                       options: [HKStatisticsOptions.cumulativeSum])
+                { ( query, result, error) in
+                    if let sumQuantity = result?.sumQuantity() {
+                        
+                        var unit: HKUnit
+                        switch type.identifier {
+                        case HKQuantityTypeIdentifier.stepCount.rawValue:
+                            unit = HKUnit.count()
+                        case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
+                            unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
+                        case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
+                            unit = HKUnit.kilocalorie()
+                        default:
+                            fatalError( "unsupported HKQuantityTypeIdentifier" )
+                        }
+                        
+                        let value = sumQuantity.doubleValue( for: unit )
+                        self.user?.userStats.getOrCreate( for: day, and: hour )[type.identifier] = value
+                        DispatchQueue.main.async {
+                            self.sampleValueChanged(type: type)
+                        }
+                    }
                 }
                 
-                let value = sumQuantity.doubleValue( for: unit )
-                self.quantities[type.identifier] = value
-                DispatchQueue.main.async {
-                    self.sampleValueChanged(type: type)
-                }
+                self.healthStore.execute( statisticQuery )
             }
         }
-        
-        self.healthStore.execute( statisticQuery )
+    
     }
     
     func loadHealthKitData() -> Void {
@@ -136,7 +147,7 @@ class MainPageViewController: UIViewController {
             if ( error == nil )
             {
                 for readType in readTypes {
-                    self.querySample( type: readType )
+                    self.querySample( type: readType, for: 5 )
                 }
             }
         }
@@ -146,4 +157,17 @@ class MainPageViewController: UIViewController {
         MSAnalytics.trackEvent( "View Stats Tap" )
     }
 
+}
+
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay( for: self )
+    }
+    
+    var endOfDay: Date? {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date( byAdding: components, to: startOfDay )
+    }
 }

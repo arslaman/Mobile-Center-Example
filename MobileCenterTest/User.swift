@@ -12,12 +12,47 @@ enum SocialNetwork : String {
     case Twitter = "Twitter"
     case Facebook = "Facebook"
 }
-
-class User {
-    struct UserStats {
+   
+class UserStats : Initable, Addable {
+    private var quantities = [String : Double]()
+    
+    subscript( index: String ) -> Double {
+        get {
+            if let quantity = quantities[index] {
+                return quantity
+            }
+            
+            return 0
+        }
+        
+        set ( value ) {
+            quantities[index] = value
+        }
+    }
+    
+    required init() {
         
     }
     
+    static func + (lhs: UserStats, rhs: UserStats) -> Self {
+        let result: UserStats = UserStats()
+        result.quantities = lhs.quantities
+        
+        for ( key, value ) in rhs.quantities {
+            result[key] = result[key] + value
+        }
+        
+        return result
+    }
+}
+
+protocol Addable {
+    static func + (lhs: Self, rhs: Self) -> Self
+}
+
+
+class User {
+     
     var fullName: String
     var accessToken: String
     var socialNetwork: SocialNetwork
@@ -31,10 +66,15 @@ class User {
     }
 }
 
-struct TimedData<T> {
+protocol Initable {
+    init()
+}
+
+
+
+class TimedData<T: Initable & Addable> {
     private var dataContainer = [Int: [Int: T?]]()
-    
-    mutating func set( data: T, for day: Int, and hour: Int ) {
+    func set( data: T, for day: Int, and hour: Int ) {
         var dayContainer = dataContainer[day]
         
         if dataContainer[day] == nil {
@@ -47,5 +87,28 @@ struct TimedData<T> {
     
     func get( for day: Int, and hour: Int ) -> T? {
         return (dataContainer[day]?[hour])!
+    }
+    
+    func get( for day: Int ) -> T {
+        var result = T()
+        if let dayContainer = dataContainer[day] {
+            for ( _, value ) in dayContainer {
+                if let value = value {
+                    result = result + value
+                }
+            }
+        }
+        return result
+    }
+    
+    func getOrCreate( for day: Int, and hour: Int ) -> T {
+        if let value = get( for: day, and: hour ) {
+            return value
+        }
+        
+        let value = T()
+        set( data: T(), for: day, and: hour )
+        
+        return value
     }
 }
