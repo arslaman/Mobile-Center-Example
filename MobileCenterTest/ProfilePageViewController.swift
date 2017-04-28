@@ -27,7 +27,19 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             chartView.dragEnabled = false
             chartView.scaleXEnabled = false
             chartView.scaleYEnabled = false
-
+            
+            chartView.xAxis.drawGridLinesEnabled = false
+            chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+            
+            
+            chartView.drawBordersEnabled = false
+            chartView.legend.enabled = false
+            chartView.chartDescription?.enabled = false
+            
+            chartView.leftAxis.setLabelCount( 5, force: false )
+            chartView.rightAxis.enabled = false
+            
+            
         }
         
         
@@ -40,7 +52,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
         if let chartView = chartView {
             
             var values = Array<ChartDataEntry>()
-            let dataAmount = 5
+            let dataAmount = 24
             let range = 200
             
             for i in 0...dataAmount {
@@ -49,14 +61,14 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             }
             
             
-            let set1 = LineChartDataSet( values: values, label: nil )
+            let set1 = LineChartDataSet( values: values, label: "" )
             set1.drawIconsEnabled = false
             
             set1.lineDashLengths = nil
             set1.highlightEnabled = false
             set1.setColor( UIColor( red: 0.0/255.0, green: 156.0/255.0, blue: 205.0/255.0, alpha: 1 ) )
             set1.setCircleColor( UIColor(red: 0.0/255.0, green: 156.0/255.0, blue: 205.0/255.0, alpha: 1 ) )
-            set1.lineWidth = 3.0
+            set1.lineWidth = 2.0
             set1.drawCirclesEnabled = false
             set1.drawCircleHoleEnabled = false
             set1.drawValuesEnabled = false
@@ -79,6 +91,8 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             let dataSets = [set1] as Array
             let data = LineChartData(dataSets: dataSets)
             
+            
+            chartView.xAxis.setLabelCount( dataAmount / 2, force: false )
             chartView.data = data;
         }
     }
@@ -87,4 +101,12 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    
+    @IBAction func crashApplication() {
+        self.setChartData()
+    }
+    
+    @IBAction func returnBack() {
+        
+    }
 }

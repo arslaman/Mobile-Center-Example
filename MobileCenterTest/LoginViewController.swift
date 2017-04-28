@@ -23,7 +23,7 @@ extension ClosedRange where Bound : FloatingPoint {
     }
 }
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet var twitterButton: TWTRLogInButton!
     @IBOutlet var facebookButton: FBSDKLoginButton!
@@ -35,7 +35,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        twitterButton.addTarget( self, action: #selector(ViewController.onTwitterTap), for: UIControlEvents.touchUpInside )
+        twitterButton.addTarget( self, action: #selector(LoginViewController.onTwitterTap), for: UIControlEvents.touchUpInside )
         twitterButton.logInCompletion = { session, error in
             if let session = session {
                 self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
@@ -121,13 +121,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func fillRandomData() {
+    func fillRandomData( days: Int ) {
         let now = Date()
         let calendar = NSCalendar.current
         
-        for i in 0...5 {
-            let endDate = calendar.date(byAdding: .day, value: -i, to: now)!
+        for hour in 0...24 * days {
+            let endDate = calendar.date(byAdding: .hour, value: -hour, to: now)!
             let startDate = calendar.startOfDay( for: endDate )
+            
             
             writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount)
             writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning)
@@ -146,7 +147,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print( ["error: ", error] )
                 return
             }
-            self.fillRandomData()
+            self.fillRandomData( days: 5 )
         }
     }
     

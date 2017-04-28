@@ -15,6 +15,10 @@ enum SocialNetwork : String {
 
 class User {
 
+    struct UserStats {
+        
+    }
+    
     var fullName: String
     var accessToken: String
     var socialNetwork: SocialNetwork

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MobileCenterTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="MobileCenterTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -218,46 +218,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-1E-h6q">
-                                <rect key="frame" x="40" y="471" width="295" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-1E-h6q">
+                                <rect key="frame" x="40" y="481" width="295" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="ZVp-3S-jTU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Crash Application"/>
                                 <connections>
+                                    <action selector="crashApplication" destination="4pt-bZ-KFm" eventType="touchUpInside" id="cuf-7f-CYb"/>
                                     <action selector="viewStats" destination="pBA-MM-UWz" eventType="touchUpInside" id="otI-6W-1kf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-zi-bll">
-                                <rect key="frame" x="40" y="539" width="295" height="54"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-zi-bll">
+                                <rect key="frame" x="40" y="549" width="295" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to Main Page"/>
                                 <connections>
                                     <action selector="postInSocialNetwork" destination="pBA-MM-UWz" eventType="touchUpInside" id="0vZ-Kc-KiM"/>
+                                    <action selector="returnBack" destination="4pt-bZ-KFm" eventType="touchUpInside" id="F0H-jY-b9k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daily statistics" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpt-sa-OD3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily statistics" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpt-sa-OD3">
                                 <rect key="frame" x="50" y="82" width="275" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="154" width="343" height="275"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="154" width="343" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rBV-PA-C9x" firstAttribute="top" secondItem="YAv-zg-N8q" secondAttribute="bottom" constant="275" id="DRR-tz-ShR"/>
+                            <constraint firstItem="qpt-sa-OD3" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="34" id="1Jg-dB-3hq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YAv-zg-N8q" secondAttribute="trailing" id="OFy-qu-2J1"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="trailing" secondItem="9ar-1E-h6q" secondAttribute="trailing" id="P7K-ba-EhH"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="height" secondItem="9ar-1E-h6q" secondAttribute="height" id="Qyt-Ae-ses"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="leading" secondItem="9ar-1E-h6q" secondAttribute="leading" id="Reb-mI-zik"/>
+                            <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="qpt-sa-OD3" secondAttribute="bottom" constant="49" id="Y1k-ky-qdT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ar-1E-h6q" secondAttribute="trailing" constant="24" id="bhL-22-XVR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qpt-sa-OD3" secondAttribute="trailing" constant="34" id="d0e-tu-pim"/>
+                            <constraint firstItem="rBV-PA-C9x" firstAttribute="top" secondItem="4Ha-zi-bll" secondAttribute="bottom" constant="64" id="dsK-eK-hxB"/>
+                            <constraint firstItem="9ar-1E-h6q" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="24" id="nhm-eT-PRj"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YAv-zg-N8q" secondAttribute="leading" id="ogN-TW-c8N"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="top" secondItem="9ar-1E-h6q" secondAttribute="bottom" constant="14" id="v36-ct-Bvm"/>
+                            <constraint firstItem="9ar-1E-h6q" firstAttribute="top" secondItem="YAv-zg-N8q" secondAttribute="bottom" constant="60" id="vVa-7F-KgN"/>
                             <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="rN2-bE-lUK" secondAttribute="bottom" constant="134" id="zaY-ra-eUq"/>
                         </constraints>
                     </view>
