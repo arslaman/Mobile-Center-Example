@@ -129,35 +129,6 @@ class MainPageViewController: UIViewController {
             }
         }
         
-//        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil, resultsHandler: {
-//            (query, results, error) in
-//            if results == nil {
-//                print("There was an error running the query: \(String(describing: error))")
-//                return
-//            }
-//
-//            var unit: HKUnit
-//            switch type.identifier {
-//            case HKQuantityTypeIdentifier.stepCount.rawValue:
-//                unit = HKUnit.count()
-//            case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
-//                unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
-//            case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
-//                unit = HKUnit.kilocalorie()
-//            default:
-//                fatalError()
-//            }
-//            var dailyAVG:Double = 0
-//            for steps in results as! [HKQuantitySample]
-//            {
-//                dailyAVG += steps.quantity.doubleValue(for: unit )
-//            }
-//            self.quantities[type.identifier] = dailyAVG
-//            DispatchQueue.main.async {
-//                self.sampleValueChanged(type: type)
-//            }
-//        })
-        
         self.healthStore.execute( statisticQuery )
     }
     

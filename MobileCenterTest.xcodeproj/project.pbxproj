@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144CE3B21EB2373B00A49DA5 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CE3B11EB2373B00A49DA5 /* ProfilePageViewController.swift */; };
 		148E2B861EAE29FC00743BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E2B851EAE29FC00743BB1 /* AppDelegate.swift */; };
 		148E2B881EAE29FC00743BB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148E2B871EAE29FC00743BB1 /* ViewController.swift */; };
 		148E2B8B1EAE29FC00743BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B891EAE29FC00743BB1 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		144CE3B11EB2373B00A49DA5 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		148E2B821EAE29FC00743BB1 /* MobileCenterTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileCenterTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148E2B851EAE29FC00743BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148E2B871EAE29FC00743BB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				148E2B851EAE29FC00743BB1 /* AppDelegate.swift */,
 				148E2B871EAE29FC00743BB1 /* ViewController.swift */,
 				14B6BB731EB0A05300AA523D /* MainPageViewController.swift */,
+				144CE3B11EB2373B00A49DA5 /* ProfilePageViewController.swift */,
 				14BCA9791EB0A69500492815 /* User.swift */,
 				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
 				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144CE3B21EB2373B00A49DA5 /* ProfilePageViewController.swift in Sources */,
 				14BCA97A1EB0A69500492815 /* User.swift in Sources */,
 				148E2B881EAE29FC00743BB1 /* ViewController.swift in Sources */,
 				14B6BB741EB0A05300AA523D /* MainPageViewController.swift in Sources */,

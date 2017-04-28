@@ -12,4 +12,5 @@ target 'MobileCenterTest' do
 	pod 'FacebookLogin'
 	pod 'FacebookShare'
     
+    pod 'Charts'
 end
