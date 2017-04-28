@@ -91,7 +91,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZF-G3-6vG">
-                                <rect key="frame" x="40" y="481" width="295" height="54"/>
+                                <rect key="frame" x="40" y="549" width="295" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="LUG-YK-pfQ"/>
                                 </constraints>
@@ -100,14 +100,6 @@
                                 <connections>
                                     <action selector="viewStats" destination="pBA-MM-UWz" eventType="touchUpInside" id="sSU-3E-dAg"/>
                                     <segue destination="4pt-bZ-KFm" kind="show" id="ToU-Vn-K2b"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZc-Fy-qHK">
-                                <rect key="frame" x="40" y="549" width="295" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Post in soc network"/>
-                                <connections>
-                                    <action selector="postInSocialNetwork" destination="pBA-MM-UWz" eventType="touchUpInside" id="naA-N9-U9B"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-hG-QG9">
@@ -177,28 +169,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KZc-Fy-qHK" firstAttribute="height" secondItem="0ZF-G3-6vG" secondAttribute="height" id="47V-kl-tTs"/>
                             <constraint firstItem="4F4-Hc-UJH" firstAttribute="top" secondItem="3D9-34-Mmq" secondAttribute="bottom" priority="750" constant="57" id="5R7-yb-oYk"/>
                             <constraint firstItem="0ZF-G3-6vG" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="24" id="5RJ-zy-cIn"/>
+                            <constraint firstItem="TId-sI-5oT" firstAttribute="top" secondItem="0ZF-G3-6vG" secondAttribute="bottom" constant="64" id="6VA-eH-sZH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4F4-Hc-UJH" secondAttribute="trailing" constant="34" id="ECJ-a2-yqd"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="centerY" secondItem="eRQ-EN-etK" secondAttribute="centerY" id="Pt4-vP-GEj"/>
                             <constraint firstItem="kkO-dV-cPf" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="24" id="Rvx-mK-jdX"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="centerX" secondItem="eRQ-EN-etK" secondAttribute="centerX" id="SX1-zc-KZu"/>
-                            <constraint firstItem="KZc-Fy-qHK" firstAttribute="leading" secondItem="0ZF-G3-6vG" secondAttribute="leading" id="USx-dX-sTF"/>
-                            <constraint firstItem="KZc-Fy-qHK" firstAttribute="trailing" secondItem="0ZF-G3-6vG" secondAttribute="trailing" id="YUk-Zr-pyS"/>
                             <constraint firstItem="4F4-Hc-UJH" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="34" id="ZlJ-uD-g2L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0ZF-G3-6vG" secondAttribute="trailing" constant="24" id="oq2-uu-TB1"/>
                             <constraint firstItem="kkO-dV-cPf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4F4-Hc-UJH" secondAttribute="bottom" constant="20" id="p5E-0d-t3A"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="top" secondItem="kkO-dV-cPf" secondAttribute="bottom" constant="12" id="qwj-BC-2BD"/>
-                            <constraint firstItem="TId-sI-5oT" firstAttribute="top" secondItem="KZc-Fy-qHK" secondAttribute="bottom" constant="64" id="vJO-4h-CK3"/>
-                            <constraint firstItem="KZc-Fy-qHK" firstAttribute="top" secondItem="0ZF-G3-6vG" secondAttribute="bottom" constant="14" id="wiH-yd-1gK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="caloriesLabel" destination="Ifr-d2-uvl" id="LbU-sK-Kdc"/>
                         <outlet property="distanceLabel" destination="8ZU-xU-XgC" id="UJS-bJ-K7f"/>
                         <outlet property="greetingsLabel" destination="4F4-Hc-UJH" id="Puy-7X-2JE"/>
-                        <outlet property="postButton" destination="KZc-Fy-qHK" id="mpO-zZ-VVk"/>
                         <outlet property="stepsLabel" destination="ANj-5z-aEn" id="4Is-FV-OPr"/>
                     </connections>
                 </viewController>
@@ -227,7 +214,6 @@
                                 <state key="normal" title="Crash Application"/>
                                 <connections>
                                     <action selector="crashApplication" destination="4pt-bZ-KFm" eventType="touchUpInside" id="cuf-7f-CYb"/>
-                                    <action selector="viewStats" destination="pBA-MM-UWz" eventType="touchUpInside" id="otI-6W-1kf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-zi-bll">
@@ -235,7 +221,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to Main Page"/>
                                 <connections>
-                                    <action selector="postInSocialNetwork" destination="pBA-MM-UWz" eventType="touchUpInside" id="0vZ-Kc-KiM"/>
                                     <action selector="returnBack" destination="4pt-bZ-KFm" eventType="touchUpInside" id="F0H-jY-b9k"/>
                                 </connections>
                             </button>

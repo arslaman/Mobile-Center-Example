@@ -19,8 +19,6 @@ class MainPageViewController: UIViewController {
     @IBOutlet var distanceLabel: UILabel?
     @IBOutlet var greetingsLabel: UILabel?
     
-    @IBOutlet var postButton: UIButton?
-    
     var quantities = [String : Double]()
     var labels = [String : UILabel]()
     
@@ -71,7 +69,6 @@ class MainPageViewController: UIViewController {
         
         if let user = user {
             greetingsLabel?.text = "Hi, \(user.fullName)"
-            postButton?.setTitle( "Post in " + user.socialNetwork.rawValue, for: UIControlState.normal )
         }
         for type in actualTypes {
             self.updateLabel(for: type)
@@ -149,7 +146,4 @@ class MainPageViewController: UIViewController {
         MSAnalytics.trackEvent( "View Stats Tap" )
     }
 
-    @IBAction func postInSocialNetwork() -> Void {
-        MSAnalytics.trackEvent( "Post In Social Network Tap", withProperties: ["Social Network": self.user!.socialNetwork.rawValue] )
-    }
 }
