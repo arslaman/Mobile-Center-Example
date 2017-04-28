@@ -23,18 +23,18 @@ class User {
     var socialNetwork: SocialNetwork
     var userStats: TimedData<UserStats>
     
-    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork, userStats: TimedData<UserStats> ) {
+    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork ) {
         self.fullName = fullName
         self.accessToken = accessToken
         self.socialNetwork = socialNetwork
-        self.userStats = userStats
+        self.userStats = TimedData<UserStats>()
     }
 }
 
 struct TimedData<T> {
     private var dataContainer = [Int: [Int: T?]]()
     
-    mutating func set( data: T, day: Int, hour: Int ) {
+    mutating func set( data: T, for day: Int, and hour: Int ) {
         var dayContainer = dataContainer[day]
         
         if dataContainer[day] == nil {
@@ -45,7 +45,7 @@ struct TimedData<T> {
         dataContainer[day]![hour] = data
     }
     
-    func get( day: Int, hour: Int ) -> T? {
+    func get( for day: Int, and hour: Int ) -> T? {
         return (dataContainer[day]?[hour])!
     }
 }
