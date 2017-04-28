@@ -12,6 +12,10 @@ enum SocialNetwork : String {
     case Twitter = "Twitter"
     case Facebook = "Facebook"
 }
+
+func autocast<T>(some: Any) -> T {
+    return some as! T
+}
    
 class UserStats : Initable, Addable {
     private var quantities = [String : Double]()
@@ -34,7 +38,7 @@ class UserStats : Initable, Addable {
         
     }
     
-    static func + (lhs: UserStats, rhs: UserStats) -> Self {
+    static func +(lhs: UserStats, rhs: UserStats) -> Self {
         let result: UserStats = UserStats()
         result.quantities = lhs.quantities
         
@@ -42,14 +46,17 @@ class UserStats : Initable, Addable {
             result[key] = result[key] + value
         }
         
-        return result
+        return autocast( some: result )
     }
 }
 
 protocol Addable {
-    static func + (lhs: Self, rhs: Self) -> Self
+    static func +(lhs: Self, rhs: Self) -> Self
 }
 
+protocol Initable {
+    init()
+}
 
 class User {
      
@@ -65,11 +72,6 @@ class User {
         self.userStats = TimedData<UserStats>()
     }
 }
-
-protocol Initable {
-    init()
-}
-
 
 
 class TimedData<T: Initable & Addable> {
