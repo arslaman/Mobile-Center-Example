@@ -152,7 +152,7 @@ class MainPageViewController: UIViewController {
             default:
                 fatalError( "unsupported HKQuantityTypeIdentifier" )
             }
-        
+
             statsCollection.enumerateStatistics(from: startDate, to: anchorDate, with:{
                 ( statistics, stop ) in
                 if let quantity = statistics.sumQuantity() {
@@ -169,13 +169,15 @@ class MainPageViewController: UIViewController {
                     let dayIndex = days - day - 1
                     let hourIndex = hour
                     
-                    self.user?.userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
+//                    userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
+                    self.writeHealthKitData( for: dayIndex, hour: hourIndex, and: type, value: value )
                     
                     print( "Date: ", date )
                     print( "Difference: ", difference )
                     print( type.identifier, ":", difference )
                     print( "day: ", dayIndex, "   hour: ", hour )
-                    print( "value: ", value  )
+                    print( "value origin: ", value )
+//                    print( "value: ", userStats.get(for: dayIndex, and: hourIndex )?[type.identifier] )
                     print( "_____" )
                     
                    
@@ -186,19 +188,10 @@ class MainPageViewController: UIViewController {
                 }
           
             })
-//            statsCollection.enumerateStatistics( from: startDate, toDate: anchorDate ) {
-//                [unowned self] statistics, stop in
-//                
-//
-//                    // Call a custom method to plot each data point.
-//                    self.plotWeeklyStepCount(value, forDate: date)
-//                }
-//            }
         }
         
         healthStore.execute( query )
     }
-
     
     func loadHealthKitData() -> Void {
         let readTypes = Set( actualTypes )
@@ -211,6 +204,12 @@ class MainPageViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func writeHealthKitData( for day: Int, hour: Int, and type: HKQuantityType, value: Double ) -> Void {
+        objc_sync_enter( self )
+        self.user?.userStats.getOrCreate( for: day, and: hour )[type.identifier] = value
+        objc_sync_exit( self )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
