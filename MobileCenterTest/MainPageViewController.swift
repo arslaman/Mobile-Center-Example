@@ -166,8 +166,8 @@ class MainPageViewController: UIViewController {
                     guard let hour = difference.hour else {
                         fatalError()
                     }
-                    let dayIndex = day//days - day - 1
-                    let hourIndex = 24 - hour
+                    let dayIndex = days - day - 1
+                    let hourIndex = hour
                     
                     self.user?.userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
                     
