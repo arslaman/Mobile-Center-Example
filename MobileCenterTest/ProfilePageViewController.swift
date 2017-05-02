@@ -15,15 +15,29 @@ import HealthKit
 class ProfilePageViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet var chartView: LineChartView?
+    let actualTypes = [HKQuantityTypeIdentifier.stepCount,
+                       HKQuantityTypeIdentifier.activeEnergyBurned,
+                       HKQuantityTypeIdentifier.distanceWalkingRunning]
+    
+    
+    private var selectedDataType: HKQuantityTypeIdentifier? {
+        didSet {
+            if oldValue != selectedDataType {
+                setChartData()
+            }
+        }
+    }
     
     public var user: User? {
         didSet {
             setChartData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedDataType = actualTypes.first
         
         if let chartView = chartView {
             chartView.delegate = self;
@@ -42,7 +56,6 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             chartView.drawBordersEnabled = false
             chartView.legend.enabled = false
             chartView.chartDescription?.enabled = false
-            
         }
         
         setChartData()
@@ -52,12 +65,16 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
         
         if let chartView = chartView {
             
+            guard let typeId = selectedDataType else {
+                return
+            }
+            
             var values = Array<ChartDataEntry>()
             
             if let user = user {
                 for i in 0...24 {
                     if let stats = user.userStats.get(for: 0, and: i ) {
-                        let value = stats[HKQuantityTypeIdentifier.stepCount.rawValue]
+                        let value = stats[typeId.rawValue]
                         values.append( ChartDataEntry( x: Double(i), y: value ) )
                     }
                     else {
@@ -67,13 +84,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
                 }
             }
             else {
-                let dataAmount = 24
-                let range = 200
-                
-                for i in 0...dataAmount {
-                    let value = arc4random_uniform(UInt32(range)) + 3
-                    values.append( ChartDataEntry( x: Double(i), y: Double(value) ) )
-                }
+                return
             }
             
             let set1 = LineChartDataSet( values: values, label: "" )
@@ -116,13 +127,17 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     @IBAction func crashApplication() {
-        self.setChartData()
+        
     }
     
     @IBAction func returnBack() {
         
+    }
+    
+    @IBAction func segmentChanged( sender: UISegmentedControl ) {
+        if actualTypes.indices.contains( sender.selectedSegmentIndex ) {
+            selectedDataType = actualTypes[sender.selectedSegmentIndex]
+        }
     }
 }

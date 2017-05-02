@@ -206,7 +206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-1E-h6q">
-                                <rect key="frame" x="40" y="481" width="295" height="54"/>
+                                <rect key="frame" x="40" y="501" width="295" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="ZVp-3S-jTU"/>
                                 </constraints>
@@ -217,7 +217,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-zi-bll">
-                                <rect key="frame" x="40" y="549" width="295" height="54"/>
+                                <rect key="frame" x="40" y="569" width="295" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to Main Page"/>
                                 <connections>
@@ -230,26 +230,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="16" y="154" width="343" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="267" id="fBb-Q4-wzW"/>
+                                </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-L7-Usu">
+                                <rect key="frame" x="16" y="431" width="343" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ffR-NV-E59"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Steps"/>
+                                    <segment title="Calories"/>
+                                    <segment title="Distance"/>
+                                    <segment title="Active time"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChangedWithSender:" destination="4pt-bZ-KFm" eventType="valueChanged" id="tVQ-x3-eDq"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qpt-sa-OD3" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="34" id="1Jg-dB-3hq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ChN-L7-Usu" secondAttribute="trailing" id="D51-yt-zXi"/>
+                            <constraint firstItem="9ar-1E-h6q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ChN-L7-Usu" secondAttribute="bottom" constant="10" id="MzY-Ui-Rjm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YAv-zg-N8q" secondAttribute="trailing" id="OFy-qu-2J1"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="trailing" secondItem="9ar-1E-h6q" secondAttribute="trailing" id="P7K-ba-EhH"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="height" secondItem="9ar-1E-h6q" secondAttribute="height" id="Qyt-Ae-ses"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="leading" secondItem="9ar-1E-h6q" secondAttribute="leading" id="Reb-mI-zik"/>
+                            <constraint firstItem="ChN-L7-Usu" firstAttribute="top" secondItem="YAv-zg-N8q" secondAttribute="bottom" constant="10" id="U36-T8-99d"/>
                             <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="qpt-sa-OD3" secondAttribute="bottom" constant="49" id="Y1k-ky-qdT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9ar-1E-h6q" secondAttribute="trailing" constant="24" id="bhL-22-XVR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qpt-sa-OD3" secondAttribute="trailing" constant="34" id="d0e-tu-pim"/>
-                            <constraint firstItem="rBV-PA-C9x" firstAttribute="top" secondItem="4Ha-zi-bll" secondAttribute="bottom" constant="64" id="dsK-eK-hxB"/>
+                            <constraint firstItem="rBV-PA-C9x" firstAttribute="top" secondItem="4Ha-zi-bll" secondAttribute="bottom" constant="44" id="dsK-eK-hxB"/>
                             <constraint firstItem="9ar-1E-h6q" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="24" id="nhm-eT-PRj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ChN-L7-Usu" secondAttribute="leading" id="oLf-9c-bbk"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YAv-zg-N8q" secondAttribute="leading" id="ogN-TW-c8N"/>
                             <constraint firstItem="4Ha-zi-bll" firstAttribute="top" secondItem="9ar-1E-h6q" secondAttribute="bottom" constant="14" id="v36-ct-Bvm"/>
-                            <constraint firstItem="9ar-1E-h6q" firstAttribute="top" secondItem="YAv-zg-N8q" secondAttribute="bottom" constant="60" id="vVa-7F-KgN"/>
                             <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="rN2-bE-lUK" secondAttribute="bottom" constant="134" id="zaY-ra-eUq"/>
                         </constraints>
                     </view>
