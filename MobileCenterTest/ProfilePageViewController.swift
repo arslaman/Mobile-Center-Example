@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
 import Charts
-
 import HealthKit
+import MobileCenterAnalytics
+import MobileCenterCrashes
 
 class ProfilePageViewController: UIViewController, ChartViewDelegate {
     
@@ -128,7 +128,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
     }
     
     @IBAction func crashApplication() {
-        
+        MSCrashes.generateTestCrash()
     }
     
     @IBAction func returnBack() {

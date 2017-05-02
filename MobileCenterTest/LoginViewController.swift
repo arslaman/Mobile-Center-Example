@@ -14,6 +14,7 @@ import TwitterKit
 import FBSDKLoginKit
 
 import MobileCenterAnalytics
+import MobileCenterCrashes
 
 extension ClosedRange where Bound : FloatingPoint {
     public func random() -> Bound {
@@ -44,6 +45,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         facebookButton.delegate = self;
+        
+        let wasCrashed = MSCrashes.hasCrashedInLastSession()
+        
+        if  wasCrashed {
+            
+        }
         
 //        self.generateHealthKitData()
     }
