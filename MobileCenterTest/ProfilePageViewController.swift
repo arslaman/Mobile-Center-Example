@@ -115,6 +115,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
     }
     
     
+    
     @IBAction func crashApplication() {
         self.setChartData()
     }

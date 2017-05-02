@@ -99,7 +99,7 @@
                                 <state key="normal" title="View Statistics"/>
                                 <connections>
                                     <action selector="viewStats" destination="pBA-MM-UWz" eventType="touchUpInside" id="sSU-3E-dAg"/>
-                                    <segue destination="4pt-bZ-KFm" kind="show" id="ToU-Vn-K2b"/>
+                                    <segue destination="4pt-bZ-KFm" kind="show" identifier="ShowProfilePage" id="ToU-Vn-K2b"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-hG-QG9">

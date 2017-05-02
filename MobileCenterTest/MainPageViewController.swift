@@ -19,6 +19,8 @@ class MainPageViewController: UIViewController {
     @IBOutlet var distanceLabel: UILabel?
     @IBOutlet var greetingsLabel: UILabel?
     
+    var operationsCounter = Int()
+    
     var labels = [String : UILabel]()
     
     var healthStore = HKHealthStore()
@@ -90,55 +92,113 @@ class MainPageViewController: UIViewController {
     }
     
     func sampleValueChanged( type: HKQuantityType ) -> Void {
-        self.updateLabel(for: type)
+        if ( operationsCounter == 0 )
+        {
+            self.updateLabel(for: type)
+        }
     }
     
+    func increaseOperationsCounter() -> Void {
+        objc_sync_enter( operationsCounter )
+        operationsCounter += 1
+        objc_sync_exit( operationsCounter )
+    }
+    
+    func decreaseOperationsCounter() -> Void {
+        objc_sync_enter( operationsCounter )
+        operationsCounter -= 1
+        if operationsCounter == 0 {
+            fillContent()
+        }
+        objc_sync_exit( operationsCounter )
+    }
+
     func querySample( type: HKQuantityType, for days: Int ) -> Void {
+        let calendar = Calendar.current
+        var interval = DateComponents()
+        interval.hour = 1
         
-        let calendar = NSCalendar.current
-        let startOfToday = Date().startOfDay
+        guard let anchorDate = Date().endOfDay else {
+            fatalError("*** unable to create a valid date from the given components ***")
+        }
         
-        for day in 0...days {
-            for hour in 0...23 {
-                var dateComponents = DateComponents()
-                dateComponents.hour = hour
-                dateComponents.day = -day
-                
-                let startDate = calendar.date( byAdding: dateComponents, to: startOfToday )
-                let endDate = calendar.date( byAdding: .hour, value: 1, to: startDate! )
-                
-                let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
-                let statisticQuery = HKStatisticsQuery(quantityType: type,
-                                                       quantitySamplePredicate: predicate,
-                                                       options: [HKStatisticsOptions.cumulativeSum])
-                { ( query, result, error) in
-                    if let sumQuantity = result?.sumQuantity() {
-                        
-                        var unit: HKUnit
-                        switch type.identifier {
-                        case HKQuantityTypeIdentifier.stepCount.rawValue:
-                            unit = HKUnit.count()
-                        case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
-                            unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
-                        case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
-                            unit = HKUnit.kilocalorie()
-                        default:
-                            fatalError( "unsupported HKQuantityTypeIdentifier" )
-                        }
-                        
-                        let value = sumQuantity.doubleValue( for: unit )
-                        self.user?.userStats.getOrCreate( for: day, and: hour )[type.identifier] = value
-                        DispatchQueue.main.async {
-                            self.sampleValueChanged(type: type)
-                        }
+        let query = HKStatisticsCollectionQuery(quantityType: type,
+                                                quantitySamplePredicate: nil,
+                                                options: .cumulativeSum,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
+        
+        query.initialResultsHandler = {
+            query, results, error in
+            
+            guard let statsCollection = results else {
+                fatalError("*** An error occurred while calculating the statistics: \(String(describing: error?.localizedDescription)) ***")
+            }
+            
+            var startDateComponents = DateComponents()
+            startDateComponents.day = -days
+            guard let startDate = calendar.date( byAdding: startDateComponents, to: anchorDate ) else {
+                fatalError()
+            }
+
+            var unit: HKUnit
+            switch type.identifier {
+            case HKQuantityTypeIdentifier.stepCount.rawValue:
+                unit = HKUnit.count()
+            case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
+                unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
+            case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
+                unit = HKUnit.kilocalorie()
+            default:
+                fatalError( "unsupported HKQuantityTypeIdentifier" )
+            }
+        
+            statsCollection.enumerateStatistics(from: startDate, to: anchorDate, with:{
+                ( statistics, stop ) in
+                if let quantity = statistics.sumQuantity() {
+                    let date = statistics.startDate
+                    let value = quantity.doubleValue( for: unit )
+
+                    let difference = calendar.dateComponents( [.day, .hour], from: startDate, to: date )
+                    guard let day = difference.day else {
+                        fatalError()
                     }
+                    guard let hour = difference.hour else {
+                        fatalError()
+                    }
+                    let dayIndex = day//days - day - 1
+                    let hourIndex = 24 - hour
+                    
+                    self.user?.userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
+                    
+                    print( "Date: ", date )
+                    print( "Difference: ", difference )
+                    print( type.identifier, ":", difference )
+                    print( "day: ", dayIndex, "   hour: ", hour )
+                    print( "value: ", value  )
+                    print( "_____" )
+                    
+                   
                 }
                 
-                self.healthStore.execute( statisticQuery )
-            }
+                DispatchQueue.main.async {
+                    self.sampleValueChanged(type: type)
+                }
+          
+            })
+//            statsCollection.enumerateStatistics( from: startDate, toDate: anchorDate ) {
+//                [unowned self] statistics, stop in
+//                
+//
+//                    // Call a custom method to plot each data point.
+//                    self.plotWeeklyStepCount(value, forDate: date)
+//                }
+//            }
         }
-    
+        
+        healthStore.execute( query )
     }
+
     
     func loadHealthKitData() -> Void {
         let readTypes = Set( actualTypes )
@@ -147,10 +207,22 @@ class MainPageViewController: UIViewController {
             if ( error == nil )
             {
                 for readType in readTypes {
-                    self.querySample( type: readType, for: 5 )
+                    self.querySample( type: readType, for: 1 )
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "ShowProfilePage":
+                (segue.destination as! ProfilePageViewController).user = self.user
+            default:
+                break
+            }
+        }
+        
     }
     
     @IBAction func viewStats() -> Void {
