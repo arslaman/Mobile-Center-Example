@@ -34,13 +34,15 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             chartView.xAxis.drawGridLinesEnabled = false
             chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
             
+            chartView.leftAxis.drawAxisLineEnabled = false
+            chartView.leftAxis.setLabelCount( 5, force: false )
+            
+            chartView.rightAxis.enabled = false
             
             chartView.drawBordersEnabled = false
             chartView.legend.enabled = false
             chartView.chartDescription?.enabled = false
             
-            chartView.leftAxis.setLabelCount( 5, force: false )
-            chartView.rightAxis.enabled = false
         }
         
         setChartData()
