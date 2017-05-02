@@ -76,6 +76,7 @@ class User {
 
 class TimedData<T: Initable & Addable> {
     private var dataContainer = [Int: [Int: T?]]()
+    
     func set( data: T, for day: Int, and hour: Int ) {
         var dayContainer = dataContainer[day]
         
@@ -115,7 +116,7 @@ class TimedData<T: Initable & Addable> {
         }
         
         let value = T()
-        set( data: T(), for: day, and: hour )
+        set( data: value, for: day, and: hour )
         
         return value
     }

@@ -171,7 +171,7 @@ class MainPageViewController: UIViewController {
                     
 //                    userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
                     self.writeHealthKitData( for: dayIndex, hour: hourIndex, and: type, value: value )
-                    
+     
                     print( "Date: ", date )
                     print( "Difference: ", difference )
                     print( type.identifier, ":", difference )
