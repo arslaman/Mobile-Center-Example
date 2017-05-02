@@ -127,7 +127,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         for hour in 0...24 * days {
             let endDate = calendar.date(byAdding: .hour, value: -hour, to: now)!
-            let startDate = calendar.startOfDay( for: endDate )
+            let startDate = calendar.date(byAdding: .hour, value: -hour - 1, to: now)!
             
             
             writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount)
