@@ -169,25 +169,13 @@ class MainPageViewController: UIViewController {
                     let dayIndex = days - day - 1
                     let hourIndex = hour
                     
-//                    userStats.getOrCreate( for: dayIndex, and: hourIndex )[type.identifier] = value
                     self.writeHealthKitData( for: dayIndex, hour: hourIndex, and: type, value: value )
-     
-                    print( "Date: ", date )
-                    print( "Difference: ", difference )
-                    print( type.identifier, ":", difference )
-                    print( "day: ", dayIndex, "   hour: ", hour )
-                    print( "value origin: ", value )
-//                    print( "value: ", userStats.get(for: dayIndex, and: hourIndex )?[type.identifier] )
-                    print( "_____" )
-                    
-                   
                 }
-                
-                DispatchQueue.main.async {
-                    self.sampleValueChanged(type: type)
-                }
-          
             })
+            
+            DispatchQueue.main.async {
+                self.sampleValueChanged(type: type)
+            }
         }
         
         healthStore.execute( query )
