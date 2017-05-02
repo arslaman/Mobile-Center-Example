@@ -90,6 +90,7 @@ class ProfilePageViewController: UIViewController, ChartViewDelegate {
             let set1 = LineChartDataSet( values: values, label: "" )
             set1.drawIconsEnabled = false
             
+            set1.mode = .linear
             set1.lineDashLengths = nil
             set1.highlightEnabled = false
             set1.setColor( UIColor( red: 0.0/255.0, green: 156.0/255.0, blue: 205.0/255.0, alpha: 1 ) )

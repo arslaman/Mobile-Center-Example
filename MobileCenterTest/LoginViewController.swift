@@ -45,13 +45,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         facebookButton.delegate = self;
-        
-        let wasCrashed = MSCrashes.hasCrashedInLastSession()
-        
-        if  wasCrashed {
-            
-        }
-        
+//        
+//        let wasCrashed = MSCrashes.hasCrashedInLastSession()
+//        
+//        if  wasCrashed {
+//            
+//        }
+//        
 //        self.generateHealthKitData()
     }
 
