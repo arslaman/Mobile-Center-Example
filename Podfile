@@ -1,6 +1,6 @@
 platform :ios, '9.0'
 
-target 'MobileCenterTest' do
+target 'MobileCenterExample' do
 	use_frameworks!
 
 	pod 'Fabric'
