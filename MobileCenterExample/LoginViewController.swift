@@ -38,6 +38,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         facebookButton.delegate = self;
+        
+        
 //        
 //        let wasCrashed = MSCrashes.hasCrashedInLastSession()
 //        
@@ -152,7 +154,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func checkNeedGenerateHealthKitData() {
+        var readTypes = Set<HKQuantityType>()
+        readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)! )
+        readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)! )
+        readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)! )
         
+        healthStore.requestAuthorization(toShare: [], read: readTypes) { ( success, error ) in
+            if ( success ) {
+                self.healthStore.preferredUnits(for: [HKQuantityType.quantityType(forIdentifier:HKQuantityTypeIdentifier.distanceWalkingRunning)!]) { ( result, error ) in
+                    print( result )
+                    print( error )
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
