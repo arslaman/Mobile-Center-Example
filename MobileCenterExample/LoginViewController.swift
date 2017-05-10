@@ -121,7 +121,7 @@ class LoginViewController: UIViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "ShowMainPage":
-                (segue.destination as! MainPageViewController).user = self.user
+                (segue.destination as! MainTabBarController).user = self.user
             default:
                 break
             }

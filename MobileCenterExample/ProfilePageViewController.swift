@@ -1,144 +1,219 @@
 //
-//  ProfilePageViewController.swift
+//  MainPageViewController.swift
 //  MobileCenterExample
 //
-//  Created by Insaf Safin on 27.04.17.
+//  Created by Insaf Safin on 26.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.
 //
 
 import UIKit
-import Charts
-import HealthKit
-import MobileCenterAnalytics
-import MobileCenterCrashes
 
-class ProfilePageViewController: UIViewController, ChartViewDelegate {
+import HealthKit
+
+import MobileCenterAnalytics
+
+class ProfilePageViewController: UIViewController {
+
+    @IBOutlet var caloriesLabel: UILabel?
+    @IBOutlet var stepsLabel: UILabel?
+    @IBOutlet var distanceLabel: UILabel?
+    @IBOutlet var greetingsLabel: UILabel?
     
-    @IBOutlet var chartView: LineChartView?
-    let actualTypes = [HKQuantityTypeIdentifier.stepCount,
-                       HKQuantityTypeIdentifier.activeEnergyBurned,
-                       HKQuantityTypeIdentifier.distanceWalkingRunning]
+    var operationsCounter = Int()
     
+    var labels = [String : UILabel]()
     
-    private var selectedDataType: HKQuantityTypeIdentifier? {
-        didSet {
-            if oldValue != selectedDataType {
-                setChartData()
-            }
-        }
-    }
+    var healthStore = HKHealthStore()
+    
+    let actualTypes = [HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
+                       HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
+                       HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!]
+    
+    let doubleFormatter = NumberFormatter()
+    let integerFormatter = NumberFormatter()
+    var formatters = [String: NumberFormatter]()
     
     public var user: User? {
         didSet {
-            setChartData()
+            self.fillContent()
         }
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        doubleFormatter.groupingSize = 3
+        doubleFormatter.maximumFractionDigits = 2
+        
+        integerFormatter.maximumFractionDigits = 0;
+        integerFormatter.groupingSize = 3;
+        
+        formatters[HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue] = doubleFormatter
+        formatters[HKQuantityTypeIdentifier.activeEnergyBurned.rawValue] = doubleFormatter
+        formatters[HKQuantityTypeIdentifier.stepCount.rawValue] = integerFormatter
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedDataType = actualTypes.first
+        labels[HKQuantityTypeIdentifier.stepCount.rawValue] = stepsLabel
+        labels[HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue] = distanceLabel
+        labels[HKQuantityTypeIdentifier.activeEnergyBurned.rawValue] = caloriesLabel
         
-        if let chartView = chartView {
-            chartView.delegate = self;
-            chartView.dragEnabled = false
-            chartView.scaleXEnabled = false
-            chartView.scaleYEnabled = false
-            
-            chartView.xAxis.drawGridLinesEnabled = false
-            chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
-            
-            chartView.leftAxis.drawAxisLineEnabled = false
-            chartView.leftAxis.setLabelCount( 5, force: false )
-            
-            chartView.rightAxis.enabled = false
-            
-            chartView.drawBordersEnabled = false
-            chartView.legend.enabled = false
-            chartView.chartDescription?.enabled = false
-        }
-        
-        setChartData()
-    }
-    
-    func setChartData() {
-        
-        if let chartView = chartView {
-            
-            guard let typeId = selectedDataType else {
-                return
-            }
-            
-            var values = Array<ChartDataEntry>()
-            
-            if let user = user {
-                for i in 0...24 {
-                    if let stats = user.userStats.get(for: 0, and: i ) {
-                        let value = stats[typeId.rawValue]
-                        values.append( ChartDataEntry( x: Double(i), y: value ) )
-                    }
-                    else {
-                        values.append( ChartDataEntry( x: Double(i), y: 0 ) )
-                    }
-                    
-                }
-            }
-            else {
-                return
-            }
-            
-            let set1 = LineChartDataSet( values: values, label: "" )
-            set1.drawIconsEnabled = false
-            
-            set1.mode = .linear
-            set1.lineDashLengths = nil
-            set1.highlightEnabled = false
-            set1.setColor( UIColor( red: 0.0/255.0, green: 156.0/255.0, blue: 205.0/255.0, alpha: 1 ) )
-            set1.setCircleColor( UIColor(red: 0.0/255.0, green: 156.0/255.0, blue: 205.0/255.0, alpha: 1 ) )
-            set1.lineWidth = 2.0
-            set1.drawCirclesEnabled = false
-            set1.drawCircleHoleEnabled = false
-            set1.drawValuesEnabled = false
-            set1.valueFont = UIFont.systemFont( ofSize: 9 )
-            set1.formLineDashLengths = nil
-            set1.formLineWidth = 0.0
-            set1.formSize = 15.0
-            
-            let gradientColors = [
-                UIColor(red: 220.0/255.0, green: 242.0/255.0, blue: 250.0/255.0, alpha: 0.6).cgColor,
-                UIColor(red: 220.0/255.0, green: 242.0/255.0, blue: 250.0/255.0, alpha: 0.6).cgColor
-                ] as CFArray
-            
-            let gradient = CGGradient(colorsSpace: nil, colors: gradientColors, locations: nil )
-            
-            set1.fillAlpha = 1;
-            set1.fill = Fill.fillWithLinearGradient( gradient!, angle: 90 )
-            set1.drawFilledEnabled = true;
-            
-            let dataSets = [set1] as Array
-            let data = LineChartData(dataSets: dataSets)
-            
-            
-            chartView.xAxis.setLabelCount( values.count / 2, force: false )
-            chartView.data = data;
-        }
+        self.loadHealthKitData()
+        self.fillContent()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func fillContent() -> Void {
+        if !self.isViewLoaded {
+            return
+        }
+        
+        if let user = user {
+            greetingsLabel?.text = "Hi, \(user.fullName)"
+        }
+        for type in actualTypes {
+            self.updateLabel(for: type)
+        }
     }
     
-    @IBAction func crashApplication() {
-        MSCrashes.generateTestCrash()
+    func updateLabel( for type: HKQuantityType ) -> Void {
+        guard let label = labels[type.identifier] else {
+            fatalError()
+        }
+        
+        if let value = self.user?.userStats.get( for: 0 )[type.identifier] {
+            if let formatter = formatters[type.identifier] {
+                label.text = formatter.string(from: value as NSNumber)
+            }
+        }
+        else {
+            label.text = "0"
+        }
     }
     
-    @IBAction func returnBack() {
+    func sampleValueChanged( type: HKQuantityType ) -> Void {
+        if ( operationsCounter == 0 )
+        {
+            self.updateLabel(for: type)
+        }
+    }
+    
+    func increaseOperationsCounter() -> Void {
+        objc_sync_enter( operationsCounter )
+        operationsCounter += 1
+        objc_sync_exit( operationsCounter )
+    }
+    
+    func decreaseOperationsCounter() -> Void {
+        objc_sync_enter( operationsCounter )
+        operationsCounter -= 1
+        if operationsCounter == 0 {
+            fillContent()
+        }
+        objc_sync_exit( operationsCounter )
+    }
+
+    func querySample( type: HKQuantityType, for days: Int ) -> Void {
+        let calendar = Calendar.current
+        var interval = DateComponents()
+        interval.hour = 1
+        
+        guard let anchorDate = Date().endOfDay else {
+            fatalError("*** unable to create a valid date from the given components ***")
+        }
+        
+        let query = HKStatisticsCollectionQuery(quantityType: type,
+                                                quantitySamplePredicate: nil,
+                                                options: .cumulativeSum,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
+        
+        query.initialResultsHandler = {
+            query, results, error in
+            
+            guard let statsCollection = results else {
+                fatalError("*** An error occurred while calculating the statistics: \(String(describing: error?.localizedDescription)) ***")
+            }
+            
+            var startDateComponents = DateComponents()
+            startDateComponents.day = -days
+            guard let startDate = calendar.date( byAdding: startDateComponents, to: anchorDate ) else {
+                fatalError()
+            }
+
+            var unit: HKUnit
+            switch type.identifier {
+            case HKQuantityTypeIdentifier.stepCount.rawValue:
+                unit = HKUnit.count()
+            case HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue:
+                unit = HKUnit.meterUnit(with: HKMetricPrefix.kilo)
+            case HKQuantityTypeIdentifier.activeEnergyBurned.rawValue:
+                unit = HKUnit.kilocalorie()
+            default:
+                fatalError( "unsupported HKQuantityTypeIdentifier" )
+            }
+
+            statsCollection.enumerateStatistics(from: startDate, to: anchorDate, with:{
+                ( statistics, stop ) in
+                if let quantity = statistics.sumQuantity() {
+                    let date = statistics.startDate
+                    let value = quantity.doubleValue( for: unit )
+
+                    let difference = calendar.dateComponents( [.day, .hour], from: startDate, to: date )
+                    guard let day = difference.day else {
+                        fatalError()
+                    }
+                    guard let hour = difference.hour else {
+                        fatalError()
+                    }
+                    let dayIndex = days - day - 1
+                    let hourIndex = hour
+                    
+                    self.writeHealthKitData( for: dayIndex, hour: hourIndex, and: type, value: value )
+                }
+            })
+            
+            DispatchQueue.main.async {
+                self.sampleValueChanged(type: type)
+            }
+        }
+        
+        healthStore.execute( query )
+    }
+    
+    func loadHealthKitData() -> Void {
+        let readTypes = Set( actualTypes )
+        
+        healthStore.requestAuthorization(toShare: [], read: readTypes ) { ( result, error ) in
+            if ( error == nil )
+            {
+                for readType in readTypes {
+                    self.querySample( type: readType, for: 1 )
+                }
+            }
+        }
+    }
+    
+    func writeHealthKitData( for day: Int, hour: Int, and type: HKQuantityType, value: Double ) -> Void {
+        objc_sync_enter( self )
+        self.user?.userStats.getOrCreate( for: day, and: hour )[type.identifier] = value
+        objc_sync_exit( self )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "ShowProfilePage":
+                (segue.destination as! ProfilePageViewController).user = self.user
+            default:
+                break
+            }
+        }
         
     }
     
-    @IBAction func segmentChanged( sender: UISegmentedControl ) {
-        if actualTypes.indices.contains( sender.selectedSegmentIndex ) {
-            selectedDataType = actualTypes[sender.selectedSegmentIndex]
-        }
+    @IBAction func viewStats() -> Void {
+        MSAnalytics.trackEvent( "View Stats Tap" )
     }
+
 }

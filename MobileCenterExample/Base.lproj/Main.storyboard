@@ -114,17 +114,17 @@ WENT WRONG</string>
                         <outlet property="errorLabel2" destination="Mfx-50-poY" id="0Os-CZ-Lcb"/>
                         <outlet property="normalStateIcon1" destination="9TX-iT-tcD" id="ZXm-dg-19g"/>
                         <outlet property="normalStateIcon2" destination="JCs-AY-Mg4" id="Aq0-xG-Q9N"/>
-                        <segue destination="pBA-MM-UWz" kind="presentation" identifier="ShowMainPage" id="WQv-p5-HwD"/>
+                        <segue destination="Gzu-mB-voJ" kind="presentation" identifier="ShowMainPage" id="6qk-Js-xb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-478" y="81"/>
         </scene>
-        <!--Main Page View Controller-->
+        <!--HOME-->
         <scene sceneID="Rfz-v7-dU1">
             <objects>
-                <viewController id="pBA-MM-UWz" customClass="MainPageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="HOME" id="pBA-MM-UWz" customClass="ProfilePageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3D9-34-Mmq"/>
                         <viewControllerLayoutGuide type="bottom" id="TId-sI-5oT"/>
@@ -133,6 +133,9 @@ WENT WRONG</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="8Om-Tv-JOc">
+                                <rect key="frame" x="-16.5" y="-156" width="407" height="312"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-Hc-UJH">
                                 <rect key="frame" x="50" y="77" width="275" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
@@ -145,18 +148,6 @@ WENT WRONG</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZF-G3-6vG">
-                                <rect key="frame" x="40" y="549" width="295" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="LUG-YK-pfQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="View Statistics"/>
-                                <connections>
-                                    <action selector="viewStats" destination="pBA-MM-UWz" eventType="touchUpInside" id="sSU-3E-dAg"/>
-                                    <segue destination="4pt-bZ-KFm" kind="show" identifier="ShowProfilePage" id="ToU-Vn-K2b"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-hG-QG9">
                                 <rect key="frame" x="55.5" y="267.5" width="265.5" height="133"/>
                                 <subviews>
@@ -166,7 +157,7 @@ WENT WRONG</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANj-5z-aEn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANj-5z-aEn">
                                         <rect key="frame" x="32" y="19" width="44.5" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -178,7 +169,7 @@ WENT WRONG</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZU-xU-XgC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZU-xU-XgC">
                                         <rect key="frame" x="32" y="85" width="44.5" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -225,18 +216,18 @@ WENT WRONG</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4F4-Hc-UJH" firstAttribute="top" secondItem="3D9-34-Mmq" secondAttribute="bottom" priority="750" constant="57" id="5R7-yb-oYk"/>
-                            <constraint firstItem="0ZF-G3-6vG" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="24" id="5RJ-zy-cIn"/>
-                            <constraint firstItem="TId-sI-5oT" firstAttribute="top" secondItem="0ZF-G3-6vG" secondAttribute="bottom" constant="64" id="6VA-eH-sZH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4F4-Hc-UJH" secondAttribute="trailing" constant="34" id="ECJ-a2-yqd"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="centerY" secondItem="eRQ-EN-etK" secondAttribute="centerY" id="Pt4-vP-GEj"/>
                             <constraint firstItem="kkO-dV-cPf" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="24" id="Rvx-mK-jdX"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="centerX" secondItem="eRQ-EN-etK" secondAttribute="centerX" id="SX1-zc-KZu"/>
                             <constraint firstItem="4F4-Hc-UJH" firstAttribute="leading" secondItem="eRQ-EN-etK" secondAttribute="leadingMargin" constant="34" id="ZlJ-uD-g2L"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0ZF-G3-6vG" secondAttribute="trailing" constant="24" id="oq2-uu-TB1"/>
+                            <constraint firstItem="8Om-Tv-JOc" firstAttribute="centerY" secondItem="eRQ-EN-etK" secondAttribute="top" id="aPP-Zh-LAL"/>
                             <constraint firstItem="kkO-dV-cPf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4F4-Hc-UJH" secondAttribute="bottom" constant="20" id="p5E-0d-t3A"/>
                             <constraint firstItem="hsC-hG-QG9" firstAttribute="top" secondItem="kkO-dV-cPf" secondAttribute="bottom" constant="12" id="qwj-BC-2BD"/>
+                            <constraint firstItem="8Om-Tv-JOc" firstAttribute="centerX" secondItem="eRQ-EN-etK" secondAttribute="centerX" id="z9f-Hj-Osb"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="HOME" image="homeIcon" id="PaB-oL-ldV"/>
                     <connections>
                         <outlet property="caloriesLabel" destination="Ifr-d2-uvl" id="LbU-sK-Kdc"/>
                         <outlet property="distanceLabel" destination="8ZU-xU-XgC" id="UJS-bJ-K7f"/>
@@ -246,12 +237,30 @@ WENT WRONG</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k2-HA-0Pn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373.60000000000002" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1145" y="-260"/>
         </scene>
-        <!--Profile Page View Controller-->
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="Iac-9r-QEa">
+            <objects>
+                <tabBarController id="Gzu-mB-voJ" customClass="MainTabBarController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xa7-TX-Wox">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pBA-MM-UWz" kind="relationship" relationship="viewControllers" id="thB-Pf-9gn"/>
+                        <segue destination="4pt-bZ-KFm" kind="relationship" relationship="viewControllers" id="zen-Nb-xH1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GAn-YB-VzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="81"/>
+        </scene>
+        <!--STATISTICS-->
         <scene sceneID="fTP-J0-W6X">
             <objects>
-                <viewController id="4pt-bZ-KFm" customClass="ProfilePageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="STATISTICS" id="4pt-bZ-KFm" customClass="StatisticsViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rN2-bE-lUK"/>
                         <viewControllerLayoutGuide type="bottom" id="rBV-PA-C9x"/>
@@ -261,7 +270,7 @@ WENT WRONG</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-1E-h6q">
-                                <rect key="frame" x="40" y="501" width="295" height="54"/>
+                                <rect key="frame" x="40" y="452" width="295" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="ZVp-3S-jTU"/>
                                 </constraints>
@@ -272,7 +281,7 @@ WENT WRONG</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-zi-bll">
-                                <rect key="frame" x="40" y="569" width="295" height="54"/>
+                                <rect key="frame" x="40" y="520" width="295" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back to Main Page"/>
                                 <connections>
@@ -285,14 +294,14 @@ WENT WRONG</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-zg-N8q" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="16" y="154" width="343" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="267" id="fBb-Q4-wzW"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-L7-Usu">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-L7-Usu">
                                 <rect key="frame" x="16" y="431" width="343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ffR-NV-E59"/>
@@ -329,20 +338,24 @@ WENT WRONG</string>
                             <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="rN2-bE-lUK" secondAttribute="bottom" constant="134" id="zaY-ra-eUq"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="STATISTICS" image="statsIcon" id="TsQ-mX-5mu"/>
                     <connections>
                         <outlet property="chartView" destination="YAv-zg-N8q" id="JD7-bJ-UbV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zF-BW-ynA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240.8" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1145" y="529"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ellipse" width="407" height="312"/>
         <image name="errorIcon" width="109" height="109"/>
         <image name="fbIcon" width="12" height="24"/>
+        <image name="homeIcon" width="26" height="23"/>
         <image name="mcLogo" width="577" height="749"/>
         <image name="mcSmallLogo" width="245" height="85"/>
+        <image name="statsIcon" width="28" height="20"/>
         <image name="twitterIcon" width="24" height="20"/>
         <image name="vsmcLogo" width="155" height="30"/>
     </resources>
