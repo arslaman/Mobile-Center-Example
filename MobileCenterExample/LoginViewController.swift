@@ -20,23 +20,17 @@ class LoginViewController: UIViewController {
     
     private var user: User?
     
+    @IBOutlet var errorIcon: UIView?
+    @IBOutlet var errorLabel1: UIView?
+    @IBOutlet var errorLabel2: UIView?
+    
+    @IBOutlet var normalStateIcon1: UIView?
+    @IBOutlet var normalStateIcon2: UIView?
+    
     let healthStore = HKHealthStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        twitterButton.addTarget( self, action: #selector(LoginViewController.onTwitterTap), for: UIControlEvents.touchUpInside )
-//        twitterButton.logInCompletion = { session, error in
-//            if let session = session {
-//                self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
-//                self.showMainPage()
-//            }
-//        }
-//        
-//        facebookButton.delegate = self;
-        
-        
-//        
 //        let wasCrashed = MSCrashes.hasCrashedInLastSession()
 //        
 //        if  wasCrashed {
@@ -134,6 +128,18 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func showErrorState() {
+        UIView.animate(withDuration: 0.2) { 
+            self.errorIcon?.alpha = 1
+            self.errorLabel1?.alpha = 1
+            self.errorLabel2?.alpha = 1
+            
+            self.normalStateIcon1?.alpha = 0
+            self.normalStateIcon2?.alpha = 0
+        }
+        
+    }
+    
     @IBAction func loginViaTwitter() {
         Twitter.sharedInstance().logIn(with: self, completion: { ( session, error ) in
             if let session = session {
@@ -147,6 +153,7 @@ class LoginViewController: UIViewController {
                 else {
                     print( "unknown error occured" )
                 }
+                self.showErrorState()
             }
         })
     }
@@ -156,6 +163,7 @@ class LoginViewController: UIViewController {
         fbLoginManager.logIn(withReadPermissions: [], from: self, handler: { ( loginResult, error ) in
             if let error = error {
                 print( "an error occured: ", error )
+                self.showErrorState()
             }
             else {
                 if let loginResult = loginResult {
@@ -172,6 +180,7 @@ class LoginViewController: UIViewController {
                                 else {
                                     print( "unknown error occured" )
                                 }
+                                self.showErrorState()
                             }
                         })
                     }
