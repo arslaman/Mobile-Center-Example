@@ -28,16 +28,13 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.22.0):
     - FBSDKCoreKit
-  - MobileCenter (0.6.1):
-    - MobileCenter/MobileCenterAnalytics (= 0.6.1)
-    - MobileCenter/MobileCenterCrashes (= 0.6.1)
-    - MobileCenter/MobileCenterDistribute (= 0.6.1)
-  - MobileCenter/MobileCenter (0.6.1)
-  - MobileCenter/MobileCenterAnalytics (0.6.1):
+  - MobileCenter (0.8.0):
+    - MobileCenter/MobileCenterAnalytics (= 0.8.0)
+    - MobileCenter/MobileCenterCrashes (= 0.8.0)
+  - MobileCenter/MobileCenter (0.8.0)
+  - MobileCenter/MobileCenterAnalytics (0.8.0):
     - MobileCenter/MobileCenter
-  - MobileCenter/MobileCenterCrashes (0.6.1):
-    - MobileCenter/MobileCenter
-  - MobileCenter/MobileCenterDistribute (0.6.1):
+  - MobileCenter/MobileCenterCrashes (0.8.0):
     - MobileCenter/MobileCenter
   - TwitterCore (2.8.0):
     - Fabric
@@ -63,7 +60,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
   FBSDKShareKit: 21ab3c8d173f4fa20c47c1061f3a9fac5950b5fa
-  MobileCenter: a0c2ac2ab187d485ffab42463638dbb7606c4019
+  MobileCenter: b61ad8338b34ad7a61a55dd5f6b1285d74c1ccf8
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 

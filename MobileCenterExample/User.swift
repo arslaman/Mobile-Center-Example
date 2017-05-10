@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  MobileCenterTest
+//  MobileCenterExample
 //
 //  Created by Insaf Safin on 26.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.
@@ -11,6 +11,21 @@ import UIKit
 enum SocialNetwork : String {
     case Twitter = "Twitter"
     case Facebook = "Facebook"
+}
+
+class User {
+    
+    var fullName: String
+    var accessToken: String
+    var socialNetwork: SocialNetwork
+    var userStats: TimedData<UserStats>
+    
+    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork ) {
+        self.fullName = fullName
+        self.accessToken = accessToken
+        self.socialNetwork = socialNetwork
+        self.userStats = TimedData<UserStats>()
+    }
 }
 
 func autocast<T>(some: Any) -> T {
@@ -57,22 +72,6 @@ protocol Addable {
 protocol Initable {
     init()
 }
-
-class User {
-     
-    var fullName: String
-    var accessToken: String
-    var socialNetwork: SocialNetwork
-    var userStats: TimedData<UserStats>
-    
-    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork ) {
-        self.fullName = fullName
-        self.accessToken = accessToken
-        self.socialNetwork = socialNetwork
-        self.userStats = TimedData<UserStats>()
-    }
-}
-
 
 class TimedData<T: Initable & Addable> {
     private var dataContainer = [Int: [Int: T?]]()

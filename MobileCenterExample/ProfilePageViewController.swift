@@ -1,6 +1,6 @@
 //
 //  ProfilePageViewController.swift
-//  MobileCenterTest
+//  MobileCenterExample
 //
 //  Created by Insaf Safin on 27.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.

@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="MobileCenterTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -69,7 +69,7 @@
         <!--Main Page View Controller-->
         <scene sceneID="Rfz-v7-dU1">
             <objects>
-                <viewController id="pBA-MM-UWz" customClass="MainPageViewController" customModule="MobileCenterTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pBA-MM-UWz" customClass="MainPageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3D9-34-Mmq"/>
                         <viewControllerLayoutGuide type="bottom" id="TId-sI-5oT"/>
@@ -196,7 +196,7 @@
         <!--Profile Page View Controller-->
         <scene sceneID="fTP-J0-W6X">
             <objects>
-                <viewController id="4pt-bZ-KFm" customClass="ProfilePageViewController" customModule="MobileCenterTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4pt-bZ-KFm" customClass="ProfilePageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rN2-bE-lUK"/>
                         <viewControllerLayoutGuide type="bottom" id="rBV-PA-C9x"/>

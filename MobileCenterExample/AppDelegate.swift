@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MobileCenterTest
+//  MobileCenterExample
 //
 //  Created by Insaf Safin on 24.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.

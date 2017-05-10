@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  MobileCenterTest
+//  MobileCenterExample
 //
 //  Created by Insaf Safin on 24.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.
@@ -16,13 +16,6 @@ import FBSDKLoginKit
 import MobileCenterAnalytics
 import MobileCenterCrashes
 
-extension ClosedRange where Bound : FloatingPoint {
-    public func random() -> Bound {
-        let range = self.upperBound - self.lowerBound
-        let randomValue = (Bound(arc4random_uniform(UINT32_MAX)) / Bound(UINT32_MAX)) * range + self.lowerBound
-        return randomValue
-    }
-}
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -52,7 +45,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 //            
 //        }
 //        
-//        self.generateHealthKitData()
+        self.checkNeedGenerateHealthKitData()
     }
 
     func onTwitterTap() {
@@ -158,6 +151,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    func checkNeedGenerateHealthKitData() {
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {

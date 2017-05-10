@@ -1,6 +1,6 @@
 //
 //  MainPageViewController.swift
-//  MobileCenterTest
+//  MobileCenterExample
 //
 //  Created by Insaf Safin on 26.04.17.
 //  Copyright © 2017 Akvelon. All rights reserved.
