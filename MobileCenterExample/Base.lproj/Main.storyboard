@@ -23,19 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNC-9G-gon" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="56" y="447" width="263" height="60"/>
-                                <color key="backgroundColor" red="0.78956517511918856" green="1" blue="0.97185389379842169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbD-dL-obu" customClass="TWTRLogInButton">
-                                <rect key="frame" x="56" y="527" width="263" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="qHr-af-OIq"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.26734503378989261" green="1" blue="0.48500446950951959" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mcLogo" translatesAutoresizingMaskIntoConstraints="NO" id="MXc-3X-MWC">
                                 <rect key="frame" x="-101" y="-41" width="577" height="749"/>
                             </imageView>
@@ -45,27 +32,52 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vsmcLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9TX-iT-tcD">
                                 <rect key="frame" x="110" y="143" width="155" height="30"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-dY-cWk" customClass="KBRoundedButton">
+                                <rect key="frame" x="40" y="481" width="295" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IGY-LQ-FSZ"/>
+                                </constraints>
+                                <state key="normal" title="LOGIN VIA FACEBOOK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorForStateNormal">
+                                        <color key="value" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n81-jp-5Te" customClass="KBRoundedButton">
+                                <rect key="frame" x="40" y="551" width="295" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fJm-T5-NDU"/>
+                                </constraints>
+                                <state key="normal" title="LOGIN VIA TWITTER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorForStateNormal">
+                                        <color key="value" red="0.0" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="n81-jp-5Te" secondAttribute="bottom" constant="56" id="65y-gc-Ax5"/>
                             <constraint firstItem="MXc-3X-MWC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DXq-TC-uHV"/>
-                            <constraint firstItem="DNC-9G-gon" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="GXn-XI-4Fi"/>
+                            <constraint firstItem="n81-jp-5Te" firstAttribute="leading" secondItem="EuZ-dY-cWk" secondAttribute="leading" id="IP9-rh-N2H"/>
                             <constraint firstItem="MXc-3X-MWC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="J66-FZ-gvH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EuZ-dY-cWk" secondAttribute="trailing" constant="24" id="Jwg-Ig-6CI"/>
+                            <constraint firstItem="EuZ-dY-cWk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="24" id="SJT-hz-Ial"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="top" secondItem="9TX-iT-tcD" secondAttribute="bottom" constant="43.5" id="cWM-iK-nZN"/>
-                            <constraint firstItem="XbD-dL-obu" firstAttribute="leading" secondItem="DNC-9G-gon" secondAttribute="leading" id="dzM-iM-PxB"/>
-                            <constraint firstItem="XbD-dL-obu" firstAttribute="top" secondItem="DNC-9G-gon" secondAttribute="bottom" constant="20" id="eAJ-Qs-S2b"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fc7-16-ejT"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="h8R-Hs-UFW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DNC-9G-gon" secondAttribute="trailing" constant="40" id="rE7-cR-SCd"/>
-                            <constraint firstItem="DNC-9G-gon" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="uh0-KZ-YpK"/>
-                            <constraint firstItem="XbD-dL-obu" firstAttribute="trailing" secondItem="DNC-9G-gon" secondAttribute="trailing" id="xUg-ws-cH0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XbD-dL-obu" secondAttribute="bottom" constant="80" id="yxz-E6-PPs"/>
+                            <constraint firstItem="n81-jp-5Te" firstAttribute="trailing" secondItem="EuZ-dY-cWk" secondAttribute="trailing" id="hZQ-rd-wBV"/>
+                            <constraint firstItem="n81-jp-5Te" firstAttribute="top" secondItem="EuZ-dY-cWk" secondAttribute="bottom" constant="10" id="nXF-h6-PCD"/>
                             <constraint firstItem="9TX-iT-tcD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zm5-mt-iDd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="facebookButton" destination="DNC-9G-gon" id="T77-eo-veH"/>
-                        <outlet property="twitterButton" destination="XbD-dL-obu" id="haU-DQ-Kgo"/>
                         <segue destination="pBA-MM-UWz" kind="presentation" identifier="ShowMainPage" id="WQv-p5-HwD"/>
                     </connections>
                 </viewController>

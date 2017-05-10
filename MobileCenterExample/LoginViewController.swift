@@ -16,11 +16,13 @@ import FBSDKLoginKit
 import MobileCenterAnalytics
 import MobileCenterCrashes
 
+import KBRoundedButton
+
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
-    @IBOutlet var twitterButton: TWTRLogInButton!
-    @IBOutlet var facebookButton: FBSDKLoginButton!
+    @IBOutlet var twitterButton: KBRoundedButton!
+    @IBOutlet var facebookButton: KBRoundedButton!
     
     private var user: User?
     
@@ -29,15 +31,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        twitterButton.addTarget( self, action: #selector(LoginViewController.onTwitterTap), for: UIControlEvents.touchUpInside )
-        twitterButton.logInCompletion = { session, error in
-            if let session = session {
-                self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
-                self.showMainPage()
-            }
-        }
-        
-        facebookButton.delegate = self;
+//        twitterButton.addTarget( self, action: #selector(LoginViewController.onTwitterTap), for: UIControlEvents.touchUpInside )
+//        twitterButton.logInCompletion = { session, error in
+//            if let session = session {
+//                self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
+//                self.showMainPage()
+//            }
+//        }
+//        
+//        facebookButton.delegate = self;
         
         
 //        

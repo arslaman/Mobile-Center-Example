@@ -13,4 +13,6 @@ target 'MobileCenterExample' do
 	pod 'FacebookShare'
     
     pod 'Charts'
+    
+    pod 'KBRoundedButton'
 end
