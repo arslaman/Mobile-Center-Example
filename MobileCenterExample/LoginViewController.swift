@@ -16,13 +16,7 @@ import FBSDKLoginKit
 import MobileCenterAnalytics
 import MobileCenterCrashes
 
-import KBRoundedButton
-
-
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-    @IBOutlet var twitterButton: KBRoundedButton!
-    @IBOutlet var facebookButton: KBRoundedButton!
+class LoginViewController: UIViewController {
     
     private var user: User?
     
@@ -56,43 +50,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         MSAnalytics.trackEvent( "Login Button Tap", withProperties: ["Social Network": "Twitter"] )
     }
 
-    func onFacebookTap() {
-        MSAnalytics.trackEvent( "Login Button Tap", withProperties: ["Social Network": "Facebook"] )
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-        self.onFacebookTap()
-        return true
-    }
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print( ["an error occured: ", error] )
-        }
-        else {
-            FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
-                if let profile = profile {
-                    self.user = User(fullName: profile.name, accessToken: result.token.tokenString, socialNetwork: SocialNetwork.Facebook )
-                    self.showMainPage()
-                }
-                else {
-                    if let error = error {
-                        print( ["an error occured: ", error] )
-                    }
-                    else {
-                        print( "unknown error occured" )
-                    }
-                }
-            })
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
     }
     
     func showMainPage() {
@@ -140,33 +99,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func generateHealthKitData() {
+    func checkNeedGenerateHealthKitData() {
+        var readTypes = Set<HKQuantityType>()
         var writeTypes = Set<HKSampleType>()
+        
         writeTypes.insert( HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)! )
         writeTypes.insert( HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)! )
         writeTypes.insert( HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)! )
         
-        healthStore.requestAuthorization(toShare: writeTypes, read: [] ) { ( result, error ) in
-            if let error = error {
-                print( ["error: ", error] )
-                return
-            }
-            self.fillRandomData( days: 5 )
-        }
-    }
-    
-    func checkNeedGenerateHealthKitData() {
-        var readTypes = Set<HKQuantityType>()
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)! )
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)! )
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)! )
         
-        healthStore.requestAuthorization(toShare: [], read: readTypes) { ( success, error ) in
+        healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { ( success, error ) in
             if ( success ) {
-                self.healthStore.preferredUnits(for: [HKQuantityType.quantityType(forIdentifier:HKQuantityTypeIdentifier.distanceWalkingRunning)!]) { ( result, error ) in
-                    print( result )
-                    print( error )
-                }
+//                self.healthStore.preferredUnits(for: [HKQuantityType.quantityType(forIdentifier:HKQuantityTypeIdentifier.distanceWalkingRunning)!]) { ( result, error ) in
+//                    print( result )
+//                    print( error )
+//                }
+                
+//                self.fillRandomData( days: 5 )
             }
         }
     }
@@ -180,7 +132,39 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 break
             }
         }
+    }
+    
+    @IBAction func loginViaTwitter() {
         
+    }
+    
+    @IBAction func loginViaFacebook() {
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: [], from: self, handler: { ( loginResult, error ) in
+            if let error = error {
+                print( "an error occured: ", error )
+            }
+            else {
+                if let loginResult = loginResult {
+                    if !loginResult.isCancelled {
+                        FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
+                            if let profile = profile {
+                                self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook )
+                                self.showMainPage()
+                            }
+                            else {
+                                if let error = error {
+                                    print( "an error occured: ", error )
+                                }
+                                else {
+                                    print( "unknown error occured" )
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+        })
     }
 }
 

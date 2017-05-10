@@ -46,6 +46,9 @@
                                         <color key="value" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginViaFacebook" destination="BYZ-38-t0r" eventType="touchUpInside" id="7eE-WO-fdY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n81-jp-5Te" customClass="KBRoundedButton">
                                 <rect key="frame" x="30" y="557" width="315" height="54"/>
@@ -61,6 +64,9 @@
                                         <color key="value" red="0.0" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginViaTwitter" destination="BYZ-38-t0r" eventType="touchUpInside" id="5no-O5-RyY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
