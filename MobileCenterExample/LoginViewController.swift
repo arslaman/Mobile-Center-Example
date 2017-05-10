@@ -135,7 +135,20 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginViaTwitter() {
-        
+        Twitter.sharedInstance().logIn(with: self, completion: { ( session, error ) in
+            if let session = session {
+                self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
+                self.showMainPage()
+            }
+            else {
+                if let error = error {
+                    print( "an error occured: ", error )
+                }
+                else {
+                    print( "unknown error occured" )
+                }
+            }
+        })
     }
     
     @IBAction func loginViaFacebook() {
