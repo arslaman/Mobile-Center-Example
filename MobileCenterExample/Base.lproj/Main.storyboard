@@ -32,28 +32,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vsmcLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9TX-iT-tcD">
                                 <rect key="frame" x="110" y="143" width="155" height="30"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-dY-cWk" customClass="KBRoundedButton">
-                                <rect key="frame" x="40" y="481" width="295" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-dY-cWk" customClass="KBRoundedButton">
+                                <rect key="frame" x="30" y="493" width="315" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="IGY-LQ-FSZ"/>
+                                    <constraint firstAttribute="height" constant="54" id="IGY-LQ-FSZ"/>
                                 </constraints>
-                                <state key="normal" title="LOGIN VIA FACEBOOK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="28" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="LOGIN VIA FACEBOOK" image="fbIcon"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorForStateNormal">
                                         <color key="value" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n81-jp-5Te" customClass="KBRoundedButton">
-                                <rect key="frame" x="40" y="551" width="295" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n81-jp-5Te" customClass="KBRoundedButton">
+                                <rect key="frame" x="30" y="557" width="315" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="fJm-T5-NDU"/>
+                                    <constraint firstAttribute="height" constant="54" id="fJm-T5-NDU"/>
                                 </constraints>
-                                <state key="normal" title="LOGIN VIA TWITTER">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="28" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="LOGIN VIA TWITTER" image="twitterIcon"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorForStateNormal">
                                         <color key="value" red="0.0" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,8 +69,8 @@
                             <constraint firstItem="MXc-3X-MWC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DXq-TC-uHV"/>
                             <constraint firstItem="n81-jp-5Te" firstAttribute="leading" secondItem="EuZ-dY-cWk" secondAttribute="leading" id="IP9-rh-N2H"/>
                             <constraint firstItem="MXc-3X-MWC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="J66-FZ-gvH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EuZ-dY-cWk" secondAttribute="trailing" constant="24" id="Jwg-Ig-6CI"/>
-                            <constraint firstItem="EuZ-dY-cWk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="24" id="SJT-hz-Ial"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EuZ-dY-cWk" secondAttribute="trailing" constant="14" id="Jwg-Ig-6CI"/>
+                            <constraint firstItem="EuZ-dY-cWk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="SJT-hz-Ial"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="top" secondItem="9TX-iT-tcD" secondAttribute="bottom" constant="43.5" id="cWM-iK-nZN"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fc7-16-ejT"/>
                             <constraint firstItem="JCs-AY-Mg4" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="h8R-Hs-UFW"/>
@@ -303,8 +305,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fbIcon" width="12" height="24"/>
         <image name="mcLogo" width="577" height="749"/>
         <image name="mcSmallLogo" width="245" height="85"/>
+        <image name="twitterIcon" width="24" height="20"/>
         <image name="vsmcLogo" width="155" height="30"/>
     </resources>
 </document>
