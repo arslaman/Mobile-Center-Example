@@ -101,7 +101,7 @@ class ProfilePageViewController: UIViewController {
             return
         }
         
-        if let value = self.userStats?.get( for: 4 )?[type.identifier] {
+        if let value = self.userStats?.get( for: 0 )?[type.identifier] {
             if let formatter = formatters[type.identifier] {
                 label.text = formatter.string(from: value as NSNumber)
             }

@@ -96,7 +96,7 @@ class MainTabBarController: UITabBarController {
             
             var startDateComponents = DateComponents()
             startDateComponents.day = -days
-            guard let startDate = calendar.date( byAdding: startDateComponents, to: anchorDate ) else {
+            guard let startDate = calendar.date( byAdding: startDateComponents, to: anchorDate )?.startOfDay else {
                 fatalError()
             }
             

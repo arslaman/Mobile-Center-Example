@@ -19,6 +19,20 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
                        HKQuantityTypeIdentifier.activeEnergyBurned,
                        HKQuantityTypeIdentifier.distanceWalkingRunning]
     
+    private class DayChartFormatter: NSObject, IAxisValueFormatter {
+        
+        var labels: [String] = []
+        
+        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+//            return labels[Int(value)]
+            return String(Int(value))
+        }
+        
+        init(labels: [String]) {
+            super.init()
+            self.labels = labels
+        }
+    }
     
     private var selectedDataType: HKQuantityTypeIdentifier? {
         didSet {
@@ -47,6 +61,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             
             chartView.xAxis.drawGridLinesEnabled = false
             chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+            chartView.xAxis.valueFormatter = DayChartFormatter(labels: [])
             
             chartView.leftAxis.drawAxisLineEnabled = false
             chartView.leftAxis.setLabelCount( 5, force: false )
@@ -72,7 +87,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             var values = Array<ChartDataEntry>()
             
             if let userStats = userStats {
-                for i in 0...5 {
+                for i in 0...4 {
                     if let stats = userStats.get(for: i ) {
                         let value = stats[typeId.rawValue]
                         values.append( ChartDataEntry( x: Double(i), y: value ) )
@@ -119,7 +134,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             let data = LineChartData(dataSets: dataSets)
             
             
-            chartView.xAxis.setLabelCount( values.count / 2, force: false )
+            chartView.xAxis.setLabelCount( values.count - 1, force: false )
             chartView.data = data;
         }
     }
