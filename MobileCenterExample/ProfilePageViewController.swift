@@ -47,10 +47,10 @@ class ProfilePageViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         doubleFormatter.groupingSize = 3
-        doubleFormatter.maximumFractionDigits = 2
+        doubleFormatter.maximumFractionDigits = 0
         
-        integerFormatter.maximumFractionDigits = 0;
-        integerFormatter.groupingSize = 3;
+        integerFormatter.maximumFractionDigits = 0
+        integerFormatter.groupingSize = 3
         
         formatters[HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue] = doubleFormatter
         formatters[HKQuantityTypeIdentifier.activeEnergyBurned.rawValue] = doubleFormatter
@@ -101,7 +101,7 @@ class ProfilePageViewController: UIViewController {
             return
         }
         
-        if let value = self.userStats?.get( for: 0 )?[type.identifier] {
+        if let value = self.userStats?.get( for: 4 )?[type.identifier] {
             if let formatter = formatters[type.identifier] {
                 label.text = formatter.string(from: value as NSNumber)
             }

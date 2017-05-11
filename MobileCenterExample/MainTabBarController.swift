@@ -14,6 +14,9 @@ class MainTabBarController: UITabBarController {
     var healthStore = HKHealthStore()
     var userStats = TimedData<UserStats>()
     var operationsCounter = Int()
+    var needGenerateData = false
+    var triedToGenerateData = false
+    
     
     let actualTypes = [HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
                        HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
@@ -31,11 +34,15 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear( animated )
-        self.checkNeedGenerateHealthKitData()
+        if !triedToGenerateData {
+            triedToGenerateData = false
+            self.checkNeedGenerateHealthKitData()
+        }
     }
     
     func updateContent() {
-        
+        (self.childViewControllers.first as! ProfilePageViewController).userStats = userStats
+        (self.childViewControllers.last as! StatisticsViewController).userStats = userStats
     }
     
     func increaseOperationsCounter() -> Void {
@@ -48,12 +55,24 @@ class MainTabBarController: UITabBarController {
         objc_sync_enter( operationsCounter )
         operationsCounter -= 1
         if operationsCounter == 0 {
-            updateContent()
+            if needGenerateData {
+                needGenerateData = false
+                fillRandomData(days: 5)
+            }
+            else {
+                DispatchQueue.main.async() {
+                    self.updateContent()
+                    }
+            }
+            
         }
         objc_sync_exit( operationsCounter )
     }
     
     func querySample( type: HKQuantityType, for days: Int ) -> Void {
+        
+        increaseOperationsCounter()
+        
         let calendar = Calendar.current
         var interval = DateComponents()
         interval.day = 1
@@ -96,6 +115,8 @@ class MainTabBarController: UITabBarController {
             statsCollection.enumerateStatistics(from: startDate, to: anchorDate, with:{
                 ( statistics, stop ) in
                 if let quantity = statistics.sumQuantity() {
+                    self.needGenerateData = false
+                    
                     let date = statistics.startDate
                     let value = quantity.doubleValue( for: unit )
                     
@@ -109,9 +130,7 @@ class MainTabBarController: UITabBarController {
                 }
             })
             
-//            DispatchQueue.main.async {
-//                self.sampleValueChanged(type: type)
-//            }
+            self.decreaseOperationsCounter()
         }
         
         healthStore.execute( query )
@@ -124,7 +143,7 @@ class MainTabBarController: UITabBarController {
             if ( error == nil )
             {
                 for readType in readTypes {
-                    self.querySample( type: readType, for: 1 )
+                    self.querySample( type: readType, for: 5 )
                 }
             }
         }
@@ -135,7 +154,7 @@ class MainTabBarController: UITabBarController {
     }
     
     
-    func writeRandomData( from: Date, to: Date, identifier: HKQuantityTypeIdentifier ) {
+    func generateRandomSample( from: Date, to: Date, identifier: HKQuantityTypeIdentifier ) -> HKQuantitySample {
         var unit: HKUnit
         switch identifier {
         case HKQuantityTypeIdentifier.stepCount:
@@ -156,26 +175,30 @@ class MainTabBarController: UITabBarController {
         
         let sample = HKQuantitySample(type: type, quantity: quantity, start: from, end: to)
         
-        healthStore.save( sample ) { ( completed, error ) in
-            if let error = error {
-                print(["error: ", error] )
-            }
-        }
+        return sample
     }
     
     func fillRandomData( days: Int ) {
         let now = Date()
         let calendar = NSCalendar.current
+        var samples = [HKQuantitySample]()
         
         for hour in 0...24 * days {
             let endDate = calendar.date(byAdding: .hour, value: -hour, to: now)!
             let startDate = calendar.date(byAdding: .hour, value: -hour - 1, to: now)!
             
-            
-            writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount)
-            writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning)
-            writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned)
-            writeRandomData(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.appleExerciseTime)
+            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount))
+            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning))
+            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned))
+        }
+        
+        healthStore.save( samples ) { ( completed, error ) in
+            if let error = error {
+                print( "error: ", error )
+            }
+            else {
+                self.loadHealthKitData()
+            }
         }
     }
     
@@ -190,15 +213,13 @@ class MainTabBarController: UITabBarController {
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)! )
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)! )
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)! )
+        readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleExerciseTime)! )
+        
+        needGenerateData = true
         
         healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { ( success, error ) in
             if ( success ) {
-                //                self.healthStore.preferredUnits(for: [HKQuantityType.quantityType(forIdentifier:HKQuantityTypeIdentifier.distanceWalkingRunning)!]) { ( result, error ) in
-                //                    print( result )
-                //                    print( error )
-                //                }
-                
-                //                self.fillRandomData( days: 5 )
+                self.loadHealthKitData()
             }
         }
     }
