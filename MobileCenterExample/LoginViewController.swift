@@ -141,10 +141,26 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginViaTwitter() {
-        Twitter.sharedInstance().logIn(with: self, completion: { ( session, error ) in
+        Twitter.sharedInstance().logIn(with: self, completion: {
+            ( session, error ) in
             if let session = session {
-                self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter )
-                self.showMainPage()
+                
+                let twitterClient = TWTRAPIClient.withCurrentUser()
+                guard let userId = twitterClient.userID else {
+                    self.showErrorState()
+                    return
+                }
+                
+                twitterClient.loadUser(withID: userId, completion: {
+                    ( user, error ) in
+                    if let user = user {
+                        self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter, imageUrlString: user.profileImageLargeURL )
+                        self.showMainPage()
+                    }
+                    else {
+                        self.showErrorState()
+                    }
+                })
             }
             else {
                 if let error = error {
@@ -170,7 +186,7 @@ class LoginViewController: UIViewController {
                     if !loginResult.isCancelled {
                         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
                             if let profile = profile {
-                                self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook )
+                                self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)
                                 self.showMainPage()
                             }
                             else {

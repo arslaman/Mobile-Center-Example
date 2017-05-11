@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension ClosedRange where Bound : FloatingPoint {
     public func random() -> Bound {
@@ -26,5 +27,26 @@ extension Date {
         components.day = 1
         components.second = -1
         return Calendar.current.date( byAdding: components, to: startOfDay )
+    }
+}
+
+extension UIImageView {
+    func setImage(from url: URL ) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { () -> Void in
+                UIView.transition(with: self,
+                                  duration: 0.2,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                        self.image = image
+                }, completion: nil)
+            }
+            }.resume()
     }
 }

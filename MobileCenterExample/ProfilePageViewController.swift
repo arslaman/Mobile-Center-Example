@@ -19,6 +19,9 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet var distanceLabel: UILabel?
     @IBOutlet var greetingsLabel: UILabel?
     
+    @IBOutlet var profileImageView: UIImageView?
+    @IBOutlet var profileBorderView: UIView?
+    
     var operationsCounter = Int()
     
     var labels = [String : UILabel]()
@@ -55,6 +58,14 @@ class ProfilePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profileImageView?.layer.cornerRadius = (profileImageView?.bounds.size.width)! / 2
+        profileImageView?.clipsToBounds = true
+        
+        profileBorderView?.layer.cornerRadius = (profileBorderView?.bounds.size.width)! / 2
+        profileBorderView?.layer.borderWidth = 1
+        profileBorderView?.layer.borderColor = profileBorderView?.backgroundColor?.cgColor
+        profileBorderView?.backgroundColor = UIColor.clear
+        
         labels[HKQuantityTypeIdentifier.stepCount.rawValue] = stepsLabel
         labels[HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue] = distanceLabel
         labels[HKQuantityTypeIdentifier.activeEnergyBurned.rawValue] = caloriesLabel
@@ -69,7 +80,10 @@ class ProfilePageViewController: UIViewController {
         }
         
         if let user = user {
-            greetingsLabel?.text = "Hi, \(user.fullName)"
+            greetingsLabel?.text = "HI, \(user.fullName.uppercased())!"
+            
+            guard let url = URL(string: user.imageUrlString) else { return }
+            profileImageView?.setImage(from: url)
         }
         for type in actualTypes {
             self.updateLabel(for: type)
@@ -78,7 +92,7 @@ class ProfilePageViewController: UIViewController {
     
     func updateLabel( for type: HKQuantityType ) -> Void {
         guard let label = labels[type.identifier] else {
-            fatalError()
+            return
         }
         
         if let value = self.user?.userStats.get( for: 0 )[type.identifier] {

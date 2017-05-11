@@ -17,14 +17,16 @@ class User {
     
     var fullName: String
     var accessToken: String
+    var imageUrlString: String
     var socialNetwork: SocialNetwork
     var userStats: TimedData<UserStats>
     
-    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork ) {
+    init( fullName: String, accessToken: String, socialNetwork: SocialNetwork, imageUrlString: String ) {
         self.fullName = fullName
         self.accessToken = accessToken
         self.socialNetwork = socialNetwork
         self.userStats = TimedData<UserStats>()
+        self.imageUrlString = imageUrlString
     }
 }
 
