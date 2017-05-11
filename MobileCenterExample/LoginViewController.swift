@@ -174,7 +174,11 @@ class LoginViewController: UIViewController {
                 })
             }
             else {
-                if let error = error {
+                if let error = error as? NSError {
+                    if error.domain == TWTRLogInErrorDomain && error.code == TWTRLogInErrorCode.canceled.rawValue {
+                        self.setLoginButtons(enabled: true)
+                        return
+                    }
                     print( "an error occured: ", error )
                 }
                 else {
