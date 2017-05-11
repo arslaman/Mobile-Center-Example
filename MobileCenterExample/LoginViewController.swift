@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
     @IBOutlet var normalStateIcon1: UIView?
     @IBOutlet var normalStateIcon2: UIView?
     
+    @IBOutlet var twitterLoginButton: UIButton?
+    @IBOutlet var facebookLoginButton: UIButton?
+    
     let healthStore = HKHealthStore()
     
     override func viewDidLoad() {
@@ -129,18 +132,26 @@ class LoginViewController: UIViewController {
     }
     
     func showErrorState() {
-        UIView.animate(withDuration: 0.2) { 
+        UIView.animate(withDuration: 0.2, animations: { 
             self.errorIcon?.alpha = 1
             self.errorLabel1?.alpha = 1
             self.errorLabel2?.alpha = 1
             
             self.normalStateIcon1?.alpha = 0
             self.normalStateIcon2?.alpha = 0
+        }) { (completed) in
+            self.setLoginButtons(enabled: true)
         }
-        
+    }
+    
+    func setLoginButtons( enabled: Bool ) {
+        self.twitterLoginButton?.isEnabled = enabled
+        self.facebookLoginButton?.isEnabled = enabled
     }
     
     @IBAction func loginViaTwitter() {
+        setLoginButtons(enabled: false)
+        
         Twitter.sharedInstance().logIn(with: self, completion: {
             ( session, error ) in
             if let session = session {
@@ -175,6 +186,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginViaFacebook() {
+        setLoginButtons(enabled: false)
+        
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: [], from: self, handler: { ( loginResult, error ) in
             if let error = error {
@@ -183,7 +196,10 @@ class LoginViewController: UIViewController {
             }
             else {
                 if let loginResult = loginResult {
-                    if !loginResult.isCancelled {
+                    if loginResult.isCancelled {
+                        self.setLoginButtons(enabled: true)
+                    }
+                    else {
                         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
                             if let profile = profile {
                                 self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)

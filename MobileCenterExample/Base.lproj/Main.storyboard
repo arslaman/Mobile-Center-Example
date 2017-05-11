@@ -111,8 +111,10 @@ WENT WRONG</string>
                         <outlet property="errorIcon" destination="yeZ-k9-6nu" id="uaX-yE-OTn"/>
                         <outlet property="errorLabel1" destination="GHo-cW-k5R" id="ZJm-Wt-R6e"/>
                         <outlet property="errorLabel2" destination="Mfx-50-poY" id="0Os-CZ-Lcb"/>
+                        <outlet property="facebookLoginButton" destination="EuZ-dY-cWk" id="ZcF-bv-QRx"/>
                         <outlet property="normalStateIcon1" destination="9TX-iT-tcD" id="ZXm-dg-19g"/>
                         <outlet property="normalStateIcon2" destination="JCs-AY-Mg4" id="Aq0-xG-Q9N"/>
+                        <outlet property="twitterLoginButton" destination="n81-jp-5Te" id="hXZ-qM-cpU"/>
                         <segue destination="Gzu-mB-voJ" kind="presentation" identifier="ShowMainPage" id="6qk-Js-xb2"/>
                     </connections>
                 </viewController>
