@@ -282,6 +282,8 @@ WENT WRONG</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="HOME" image="homeIcon" id="PaB-oL-ldV"/>
                     <connections>
+                        <outlet property="caloriesLabel" destination="8Xw-wU-hV0" id="Srx-9U-JM3"/>
+                        <outlet property="distanceLabel" destination="kuz-d2-zaq" id="gnA-Dm-zey"/>
                         <outlet property="greetingsLabel" destination="4F4-Hc-UJH" id="Puy-7X-2JE"/>
                         <outlet property="profileBorderView" destination="WjZ-EO-Qd2" id="LM2-Wp-zmP"/>
                         <outlet property="profileImageView" destination="dln-hs-zW9" id="q3A-sF-I4k"/>

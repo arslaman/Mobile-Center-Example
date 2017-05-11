@@ -19,21 +19,15 @@ class User {
     var accessToken: String
     var imageUrlString: String
     var socialNetwork: SocialNetwork
-    var userStats: TimedData<UserStats>
     
     init( fullName: String, accessToken: String, socialNetwork: SocialNetwork, imageUrlString: String ) {
         self.fullName = fullName
         self.accessToken = accessToken
         self.socialNetwork = socialNetwork
-        self.userStats = TimedData<UserStats>()
         self.imageUrlString = imageUrlString
     }
 }
 
-func autocast<T>(some: Any) -> T {
-    return some as! T
-}
-   
 class UserStats : Initable, Addable {
     private var quantities = [String : Double]()
     
@@ -64,61 +58,5 @@ class UserStats : Initable, Addable {
         }
         
         return autocast( some: result )
-    }
-}
-
-protocol Addable {
-    static func +(lhs: Self, rhs: Self) -> Self
-}
-
-protocol Initable {
-    init()
-}
-
-class TimedData<T: Initable & Addable> {
-    private var dataContainer = [Int: [Int: T?]]()
-    
-    func set( data: T, for day: Int, and hour: Int ) {
-        var dayContainer = dataContainer[day]
-        
-        if dataContainer[day] == nil {
-            dayContainer = [Int: T]()
-            dataContainer[day] = dayContainer
-        }
-        
-        dataContainer[day]![hour] = data
-    }
-    
-    func get( for day: Int, and hour: Int ) -> T? {
-        if let dayContainer = dataContainer[day] {
-            if let result = dayContainer[hour] {
-                return result
-            }
-        }
-        
-        return nil
-    }
-    
-    func get( for day: Int ) -> T {
-        var result = T()
-        if let dayContainer = dataContainer[day] {
-            for ( _, value ) in dayContainer {
-                if let value = value {
-                    result = result + value
-                }
-            }
-        }
-        return result
-    }
-    
-    func getOrCreate( for day: Int, and hour: Int ) -> T {
-        if let value = get( for: day, and: hour ) {
-            return value
-        }
-        
-        let value = T()
-        set( data: value, for: day, and: hour )
-        
-        return value
     }
 }

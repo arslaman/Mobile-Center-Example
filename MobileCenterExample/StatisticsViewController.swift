@@ -28,7 +28,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    public var user: User? {
+    public var userStats: TimedData<UserStats>? {
         didSet {
             setChartData()
         }
@@ -71,9 +71,9 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             
             var values = Array<ChartDataEntry>()
             
-            if let user = user {
-                for i in 0...24 {
-                    if let stats = user.userStats.get(for: 0, and: i ) {
+            if let userStats = userStats {
+                for i in 0...5 {
+                    if let stats = userStats.get(for: i ) {
                         let value = stats[typeId.rawValue]
                         values.append( ChartDataEntry( x: Double(i), y: value ) )
                     }
