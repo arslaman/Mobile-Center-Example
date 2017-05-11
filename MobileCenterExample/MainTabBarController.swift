@@ -215,7 +215,9 @@ class MainTabBarController: UITabBarController {
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)! )
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleExerciseTime)! )
         
-        needGenerateData = true
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            needGenerateData = true
+        #endif
         
         healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { ( success, error ) in
             if ( success ) {
