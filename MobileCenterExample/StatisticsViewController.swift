@@ -15,6 +15,13 @@ import MobileCenterCrashes
 class StatisticsViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet var chartView: LineChartView?
+    @IBOutlet var stepsButton: UIButton?
+    @IBOutlet var caloriesButton: UIButton?
+    @IBOutlet var distanceButton: UIButton?
+    @IBOutlet var timeButton: UIButton?
+    
+    var buttons = [UIButton]()
+    
     let actualTypes = [HKQuantityTypeIdentifier.stepCount,
                        HKQuantityTypeIdentifier.activeEnergyBurned,
                        HKQuantityTypeIdentifier.distanceWalkingRunning]
@@ -52,6 +59,25 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         
         selectedDataType = actualTypes.first
+        
+        if let button = self.stepsButton {
+            deselectButtonsExcept(button: button)
+            buttons.append( button )
+        }
+        if let button = self.caloriesButton {
+            buttons.append( button )
+        }
+        if let button = self.distanceButton {
+            buttons.append( button )
+        }
+        if let button = self.timeButton {
+            buttons.append( button )
+        }
+        
+        for button in buttons {
+            button.layer.cornerRadius = 3
+            button.clipsToBounds = true
+        }
         
         if let chartView = chartView {
             chartView.delegate = self;
@@ -139,8 +165,15 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func deselectButtonsExcept( button: UIButton ) {
+        for btn in buttons {
+            if ( btn != button ) {
+                btn.backgroundColor = UIColor.clear
+            }
+            else {
+                btn.backgroundColor = UIColor.init(white: 244.0/255.0, alpha: 1)
+            }
+        }
     }
     
     @IBAction func crashApplication() {
@@ -151,9 +184,8 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         
     }
     
-    @IBAction func segmentChanged( sender: UISegmentedControl ) {
-        if actualTypes.indices.contains( sender.selectedSegmentIndex ) {
-            selectedDataType = actualTypes[sender.selectedSegmentIndex]
-        }
+    @IBAction func statButtonTap( sender: UIButton ) {
+        deselectButtonsExcept(button: sender)
+//            selectedDataType = actualTypes[sender.selectedSegmentIndex]
     }
 }
