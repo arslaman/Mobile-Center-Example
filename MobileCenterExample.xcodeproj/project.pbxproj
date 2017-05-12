@@ -21,6 +21,7 @@
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
+		FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */; };
 		FDD9BF361EC38ACD007B5179 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9BF351EC38ACD007B5179 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		FD2665D11EC4FDA9007EF9AF /* TimedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedData.swift; sourceTree = "<group>"; };
+		FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredButton.swift; sourceTree = "<group>"; };
 		FDD9BF351EC38ACD007B5179 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				14BCA9791EB0A69500492815 /* User.swift */,
 				FDD9BF351EC38ACD007B5179 /* Extensions.swift */,
 				FD2665D11EC4FDA9007EF9AF /* TimedData.swift */,
+				FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */,
 				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
 				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
 				148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */,
 				144CE3B21EB2373B00A49DA5 /* StatisticsViewController.swift in Sources */,
 				14BCA97A1EB0A69500492815 /* User.swift in Sources */,
 				148E2B881EAE29FC00743BB1 /* LoginViewController.swift in Sources */,
