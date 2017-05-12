@@ -6,7 +6,7 @@ target 'MobileCenterExample' do
 	pod 'Fabric'
 	pod 'TwitterKit'
 
-	pod 'MobileCenter'
+	pod 'MobileCenter', '~> 0.8.0'
 
 	pod 'FacebookCore'
 	pod 'FacebookLogin'
