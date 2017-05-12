@@ -359,42 +359,46 @@ WENT WRONG</string>
                                     <constraint firstAttribute="height" constant="267" id="fBb-Q4-wzW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fh-fr-xjQ" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
-                                <rect key="frame" x="16" y="437" width="76" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fh-fr-xjQ" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
+                                <rect key="frame" x="47.5" y="342" width="70" height="28"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="YZD-zl-gmg"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Steps" image="stepsIcon">
                                     <color key="titleColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uic-ar-Asn" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
-                                <rect key="frame" x="116" y="437" width="76" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uic-ar-Asn" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
+                                <rect key="frame" x="117.5" y="339" width="70" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="w2a-bv-fEK"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Calories" image="caloriesIcon">
                                     <color key="titleColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBF-xJ-DBt" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
-                                <rect key="frame" x="200" y="437" width="76" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBF-xJ-DBt" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
+                                <rect key="frame" x="187.5" y="340" width="70" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Eh3-VC-gm9"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Distance" image="distanceIcon">
                                     <color key="titleColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugt-KH-wm4" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
-                                <rect key="frame" x="283" y="437" width="76" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugt-KH-wm4" customClass="CenteredButton" customModule="MobileCenterExample" customModuleProvider="target">
+                                <rect key="frame" x="257.5" y="340.5" width="70" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="uYr-mH-Qob"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Active time" image="timeIcon">
                                     <color key="titleColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -403,17 +407,22 @@ WENT WRONG</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qpt-sa-OD3" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="34" id="1Jg-dB-3hq"/>
-                            <constraint firstItem="ugt-KH-wm4" firstAttribute="centerY" secondItem="8fh-fr-xjQ" secondAttribute="centerY" id="DYE-PT-yCP"/>
-                            <constraint firstItem="uic-ar-Asn" firstAttribute="centerX" secondItem="8fh-fr-xjQ" secondAttribute="centerX" id="HbY-DE-24R"/>
+                            <constraint firstItem="RBF-xJ-DBt" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="centerX" id="92i-7z-083"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YAv-zg-N8q" secondAttribute="trailing" id="OFy-qu-2J1"/>
+                            <constraint firstItem="uic-ar-Asn" firstAttribute="leading" secondItem="8fh-fr-xjQ" secondAttribute="trailing" id="WHF-wa-cLF"/>
                             <constraint firstItem="YAv-zg-N8q" firstAttribute="top" secondItem="qpt-sa-OD3" secondAttribute="bottom" constant="6" id="Y1k-ky-qdT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9ar-1E-h6q" secondAttribute="trailing" constant="24" id="bhL-22-XVR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qpt-sa-OD3" secondAttribute="trailing" constant="34" id="d0e-tu-pim"/>
                             <constraint firstItem="qpt-sa-OD3" firstAttribute="top" secondItem="rN2-bE-lUK" secondAttribute="bottom" constant="10" id="dZT-gd-b1d"/>
                             <constraint firstItem="rBV-PA-C9x" firstAttribute="top" secondItem="9ar-1E-h6q" secondAttribute="bottom" constant="40" id="jbd-l5-N5h"/>
+                            <constraint firstItem="8fh-fr-xjQ" firstAttribute="bottom" secondItem="RBF-xJ-DBt" secondAttribute="bottom" id="k4B-Kb-GFz"/>
+                            <constraint firstItem="ugt-KH-wm4" firstAttribute="leading" secondItem="RBF-xJ-DBt" secondAttribute="trailing" id="k6M-RY-IBg"/>
+                            <constraint firstItem="RBF-xJ-DBt" firstAttribute="leading" secondItem="uic-ar-Asn" secondAttribute="trailing" id="kv5-b8-b8o"/>
+                            <constraint firstItem="8fh-fr-xjQ" firstAttribute="top" secondItem="YAv-zg-N8q" secondAttribute="bottom" constant="16" id="n8l-Ia-PyH"/>
                             <constraint firstItem="9ar-1E-h6q" firstAttribute="leading" secondItem="z1i-rM-JEN" secondAttribute="leadingMargin" constant="24" id="nhm-eT-PRj"/>
                             <constraint firstAttribute="leadingMargin" secondItem="YAv-zg-N8q" secondAttribute="leading" id="ogN-TW-c8N"/>
-                            <constraint firstItem="RBF-xJ-DBt" firstAttribute="centerY" secondItem="8fh-fr-xjQ" secondAttribute="centerY" id="v00-KO-ZqW"/>
+                            <constraint firstItem="8fh-fr-xjQ" firstAttribute="bottom" secondItem="uic-ar-Asn" secondAttribute="bottom" id="sa8-rc-XpU"/>
+                            <constraint firstItem="8fh-fr-xjQ" firstAttribute="bottom" secondItem="ugt-KH-wm4" secondAttribute="bottom" id="xqG-HJ-4XU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="STATISTICS" image="statsIcon" id="TsQ-mX-5mu"/>
