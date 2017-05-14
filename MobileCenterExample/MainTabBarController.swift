@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
     var healthStore = HKHealthStore()
     var userStats = TimedData<UserStats>()
     var operationsCounter = Int()
-    var needGenerateData = false
+    var needGenerateData = [Int: Bool]()
     var triedToGenerateData = false
     
     
@@ -55,9 +55,17 @@ class MainTabBarController: UITabBarController {
         objc_sync_enter( operationsCounter )
         operationsCounter -= 1
         if operationsCounter == 0 {
-            if needGenerateData {
-                needGenerateData = false
-                fillRandomData(days: 5)
+            
+            var needGenerate = false
+            for (_, value) in needGenerateData {
+                if ( value ) {
+                    needGenerate = true
+                    break
+                }
+            }
+            
+            if needGenerate {
+                fillRandomData()
             }
             else {
                 DispatchQueue.main.async() {
@@ -115,7 +123,6 @@ class MainTabBarController: UITabBarController {
             statsCollection.enumerateStatistics(from: startDate, to: anchorDate, with:{
                 ( statistics, stop ) in
                 if let quantity = statistics.sumQuantity() {
-                    self.needGenerateData = false
                     
                     let date = statistics.startDate
                     let value = quantity.doubleValue( for: unit )
@@ -125,6 +132,7 @@ class MainTabBarController: UITabBarController {
                         fatalError()
                     }
                     let dayIndex = days - day - 1
+                    self.needGenerateData[dayIndex] = false
                     
                     self.writeHealthKitData( for: dayIndex, and: type, value: value )
                 }
@@ -178,20 +186,35 @@ class MainTabBarController: UITabBarController {
         return sample
     }
     
-    func fillRandomData( days: Int ) {
+    func fillRandomData() {
+        var days = [Int]()
+        for (day, value) in needGenerateData {
+            if ( value ) {
+                days.append(day)
+            }
+        }
+        if ( days.count == 0 ) {
+            return;
+        }
+        
+        needGenerateData.removeAll()
+        
         let now = Date()
         let calendar = NSCalendar.current
         var samples = [HKQuantitySample]()
         
-        for hour in 0...24 * days {
-            let endDate = calendar.date(byAdding: .hour, value: -hour, to: now)!
-            let startDate = calendar.date(byAdding: .hour, value: -hour - 1, to: now)!
-            
-            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount))
-            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning))
-            samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned))
+        for day in days {
+            let hoursDiff = day * 24
+            for hour in 0...24  {
+                let endDate = calendar.date(byAdding: .hour, value: -hour - hoursDiff, to: now)!
+                let startDate = calendar.date(byAdding: .hour, value: -hour - 1 - hoursDiff, to: now)!
+                
+                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount))
+                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning))
+                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned))
+            }
         }
-        
+
         healthStore.save( samples ) { ( completed, error ) in
             if let error = error {
                 print( "error: ", error )
@@ -216,7 +239,9 @@ class MainTabBarController: UITabBarController {
         readTypes.insert( HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleExerciseTime)! )
         
         #if (arch(i386) || arch(x86_64)) && os(iOS)
-            needGenerateData = true
+            for i in 0...4 {
+                needGenerateData[i] = true
+            }
         #endif
         
         healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { ( success, error ) in

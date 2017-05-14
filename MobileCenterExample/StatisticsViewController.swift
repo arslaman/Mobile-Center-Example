@@ -21,23 +21,20 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
     @IBOutlet var timeButton: UIButton?
     
     var buttons = [UIButton]()
-    
-    let actualTypes = [HKQuantityTypeIdentifier.stepCount,
-                       HKQuantityTypeIdentifier.activeEnergyBurned,
-                       HKQuantityTypeIdentifier.distanceWalkingRunning]
+    var typesForButtons = [UIButton: HKQuantityTypeIdentifier]()
     
     private class DayChartFormatter: NSObject, IAxisValueFormatter {
-        
-        var labels: [String] = []
-        
-        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//            return labels[Int(value)]
-            return String(Int(value))
+        let dateFormatter = DateFormatter()
+
+        override init() {
+            dateFormatter.dateFormat = "MMM\ndd"
         }
         
-        init(labels: [String]) {
-            super.init()
-            self.labels = labels
+        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            let date = Calendar.current.date(byAdding: .day, value: -(4 - Int(value)), to: Date())
+            let result = dateFormatter.string(from: date!)
+            return result
+//            return String(Int(value))
         }
     }
     
@@ -58,21 +55,26 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedDataType = actualTypes.first
-        
         if let button = self.stepsButton {
-            deselectButtonsExcept(button: button)
             buttons.append( button )
+            typesForButtons[button] = HKQuantityTypeIdentifier.stepCount
+            selectedDataType = typesForButtons[button]
+            deselectButtonsExcept(button: button)
         }
         if let button = self.caloriesButton {
             buttons.append( button )
+            typesForButtons[button] = HKQuantityTypeIdentifier.activeEnergyBurned
         }
         if let button = self.distanceButton {
             buttons.append( button )
+            typesForButtons[button] = HKQuantityTypeIdentifier.distanceWalkingRunning
         }
         if let button = self.timeButton {
             buttons.append( button )
+            typesForButtons[button] = HKQuantityTypeIdentifier.appleExerciseTime
         }
+        
+        
         
         for button in buttons {
             button.layer.cornerRadius = 3
@@ -87,7 +89,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             
             chartView.xAxis.drawGridLinesEnabled = false
             chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
-            chartView.xAxis.valueFormatter = DayChartFormatter(labels: [])
+            chartView.xAxis.valueFormatter = DayChartFormatter()
             
             chartView.leftAxis.drawAxisLineEnabled = false
             chartView.leftAxis.setLabelCount( 5, force: false )
@@ -113,13 +115,13 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             var values = Array<ChartDataEntry>()
             
             if let userStats = userStats {
-                for i in 0...4 {
+                for i in (0...4).reversed() {
                     if let stats = userStats.get(for: i ) {
                         let value = stats[typeId.rawValue]
-                        values.append( ChartDataEntry( x: Double(i), y: value ) )
+                        values.append( ChartDataEntry( x: Double(4 - i), y: value ) )
                     }
                     else {
-                        values.append( ChartDataEntry( x: Double(i), y: 0 ) )
+                        values.append( ChartDataEntry( x: Double(4 - i), y: 0 ) )
                     }
                     
                 }
@@ -180,12 +182,8 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         MSCrashes.generateTestCrash()
     }
     
-    @IBAction func returnBack() {
-        
-    }
-    
     @IBAction func statButtonTap( sender: UIButton ) {
         deselectButtonsExcept(button: sender)
-//            selectedDataType = actualTypes[sender.selectedSegmentIndex]
+        selectedDataType = typesForButtons[sender]
     }
 }
