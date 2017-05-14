@@ -8,8 +8,9 @@
 
 import UIKit
 import HealthKit
+import MobileCenterAnalytics
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var healthStore = HKHealthStore()
     var userStats = TimedData<UserStats>()
@@ -30,6 +31,7 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -246,8 +248,41 @@ class MainTabBarController: UITabBarController {
         
         healthStore.requestAuthorization(toShare: writeTypes, read: readTypes) { ( success, error ) in
             if ( success ) {
+                MSAnalytics.trackEvent("Trying to retrieve data from HealthKit", withProperties: ["Page": "Main",
+                                                                                                  "Category": "Request",
+                                                                                                  "API": "HealthKit",
+                                                                                                  "Result": "true"])
                 self.loadHealthKitData()
             }
+            else {
+                if let error = error {
+                    MSAnalytics.trackEvent("Trying to retrieve data from HealthKit", withProperties: ["Page": "Main",
+                                                                                                      "Category": "Request",
+                                                                                                      "API": "HealthKit",
+                                                                                                      "Result": "false",
+                                                                                                      "Error message": error.localizedDescription])
+                }
+                else {
+                    MSAnalytics.trackEvent("Trying to retrieve data from HealthKit", withProperties: ["Page": "Main",
+                                                                                                      "Category": "Request",
+                                                                                                      "API": "HealthKit",
+                                                                                                      "Result": "false",
+                                                                                                      "Error message": "Unknown error"])
+                }
+            }
         }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let index = self.viewControllers?.index(of: viewController)
+        if index == 0 {
+            MSAnalytics.trackEvent("View statistics button clicked", withProperties: ["Page": "Main",
+                                                                                      "Category": "Clicks"])
+        }
+        else if index == 1 {
+            MSAnalytics.trackEvent("View home button clicked", withProperties: ["Page": "Main",
+                                                                                "Category": "Clicks"])
+        }
+        
     }
 }

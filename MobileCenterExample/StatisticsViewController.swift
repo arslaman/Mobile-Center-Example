@@ -34,7 +34,6 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             let date = Calendar.current.date(byAdding: .day, value: -(4 - Int(value)), to: Date())
             let result = dateFormatter.string(from: date!)
             return result
-//            return String(Int(value))
         }
     }
     
@@ -179,6 +178,8 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
     }
     
     @IBAction func crashApplication() {
+        MSAnalytics.trackEvent("Crash application button clicked", withProperties: ["Page": "Profile",
+                                                                                    "Category": "Clicks"])
         MSCrashes.generateTestCrash()
     }
     
