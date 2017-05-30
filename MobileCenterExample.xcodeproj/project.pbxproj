@@ -14,7 +14,6 @@
 		148E2B8D1EAE29FC00743BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */; };
 		148E2B901EAE29FC00743BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */; };
 		14B6BB741EB0A05300AA523D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6BB731EB0A05300AA523D /* ProfilePageViewController.swift */; };
-		14B727561EAE363900D516E7 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14B727551EAE363900D516E7 /* AppConfig.plist */; };
 		14BC0BB71EAF41580073BF27 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB61EAF41580073BF27 /* CoreMotion.framework */; };
 		14BC0BB91EAF64B10073BF27 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB81EAF64B10073BF27 /* HealthKit.framework */; };
 		14BCA97A1EB0A69500492815 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCA9791EB0A69500492815 /* User.swift */; };
@@ -33,9 +32,8 @@
 		148E2B8A1EAE29FC00743BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		148E2B8F1EAE29FC00743BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		148E2B911EAE29FC00743BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148E2B911EAE29FC00743BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		14B6BB731EB0A05300AA523D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
-		14B727551EAE363900D516E7 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
 		14BC0BB61EAF41580073BF27 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		14BC0BB81EAF64B10073BF27 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileCenterExample.entitlements; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
 				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
 				148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */,
-				148E2B911EAE29FC00743BB1 /* Info.plist */,
 				14B727541EAE362C00D516E7 /* Supporting Files */,
 			);
 			path = MobileCenterExample;
@@ -106,7 +103,7 @@
 		14B727541EAE362C00D516E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				14B727551EAE363900D516E7 /* AppConfig.plist */,
+				148E2B911EAE29FC00743BB1 /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -166,7 +163,6 @@
 				TargetAttributes = {
 					148E2B811EAE29FC00743BB1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = B7SPFV653N;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -200,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14B727561EAE363900D516E7 /* AppConfig.plist in Resources */,
 				148E2B901EAE29FC00743BB1 /* LaunchScreen.storyboard in Resources */,
 				148E2B8D1EAE29FC00743BB1 /* Assets.xcassets in Resources */,
 				148E2B8B1EAE29FC00743BB1 /* Main.storyboard in Resources */,
@@ -408,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MobileCenterExample/MobileCenterExample.entitlements;
-				DEVELOPMENT_TEAM = B7SPFV653N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MobileCenterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -424,7 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MobileCenterExample/MobileCenterExample.entitlements;
-				DEVELOPMENT_TEAM = B7SPFV653N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MobileCenterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

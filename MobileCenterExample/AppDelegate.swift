@@ -24,32 +24,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
    
-        let mobileCenterAppSecretKey = "MSMobileCenterAppSecret"
+        // init MobileCenter SDK
+        configureMobileCenter()
         
-        let twitterConsumerKey = "TwitterConsumerKey"
-        let twitterConsumerSecret = "TwitterConsumerSecret"
-
-        Fabric.with( [Twitter.self] )
+        // init Twitter SDK
+        configureTwitter()
         
-        if let path = Bundle.main.path(forResource: "AppConfig", ofType: "plist") {
-            let url = URL(fileURLWithPath: path)
-            if let data = try? Data(contentsOf: url) {
-                if let plist = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) {
-                    let configDict = plist as! [String:String]
-                    
-                    MSMobileCenter.start( configDict[mobileCenterAppSecretKey], withServices: [MSAnalytics.self, MSCrashes.self] )
-                    
-                    if let consumerKey = configDict[twitterConsumerKey],
-                        let consumerSecret = configDict[twitterConsumerSecret] {
-                        Twitter.sharedInstance().start( withConsumerKey: consumerKey, consumerSecret: consumerSecret )
-                    }
-                }
-            }
-        }
-        
+        // init Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
+    }
+    
+    func configureMobileCenter() {
+        let mobileCenterAppSecretKey = "MSMobileCenterAppSecret"
+        if let mobileCenterAppSecret = config[mobileCenterAppSecretKey] as? String {
+            MSMobileCenter.start( mobileCenterAppSecret, withServices: [MSAnalytics.self, MSCrashes.self] )
+        }
+    }
+    
+    func configureTwitter() {
+        Fabric.with( [Twitter.self] )
+        
+        let twitterConsumerKey = "TwitterConsumerKey"
+        let twitterConsumerSecret = "TwitterConsumerSecret"
+        if let consumerKey = config[twitterConsumerKey] as? String,
+            let consumerSecret = config[twitterConsumerSecret] as? String {
+            Twitter.sharedInstance().start( withConsumerKey: consumerKey, consumerSecret: consumerSecret )
+        }
+    }
+    
+    var config: [String: AnyObject] {
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+            let configDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+            return configDict
+        }
+        return [String: AnyObject]()
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

@@ -78,5 +78,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>MSMobileCenterAppSecret</key>
+	<string>365e6ee8-1b17-44f1-9bad-0ae049b287ad</string>
+	<key>TwitterConsumerKey</key>
+	<string>UtyB9L1SkXkQiy46wUeqESGOH</string>
+	<key>TwitterConsumerSecret</key>
+	<string>HQGeRBYRfh38mIc6m7OWuLhXsBPMm0lnt2NXb8LHUuCER4wFPh</string>
 </dict>
 </plist>
