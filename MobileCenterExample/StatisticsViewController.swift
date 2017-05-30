@@ -23,7 +23,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
     var buttons = [UIButton]()
     var typesForButtons = [UIButton: HKQuantityTypeIdentifier]()
     
-    private class DayChartFormatter: NSObject, IAxisValueFormatter {
+    fileprivate class DayChartFormatter: NSObject, IAxisValueFormatter {
         let dateFormatter = DateFormatter()
 
         override init() {
@@ -37,7 +37,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    private var selectedDataType: HKQuantityTypeIdentifier? {
+    fileprivate var selectedDataType: HKQuantityTypeIdentifier? {
         didSet {
             if oldValue != selectedDataType {
                 setChartData()
@@ -45,7 +45,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    public var userStats: TimedData<UserStats>? {
+    open var userStats: TimedData<UserStats>? {
         didSet {
             setChartData()
         }
@@ -58,7 +58,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             buttons.append( button )
             typesForButtons[button] = HKQuantityTypeIdentifier.stepCount
             selectedDataType = typesForButtons[button]
-            deselectButtonsExcept(button: button)
+            deselectButtonsExcept(button)
         }
         if let button = self.caloriesButton {
             buttons.append( button )
@@ -166,7 +166,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         }
     }
 
-    func deselectButtonsExcept( button: UIButton ) {
+    func deselectButtonsExcept( _ button: UIButton ) {
         for btn in buttons {
             if ( btn != button ) {
                 btn.backgroundColor = UIColor.clear
@@ -183,8 +183,8 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         MSCrashes.generateTestCrash()
     }
     
-    @IBAction func statButtonTap( sender: UIButton ) {
-        deselectButtonsExcept(button: sender)
+    @IBAction func statButtonTap( _ sender: UIButton ) {
+        deselectButtonsExcept(sender)
         selectedDataType = typesForButtons[sender]
     }
 }

@@ -18,7 +18,7 @@ import MobileCenterCrashes
 
 class LoginViewController: UIViewController {
     
-    private var user: User?
+    fileprivate var user: User?
     
     @IBOutlet var errorIcon: UIView?
     @IBOutlet var errorLabel1: UIView?
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
         self.facebookLoginButton?.isEnabled = enabled
     }
     
-    func trackLoginResult(socialNetwork: String, success: Bool, errorMessage: String? ) {
+    func trackLoginResult(_ socialNetwork: String, success: Bool, errorMessage: String? ) {
         var params = ["Page": "Login",
                       "Category": "Result",
                       "Social network": socialNetwork,
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
                 let twitterClient = TWTRAPIClient.withCurrentUser()
                 guard let userId = twitterClient.userID else {
                     self.showErrorState()
-                    self.trackLoginResult(socialNetwork: "Twitter", success: false, errorMessage: "Unknown error")
+                    self.trackLoginResult("Twitter", success: false, errorMessage: "Unknown error")
                     return
                 }
                 
@@ -106,32 +106,32 @@ class LoginViewController: UIViewController {
                     ( user, error ) in
                     if let user = user {
                         self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter, imageUrlString: user.profileImageLargeURL )
-                        self.trackLoginResult(socialNetwork: "Twitter", success: true, errorMessage: nil)
+                        self.trackLoginResult("Twitter", success: true, errorMessage: nil)
                         self.showMainPage()
                     }
                     else {
                         if let error = error {
-                            self.trackLoginResult(socialNetwork: "Twitter", success: false, errorMessage: error.localizedDescription)
+                            self.trackLoginResult("Twitter", success: false, errorMessage: error.localizedDescription)
                         }
                         else {
-                            self.trackLoginResult(socialNetwork: "Twitter", success: false, errorMessage: "Unknown error")
+                            self.trackLoginResult("Twitter", success: false, errorMessage: "Unknown error")
                         }
                         self.showErrorState()
                     }
                 })
             }
             else {
-                if let error = error as? NSError {
+                if let error = error as NSError? {
                     if error.domain == TWTRLogInErrorDomain && error.code == TWTRLogInErrorCode.canceled.rawValue {
                         self.setLoginButtons(enabled: true)
                         return
                     }
                     print( "an error occured: ", error )
-                    self.trackLoginResult(socialNetwork: "Twitter", success: false, errorMessage: error.localizedDescription)
+                    self.trackLoginResult("Twitter", success: false, errorMessage: error.localizedDescription)
                 }
                 else {
                     print( "unknown error occured" )
-                    self.trackLoginResult(socialNetwork: "Twitter", success: false, errorMessage: "Unknown error")
+                    self.trackLoginResult("Twitter", success: false, errorMessage: "Unknown error")
                 }
                 self.showErrorState()
             }
@@ -147,7 +147,7 @@ class LoginViewController: UIViewController {
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: [], from: self, handler: { ( loginResult, error ) in
             if let error = error {
-                self.trackLoginResult(socialNetwork: "Facebook", success: false, errorMessage: error.localizedDescription)
+                self.trackLoginResult("Facebook", success: false, errorMessage: error.localizedDescription)
                 print( "an error occured: ", error )
                 self.showErrorState()
             }
@@ -160,16 +160,16 @@ class LoginViewController: UIViewController {
                         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
                             if let profile = profile {
                                 self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)
-                                self.trackLoginResult(socialNetwork: "Facebook", success: true, errorMessage: nil)
+                                self.trackLoginResult("Facebook", success: true, errorMessage: nil)
                                 self.showMainPage()
                             }
                             else {
                                 if let error = error {
-                                    self.trackLoginResult(socialNetwork: "Facebook", success: false, errorMessage: error.localizedDescription)
+                                    self.trackLoginResult("Facebook", success: false, errorMessage: error.localizedDescription)
                                     print( "an error occured: ", error )
                                 }
                                 else {
-                                    self.trackLoginResult(socialNetwork: "Facebook", success: false, errorMessage: "Unknown error")
+                                    self.trackLoginResult("Facebook", success: false, errorMessage: "Unknown error")
                                     print( "unknown error occured" )
                                 }
                                 self.showErrorState()

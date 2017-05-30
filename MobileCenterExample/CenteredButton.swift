@@ -53,7 +53,7 @@ class CenteredButton: UIButton
         centerTitleLabel()
     }
     
-    private func centerTitleLabel() {
+    fileprivate func centerTitleLabel() {
         self.titleLabel?.textAlignment = .center
     }
 }

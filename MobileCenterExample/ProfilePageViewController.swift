@@ -34,13 +34,13 @@ class ProfilePageViewController: UIViewController {
     let integerFormatter = NumberFormatter()
     var formatters = [String: NumberFormatter]()
     
-    public var userStats: TimedData<UserStats>? {
+    open var userStats: TimedData<UserStats>? {
         didSet {
             self.updateLabels()
         }
     }
     
-    public var user: User? {
+    open var user: User? {
         didSet {
             self.fillContent()
         }
@@ -111,10 +111,10 @@ class ProfilePageViewController: UIViewController {
         let value = optionalValue!
         
         if label == timeLabel {
-            func minutesToHoursMinutes (minutes : Double) -> (Int, Int) {
+            func minutesToHoursMinutes (_ minutes : Double) -> (Int, Int) {
                 return (Int(minutes) / 60, (Int(minutes) % 60) )
             }
-            let (hours, minutes) = minutesToHoursMinutes(minutes: value)
+            let (hours, minutes) = minutesToHoursMinutes(value)
             if ( hours > 0 ) {
                 let attributedString = NSMutableAttributedString(string: String(hours))
                 attributedString.append(NSAttributedString(string: "h ",

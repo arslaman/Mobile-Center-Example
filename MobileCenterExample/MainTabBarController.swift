@@ -23,7 +23,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                        HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
                        HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!]
     
-    public var user: User? {
+    open var user: User? {
         didSet {
             (self.childViewControllers.first as! ProfilePageViewController).user = user
         }
@@ -79,7 +79,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         objc_sync_exit( operationsCounter )
     }
     
-    func querySample( type: HKQuantityType, for days: Int ) -> Void {
+    func querySample( _ type: HKQuantityType, for days: Int ) -> Void {
         
         increaseOperationsCounter()
         
@@ -153,7 +153,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             if ( error == nil )
             {
                 for readType in readTypes {
-                    self.querySample( type: readType, for: 5 )
+                    self.querySample( readType, for: 5 )
                 }
             }
         }
@@ -164,7 +164,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     
-    func generateRandomSample( from: Date, to: Date, identifier: HKQuantityTypeIdentifier ) -> HKQuantitySample {
+    func generateRandomSample( _ from: Date, to: Date, identifier: HKQuantityTypeIdentifier ) -> HKQuantitySample {
         var unit: HKUnit
         switch identifier {
         case HKQuantityTypeIdentifier.stepCount:
@@ -202,7 +202,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         needGenerateData.removeAll()
         
         let now = Date()
-        let calendar = NSCalendar.current
+        let calendar = Calendar.current
         var samples = [HKQuantitySample]()
         
         for day in days {
@@ -211,9 +211,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let endDate = calendar.date(byAdding: .hour, value: -hour - hoursDiff, to: now)!
                 let startDate = calendar.date(byAdding: .hour, value: -hour - 1 - hoursDiff, to: now)!
                 
-                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount))
-                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning))
-                samples.append(generateRandomSample(from: startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned))
+                samples.append(generateRandomSample(startDate, to: endDate, identifier: HKQuantityTypeIdentifier.stepCount))
+                samples.append(generateRandomSample(startDate, to: endDate, identifier: HKQuantityTypeIdentifier.distanceWalkingRunning))
+                samples.append(generateRandomSample(startDate, to: endDate, identifier: HKQuantityTypeIdentifier.activeEnergyBurned))
             }
         }
 

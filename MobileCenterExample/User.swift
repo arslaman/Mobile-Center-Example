@@ -29,7 +29,7 @@ class User {
 }
 
 class UserStats : Initable, Addable {
-    private var quantities = [String : Double]()
+    fileprivate var quantities = [String : Double]()
     
     subscript( index: String ) -> Double {
         get {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-func autocast<T>(some: Any) -> T {
+func autocast<T>(_ some: Any) -> T {
     return some as! T
 }
 
