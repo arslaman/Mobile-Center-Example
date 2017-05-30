@@ -36,7 +36,7 @@
 		14B6BB731EB0A05300AA523D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		14BC0BB61EAF41580073BF27 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		14BC0BB81EAF64B10073BF27 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileCenterExample.entitlements; sourceTree = "<group>"; };
+		14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MobileCenterExample.entitlements; path = ../MobileCenterExample.entitlements; sourceTree = "<group>"; };
 		14BCA9791EB0A69500492815 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23526EE9354409E0D6899FEF /* Pods-MobileCenterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.release.xcconfig"; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,19 +82,13 @@
 		148E2B841EAE29FC00743BB1 /* MobileCenterExample */ = {
 			isa = PBXGroup;
 			children = (
-				14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */,
+				448BCDFE1EDDC63A006DEB93 /* Services */,
+				448BCE001EDDC656006DEB93 /* Models */,
+				448BCE011EDDC666006DEB93 /* Views */,
+				448BCDFF1EDDC647006DEB93 /* Controllers */,
 				148E2B851EAE29FC00743BB1 /* AppDelegate.swift */,
-				148E2B871EAE29FC00743BB1 /* LoginViewController.swift */,
-				FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */,
-				14B6BB731EB0A05300AA523D /* ProfilePageViewController.swift */,
-				144CE3B11EB2373B00A49DA5 /* StatisticsViewController.swift */,
-				14BCA9791EB0A69500492815 /* User.swift */,
 				FDD9BF351EC38ACD007B5179 /* Extensions.swift */,
-				FD2665D11EC4FDA9007EF9AF /* TimedData.swift */,
-				FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */,
-				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
-				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
-				148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */,
+				448BCDFD1EDDC5EC006DEB93 /* Resources */,
 				14B727541EAE362C00D516E7 /* Supporting Files */,
 			);
 			path = MobileCenterExample;
@@ -103,9 +97,55 @@
 		14B727541EAE362C00D516E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */,
 				148E2B911EAE29FC00743BB1 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		448BCDFD1EDDC5EC006DEB93 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				148E2B891EAE29FC00743BB1 /* Main.storyboard */,
+				148E2B8C1EAE29FC00743BB1 /* Assets.xcassets */,
+				148E2B8E1EAE29FC00743BB1 /* LaunchScreen.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		448BCDFE1EDDC63A006DEB93 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		448BCDFF1EDDC647006DEB93 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				148E2B871EAE29FC00743BB1 /* LoginViewController.swift */,
+				FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */,
+				14B6BB731EB0A05300AA523D /* ProfilePageViewController.swift */,
+				144CE3B11EB2373B00A49DA5 /* StatisticsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		448BCE001EDDC656006DEB93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				14BCA9791EB0A69500492815 /* User.swift */,
+				FD2665D11EC4FDA9007EF9AF /* TimedData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		448BCE011EDDC666006DEB93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		75A97D6C31245D6389A13188 /* Pods */ = {
