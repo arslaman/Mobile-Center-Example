@@ -32,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         servicesFactory = ServicesFactory()
         routing = Routing(servicesFactory: servicesFactory)
         routing.installToWindow(window!)
-   
-        // init MobileCenter SDK
-        configureMobileCenter()
         
         // init Twitter SDK
         configureTwitter()
@@ -43,13 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
-    }
-    
-    func configureMobileCenter() {
-        let mobileCenterAppSecretKey = "MSMobileCenterAppSecret"
-        if let mobileCenterAppSecret = config[mobileCenterAppSecretKey] as? String {
-            MSMobileCenter.start( mobileCenterAppSecret, withServices: [MSAnalytics.self, MSCrashes.self] )
-        }
     }
     
     func configureTwitter() {

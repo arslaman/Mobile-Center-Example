@@ -1,5 +1,5 @@
 //
-//  MCAnalyticsService.swift
+//  MSAnalyticsService.swift
 //  MobileCenterExample
 //
 //  Created by Ruslan Mansurov on 5/31/17.
@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import MobileCenter
 import MobileCenterAnalytics
 
-class MCAnalyticsService: AnalyticsService {
+class MSAnalyticsService: AnalyticsService {
+    
+    init(settingsService: SettingsService) {
+        MSMobileCenter.start( settingsService.mobileCenterAppSecret, withServices: [MSAnalytics.self] )
+    }
     
     /**
      * Track Facebook login button click event

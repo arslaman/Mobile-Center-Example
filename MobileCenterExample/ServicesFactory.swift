@@ -9,5 +9,10 @@
 import Foundation
 
 class ServicesFactory {
-    lazy var analyticsService: AnalyticsService = MCAnalyticsService()
+    
+    lazy var analyticsService: AnalyticsService = {
+        return MSAnalyticsService(settingsService: self.settingsService)
+    }()
+    
+    lazy var settingsService: SettingsService = MCSettingsService()
 }
