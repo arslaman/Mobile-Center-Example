@@ -19,6 +19,8 @@ import MobileCenterCrashes
 class LoginViewController: UIViewController {
     
     fileprivate var user: User?
+    fileprivate var routing: Routing?
+    fileprivate var analyticsService: AnalyticsService?
     
     @IBOutlet var errorIcon: UIView?
     @IBOutlet var errorLabel1: UIView?
@@ -30,6 +32,11 @@ class LoginViewController: UIViewController {
     @IBOutlet var twitterLoginButton: UIButton?
     @IBOutlet var facebookLoginButton: UIButton?
     
+    func configure(routing: Routing, analyticsService: AnalyticsService) {
+        self.routing = routing
+        self.analyticsService = analyticsService
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -39,18 +46,7 @@ class LoginViewController: UIViewController {
     }
     
     func showMainPage() {
-        self.performSegue(withIdentifier: "ShowMainPage", sender: self.user)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "ShowMainPage":
-                (segue.destination as! MainTabBarController).user = self.user
-            default:
-                break
-            }
-        }
+        routing?.presentMainController(user: user!)
     }
     
     func showErrorState() {

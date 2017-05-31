@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum SocialNetwork : String {
-    case Twitter = "Twitter"
-    case Facebook = "Facebook"
-}
-
 class User {
     
     var fullName: String

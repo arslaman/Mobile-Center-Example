@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -116,7 +116,6 @@ WENT WRONG</string>
                         <outlet property="normalStateIcon1" destination="9TX-iT-tcD" id="ZXm-dg-19g"/>
                         <outlet property="normalStateIcon2" destination="JCs-AY-Mg4" id="Aq0-xG-Q9N"/>
                         <outlet property="twitterLoginButton" destination="n81-jp-5Te" id="hXZ-qM-cpU"/>
-                        <segue destination="Gzu-mB-voJ" kind="presentation" identifier="ShowMainPage" id="6qk-Js-xb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,7 +125,7 @@ WENT WRONG</string>
         <!--HOME-->
         <scene sceneID="Rfz-v7-dU1">
             <objects>
-                <viewController title="HOME" id="pBA-MM-UWz" customClass="ProfilePageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfilePageViewController" title="HOME" id="pBA-MM-UWz" customClass="ProfilePageViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3D9-34-Mmq"/>
                         <viewControllerLayoutGuide type="bottom" id="TId-sI-5oT"/>
@@ -171,7 +170,7 @@ WENT WRONG</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuz-d2-zaq">
-                                <rect key="frame" x="110" y="437.5" width="100" height="33.5"/>
+                                <rect key="frame" x="110" y="486.5" width="100" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="P5F-cM-Uxe"/>
                                 </constraints>
@@ -180,54 +179,54 @@ WENT WRONG</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="distanceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0KD-qh-rUV">
-                                <rect key="frame" x="144" y="377.5" width="32" height="32"/>
+                                <rect key="frame" x="144" y="426.5" width="32" height="32"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISTANCE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNR-m9-Rfp">
-                                <rect key="frame" x="126" y="417.5" width="68" height="17"/>
+                                <rect key="frame" x="126" y="466.5" width="68" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTS-hR-4Io">
-                                <rect key="frame" x="103" y="421.5" width="1" height="41.5"/>
+                                <rect key="frame" x="103" y="470.5" width="1" height="41.5"/>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="JOf-Sw-3UY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVd-oo-xdS">
-                                <rect key="frame" x="216" y="421.5" width="1" height="41.5"/>
+                                <rect key="frame" x="216" y="470.5" width="1" height="41.5"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="LPn-3c-q8C"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xw-wU-hV0">
-                                <rect key="frame" x="-3" y="437.5" width="100" height="33.5"/>
+                                <rect key="frame" x="-3" y="486.5" width="100" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.99215686274509807" green="0.57647058823529407" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caloriesIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aPX-1U-g8j">
-                                <rect key="frame" x="33.5" y="376.5" width="27" height="34"/>
+                                <rect key="frame" x="33.5" y="425.5" width="27" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CALORIES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8L-PR-hdg">
-                                <rect key="frame" x="14" y="417.5" width="66.5" height="17"/>
+                                <rect key="frame" x="14" y="466.5" width="66.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNX-cb-cYQ">
-                                <rect key="frame" x="223" y="437.5" width="100" height="33.5"/>
+                                <rect key="frame" x="223" y="486.5" width="100" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.2627450980392157" green="0.63529411764705879" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6N2-yJ-gnQ">
-                                <rect key="frame" x="257.5" y="378" width="31" height="31"/>
+                                <rect key="frame" x="257.5" y="427" width="31" height="31"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVE TIME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIa-vd-obH">
-                                <rect key="frame" x="230.5" y="417.5" width="85" height="17"/>
+                                <rect key="frame" x="230.5" y="466.5" width="85" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -299,7 +298,7 @@ WENT WRONG</string>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Iac-9r-QEa">
             <objects>
-                <tabBarController id="Gzu-mB-voJ" customClass="MainTabBarController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="Gzu-mB-voJ" customClass="MainTabBarController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xa7-TX-Wox">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -307,10 +306,6 @@ WENT WRONG</string>
                         <color key="tintColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="pBA-MM-UWz" kind="relationship" relationship="viewControllers" id="thB-Pf-9gn"/>
-                        <segue destination="4pt-bZ-KFm" kind="relationship" relationship="viewControllers" id="zen-Nb-xH1"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAn-YB-VzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,7 +314,7 @@ WENT WRONG</string>
         <!--STATISTICS-->
         <scene sceneID="fTP-J0-W6X">
             <objects>
-                <viewController title="STATISTICS" id="4pt-bZ-KFm" customClass="StatisticsViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatisticsViewController" title="STATISTICS" id="4pt-bZ-KFm" customClass="StatisticsViewController" customModule="MobileCenterExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rN2-bE-lUK"/>
                         <viewControllerLayoutGuide type="bottom" id="rBV-PA-C9x"/>
@@ -329,7 +324,7 @@ WENT WRONG</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-1E-h6q" customClass="KBRoundedButton">
-                                <rect key="frame" x="40" y="425" width="240" height="54"/>
+                                <rect key="frame" x="40" y="474" width="240" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="ZVp-3S-jTU"/>

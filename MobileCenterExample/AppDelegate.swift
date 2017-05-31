@@ -21,8 +21,17 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var servicesFactory: ServicesFactory!
+    var routing: Routing!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        servicesFactory = ServicesFactory()
+        routing = Routing(servicesFactory: servicesFactory)
+        routing.installToWindow(window!)
    
         // init MobileCenter SDK
         configureMobileCenter()
