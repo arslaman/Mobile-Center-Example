@@ -63,7 +63,7 @@ class Routing {
     func statisticsController() -> StatisticsViewController {
         let identifier = String(describing: StatisticsViewController.self)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! StatisticsViewController
-        controller.configure(analyticsService: services.analyticsService)
+        controller.configure(analyticsService: services.analyticsService, crashesService: services.crashesService)
         
         return controller;
     }

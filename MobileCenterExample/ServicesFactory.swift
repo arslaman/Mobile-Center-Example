@@ -14,5 +14,7 @@ class ServicesFactory {
         return MSAnalyticsService(settingsService: self.settingsService)
     }()
     
+    lazy var crashesService: CrashesService = MCCrashesService()
+    
     lazy var settingsService: SettingsService = MCSettingsService()
 }

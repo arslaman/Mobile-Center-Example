@@ -23,6 +23,7 @@
 		448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */; };
 		448BCE0C1EDEDA96006DEB93 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0B1EDEDA96006DEB93 /* Routing.swift */; };
 		448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0D1EDF0596006DEB93 /* SettingsService.swift */; };
+		448BCE101EDF0DDF006DEB93 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
@@ -51,6 +52,7 @@
 		448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesFactory.swift; sourceTree = "<group>"; };
 		448BCE0B1EDEDA96006DEB93 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		448BCE0D1EDF0596006DEB93 /* SettingsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				448BCE021EDDCD1B006DEB93 /* Analytics */,
 				448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */,
 				448BCE0D1EDF0596006DEB93 /* SettingsService.swift */,
+				448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */,
 				448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */,
 				14B6BB741EB0A05300AA523D /* ProfilePageViewController.swift in Sources */,
+				448BCE101EDF0DDF006DEB93 /* CrashesService.swift in Sources */,
 				448BCE041EDDCD4D006DEB93 /* AnalyticsService.swift in Sources */,
 				448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */,
 				148E2B861EAE29FC00743BB1 /* AppDelegate.swift in Sources */,
