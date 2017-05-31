@@ -10,8 +10,6 @@ import UIKit
 
 import HealthKit
 
-import MobileCenterAnalytics
-
 class ProfilePageViewController: UIViewController {
 
     @IBOutlet var caloriesLabel: UILabel?

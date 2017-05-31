@@ -48,6 +48,7 @@ class Routing {
     func mainController() -> MainTabBarController {
         let identifier = String(describing: MainTabBarController.self)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! MainTabBarController
+        controller.configure(analyticsService: services.analyticsService)
         
         return controller;
     }
@@ -62,6 +63,7 @@ class Routing {
     func statisticsController() -> StatisticsViewController {
         let identifier = String(describing: StatisticsViewController.self)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! StatisticsViewController
+        controller.configure(analyticsService: services.analyticsService)
         
         return controller;
     }

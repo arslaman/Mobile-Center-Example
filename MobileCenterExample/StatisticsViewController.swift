@@ -9,10 +9,11 @@
 import UIKit
 import Charts
 import HealthKit
-import MobileCenterAnalytics
 import MobileCenterCrashes
 
 class StatisticsViewController: UIViewController, ChartViewDelegate {
+    
+    fileprivate var analyticsService: AnalyticsService?
     
     @IBOutlet var chartView: LineChartView?
     @IBOutlet var stepsButton: UIButton?
@@ -49,6 +50,10 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
         didSet {
             setChartData()
         }
+    }
+    
+    func configure(analyticsService: AnalyticsService) {
+        self.analyticsService = analyticsService
     }
 
     override func viewDidLoad() {
@@ -178,8 +183,7 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
     }
     
     @IBAction func crashApplication() {
-        MSAnalytics.trackEvent("Crash application button clicked", withProperties: ["Page": "Profile",
-                                                                                    "Category": "Clicks"])
+        analyticsService?.trackCrashClick()
         MSCrashes.generateTestCrash()
     }
     
