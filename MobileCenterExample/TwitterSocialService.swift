@@ -11,12 +11,16 @@ import UIKit
 import Fabric
 import TwitterKit
 
-class TwitterSocialService: SocialService {
+class TwitterSocialService {
     
     init(settingsService: SettingsService) {
         Fabric.with( [Twitter.self] )
         Twitter.sharedInstance().start( withConsumerKey: settingsService.twitterConsumerKey, consumerSecret: settingsService.twitterConsumerSecret )
     }
+}
+
+// MARK: - SocialService
+extension TwitterSocialService: SocialService {
     
     func logIn(with viewController: UIViewController, completion: @escaping (User?, Error?) -> Void) {
         

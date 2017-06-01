@@ -14,19 +14,7 @@ protocol SettingsService {
     var twitterConsumerSecret: String { get }
 }
 
-class MCSettingsService: SettingsService {
-    var mobileCenterAppSecret: String {
-        return valueFor("MSMobileCenterAppSecret")
-    }
-    
-    var twitterConsumerKey: String {
-        return valueFor("TwitterConsumerKey")
-    }
-    
-    var twitterConsumerSecret: String {
-        return valueFor("TwitterConsumerSecret")
-    }
-    
+class MCSettingsService {
     var config: [String: AnyObject] {
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
             let configDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
@@ -40,5 +28,21 @@ class MCSettingsService: SettingsService {
             return value
         }
         fatalError("*** Unable to read " + key + " from plist ***")
+    }
+}
+
+// MARK - SettingsService
+extension MCSettingsService: SettingsService {
+
+    var mobileCenterAppSecret: String {
+        return valueFor("MSMobileCenterAppSecret")
+    }
+    
+    var twitterConsumerKey: String {
+        return valueFor("TwitterConsumerKey")
+    }
+    
+    var twitterConsumerSecret: String {
+        return valueFor("TwitterConsumerSecret")
     }
 }

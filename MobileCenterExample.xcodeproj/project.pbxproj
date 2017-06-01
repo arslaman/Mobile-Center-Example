@@ -17,9 +17,8 @@
 		14BC0BB71EAF41580073BF27 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB61EAF41580073BF27 /* CoreMotion.framework */; };
 		14BC0BB91EAF64B10073BF27 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB81EAF64B10073BF27 /* HealthKit.framework */; };
 		14BCA97A1EB0A69500492815 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCA9791EB0A69500492815 /* User.swift */; };
-		448BCE041EDDCD4D006DEB93 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE031EDDCD4D006DEB93 /* AnalyticsService.swift */; };
 		448BCE061EDDCE7E006DEB93 /* SocialNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE051EDDCE7E006DEB93 /* SocialNetwork.swift */; };
-		448BCE081EDECC1C006DEB93 /* MSAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE071EDECC1C006DEB93 /* MSAnalyticsService.swift */; };
+		448BCE081EDECC1C006DEB93 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */; };
 		448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */; };
 		448BCE0C1EDEDA96006DEB93 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0B1EDEDA96006DEB93 /* Routing.swift */; };
 		448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0D1EDF0596006DEB93 /* SettingsService.swift */; };
@@ -50,9 +49,8 @@
 		14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MobileCenterExample.entitlements; path = ../MobileCenterExample.entitlements; sourceTree = "<group>"; };
 		14BCA9791EB0A69500492815 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23526EE9354409E0D6899FEF /* Pods-MobileCenterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.release.xcconfig"; sourceTree = "<group>"; };
-		448BCE031EDDCD4D006DEB93 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		448BCE051EDDCE7E006DEB93 /* SocialNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetwork.swift; sourceTree = "<group>"; };
-		448BCE071EDECC1C006DEB93 /* MSAnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAnalyticsService.swift; sourceTree = "<group>"; };
+		448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesFactory.swift; sourceTree = "<group>"; };
 		448BCE0B1EDEDA96006DEB93 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		448BCE0D1EDF0596006DEB93 /* SettingsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -140,10 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				448BCE111EE00554006DEB93 /* Social */,
-				448BCE021EDDCD1B006DEB93 /* Analytics */,
-				448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */,
-				448BCE0D1EDF0596006DEB93 /* SettingsService.swift */,
+				448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */,
 				448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */,
+				448BCE0D1EDF0596006DEB93 /* SettingsService.swift */,
+				448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -175,15 +173,6 @@
 				FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		448BCE021EDDCD1B006DEB93 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				448BCE031EDDCD4D006DEB93 /* AnalyticsService.swift */,
-				448BCE071EDECC1C006DEB93 /* MSAnalyticsService.swift */,
-			);
-			name = Analytics;
 			sourceTree = "<group>";
 		};
 		448BCE111EE00554006DEB93 /* Social */ = {
@@ -368,7 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */,
-				448BCE081EDECC1C006DEB93 /* MSAnalyticsService.swift in Sources */,
+				448BCE081EDECC1C006DEB93 /* AnalyticsService.swift in Sources */,
 				FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */,
 				448BCE0C1EDEDA96006DEB93 /* Routing.swift in Sources */,
 				144CE3B21EB2373B00A49DA5 /* StatisticsViewController.swift in Sources */,
@@ -380,7 +369,6 @@
 				14B6BB741EB0A05300AA523D /* ProfilePageViewController.swift in Sources */,
 				448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */,
 				448BCE101EDF0DDF006DEB93 /* CrashesService.swift in Sources */,
-				448BCE041EDDCD4D006DEB93 /* AnalyticsService.swift in Sources */,
 				448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */,
 				148E2B861EAE29FC00743BB1 /* AppDelegate.swift in Sources */,
 				448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */,

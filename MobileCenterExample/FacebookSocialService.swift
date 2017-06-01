@@ -11,7 +11,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class FacebookSocialService: SocialService {
+class FacebookSocialService {
     
     /**
      Call this method from the [UIApplicationDelegate application:didFinishLaunchingWithOptions:] method
@@ -45,7 +45,11 @@ class FacebookSocialService: SocialService {
     func application(_ application: UIApplication!, open url: URL!, options: [UIApplicationOpenURLOptionsKey : Any]! = [:]) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, options: options)
     }
-    
+}
+
+// MARK - SocialService
+extension FacebookSocialService: SocialService {
+
     func logIn(with viewController: UIViewController, completion: @escaping SocialLogInCompletion) {
         
         let fbLoginManager = FBSDKLoginManager()
