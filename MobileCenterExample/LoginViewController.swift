@@ -17,9 +17,9 @@ import MobileCenterCrashes
 
 class LoginViewController: UIViewController {
     
-    fileprivate var user: User?
     fileprivate var routing: Routing?
     fileprivate var analyticsService: AnalyticsService?
+    fileprivate var twitterService: SocialService?
     
     @IBOutlet var errorIcon: UIView?
     @IBOutlet var errorLabel1: UIView?
@@ -31,9 +31,10 @@ class LoginViewController: UIViewController {
     @IBOutlet var twitterLoginButton: UIButton?
     @IBOutlet var facebookLoginButton: UIButton?
     
-    func configure(routing: Routing, analyticsService: AnalyticsService) {
+    func configure(routing: Routing, analyticsService: AnalyticsService, twitterService: SocialService) {
         self.routing = routing
         self.analyticsService = analyticsService
+        self.twitterService = twitterService
     }
     
     override func viewDidLoad() {
@@ -44,8 +45,8 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func showMainPage() {
-        routing?.presentMainController(user: user!)
+    func showMainPage(user: User) {
+        routing?.presentMainController(user: user)
     }
     
     func showErrorState() {
@@ -78,45 +79,24 @@ class LoginViewController: UIViewController {
         // track click event
         analyticsService?.trackLoginTwitterClick()
         
-        // disable log in buttons to prevent clicks while authenticating
+        // disable buttons to prevent clicks while authenticating
         setLoginButtons(enabled: false)
         
-        Twitter.sharedInstance().logIn(with: self, completion: {
-            ( session, error ) in
-            if let session = session {
-                
-                let twitterClient = TWTRAPIClient.withCurrentUser()
-                guard let userId = twitterClient.userID else {
-                    self.showErrorState()
-                    self.trackSignInResult(socialNetwork: .Twitter, success: false, errorMessage: nil)
-                    return
-                }
-                
-                twitterClient.loadUser(withID: userId, completion: {
-                    ( user, error ) in
-                    if let user = user {
-                        self.user = User(fullName: session.userName, accessToken: session.authToken, socialNetwork: SocialNetwork.Twitter, imageUrlString: user.profileImageLargeURL )
-                        self.analyticsService?.trackSocialSignInResult(socialNetwork: .Twitter, success: true, errorMessage: nil)
-                        self.showMainPage()
-                    }
-                    else {
-                        self.trackSignInResult(socialNetwork: .Twitter, success: false, errorMessage: error?.localizedDescription)
-                        self.showErrorState()
-                    }
-                })
-            }
-            else {
+        self.twitterService?.logIn(with: self, completion: { (user, error) in
+            // it's time to enable buttons back
+            self.setLoginButtons(enabled: true)
+            
+            // if user is nil, then there were some problems
+            guard let myUser = user else {
                 self.trackSignInResult(socialNetwork: .Twitter, success: false, errorMessage: error?.localizedDescription)
-                
-                if let error = error as NSError? {
-                    if error.domain == TWTRLogInErrorDomain && error.code == TWTRLogInErrorCode.canceled.rawValue {
-                        self.setLoginButtons(enabled: true)
-                        return
-                    }
-                    print( "an error occured: ", error )
-                }
                 self.showErrorState()
+                return
             }
+            
+            self.analyticsService?.trackSocialSignInResult(socialNetwork: .Twitter, success: true, errorMessage: nil)
+            
+            // proceed to main screen
+            self.showMainPage(user: myUser)
         })
     }
     
@@ -141,9 +121,9 @@ class LoginViewController: UIViewController {
                     else {
                         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
                             if let profile = profile {
-                                self.user = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)
+                                let myUser = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)
                                 self.trackSignInResult(socialNetwork: .Facebook, success: true, errorMessage: nil)
-                                self.showMainPage()
+                                self.showMainPage(user: myUser)
                             }
                             else {
                                 self.trackSignInResult(socialNetwork: .Facebook, success: false, errorMessage: error?.localizedDescription)

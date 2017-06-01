@@ -24,6 +24,9 @@
 		448BCE0C1EDEDA96006DEB93 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0B1EDEDA96006DEB93 /* Routing.swift */; };
 		448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0D1EDF0596006DEB93 /* SettingsService.swift */; };
 		448BCE101EDF0DDF006DEB93 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */; };
+		448BCE131EE0057A006DEB93 /* SocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE121EE0057A006DEB93 /* SocialService.swift */; };
+		448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE141EE00729006DEB93 /* TwitterSocialService.swift */; };
+		448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE171EE015B1006DEB93 /* NSError+Creation.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
@@ -53,6 +56,9 @@
 		448BCE0B1EDEDA96006DEB93 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		448BCE0D1EDF0596006DEB93 /* SettingsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
+		448BCE121EE0057A006DEB93 /* SocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialService.swift; sourceTree = "<group>"; };
+		448BCE141EE00729006DEB93 /* TwitterSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSocialService.swift; sourceTree = "<group>"; };
+		448BCE171EE015B1006DEB93 /* NSError+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Creation.swift"; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -96,12 +102,12 @@
 		148E2B841EAE29FC00743BB1 /* MobileCenterExample */ = {
 			isa = PBXGroup;
 			children = (
+				448BCE161EE01544006DEB93 /* Extensions */,
 				448BCDFE1EDDC63A006DEB93 /* Services */,
 				448BCE001EDDC656006DEB93 /* Models */,
 				448BCE011EDDC666006DEB93 /* Views */,
 				448BCDFF1EDDC647006DEB93 /* Controllers */,
 				148E2B851EAE29FC00743BB1 /* AppDelegate.swift */,
-				FDD9BF351EC38ACD007B5179 /* Extensions.swift */,
 				448BCE0B1EDEDA96006DEB93 /* Routing.swift */,
 				448BCDFD1EDDC5EC006DEB93 /* Resources */,
 				14B727541EAE362C00D516E7 /* Supporting Files */,
@@ -131,6 +137,7 @@
 		448BCDFE1EDDC63A006DEB93 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				448BCE111EE00554006DEB93 /* Social */,
 				448BCE021EDDCD1B006DEB93 /* Analytics */,
 				448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */,
 				448BCE0D1EDF0596006DEB93 /* SettingsService.swift */,
@@ -175,6 +182,24 @@
 				448BCE071EDECC1C006DEB93 /* MSAnalyticsService.swift */,
 			);
 			name = Analytics;
+			sourceTree = "<group>";
+		};
+		448BCE111EE00554006DEB93 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				448BCE121EE0057A006DEB93 /* SocialService.swift */,
+				448BCE141EE00729006DEB93 /* TwitterSocialService.swift */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		448BCE161EE01544006DEB93 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9BF351EC38ACD007B5179 /* Extensions.swift */,
+				448BCE171EE015B1006DEB93 /* NSError+Creation.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		75A97D6C31245D6389A13188 /* Pods */ = {
@@ -339,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */,
 				448BCE081EDECC1C006DEB93 /* MSAnalyticsService.swift in Sources */,
 				FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */,
 				448BCE0C1EDEDA96006DEB93 /* Routing.swift in Sources */,
@@ -347,7 +373,9 @@
 				148E2B881EAE29FC00743BB1 /* LoginViewController.swift in Sources */,
 				FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */,
 				448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */,
+				448BCE131EE0057A006DEB93 /* SocialService.swift in Sources */,
 				14B6BB741EB0A05300AA523D /* ProfilePageViewController.swift in Sources */,
+				448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */,
 				448BCE101EDF0DDF006DEB93 /* CrashesService.swift in Sources */,
 				448BCE041EDDCD4D006DEB93 /* AnalyticsService.swift in Sources */,
 				448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */,

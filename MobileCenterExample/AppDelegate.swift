@@ -33,24 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         routing = Routing(servicesFactory: servicesFactory)
         routing.installToWindow(window!)
         
-        // init Twitter SDK
-        configureTwitter()
-        
         // init Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
-    }
-    
-    func configureTwitter() {
-        Fabric.with( [Twitter.self] )
-        
-        let twitterConsumerKey = "TwitterConsumerKey"
-        let twitterConsumerSecret = "TwitterConsumerSecret"
-        if let consumerKey = config[twitterConsumerKey] as? String,
-            let consumerSecret = config[twitterConsumerSecret] as? String {
-            Twitter.sharedInstance().start( withConsumerKey: consumerKey, consumerSecret: consumerSecret )
-        }
     }
     
     var config: [String: AnyObject] {

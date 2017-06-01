@@ -34,13 +34,14 @@ class Routing {
     func presentMainController(user: User) {
         let controller = mainController()
         controller.viewControllers = [profileController(), statisticsController()]
+        controller.user = user
         
         window.rootViewController?.present(controller, animated: true, completion: nil)
     }
     
     func loginController() -> LoginViewController {
         let loginController = mainStoryboard.instantiateInitialViewController() as! LoginViewController
-        loginController.configure(routing: self, analyticsService: services.analyticsService)
+        loginController.configure(routing: self, analyticsService: services.analyticsService, twitterService: services.twitterService)
         
         return loginController;
     }

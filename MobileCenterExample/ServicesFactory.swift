@@ -16,5 +16,9 @@ class ServicesFactory {
     
     lazy var crashesService: CrashesService = MCCrashesService()
     
+    lazy var twitterService: SocialService = {
+        return TwitterSocialService(settingsService: self.settingsService)
+    }()
+    
     lazy var settingsService: SettingsService = MCSettingsService()
 }
