@@ -27,6 +27,7 @@
 		448BCE131EE0057A006DEB93 /* SocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE121EE0057A006DEB93 /* SocialService.swift */; };
 		448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE141EE00729006DEB93 /* TwitterSocialService.swift */; };
 		448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE171EE015B1006DEB93 /* NSError+Creation.swift */; };
+		448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
@@ -59,6 +60,7 @@
 		448BCE121EE0057A006DEB93 /* SocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialService.swift; sourceTree = "<group>"; };
 		448BCE141EE00729006DEB93 /* TwitterSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSocialService.swift; sourceTree = "<group>"; };
 		448BCE171EE015B1006DEB93 /* NSError+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Creation.swift"; sourceTree = "<group>"; };
+		448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSocialService.swift; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				448BCE121EE0057A006DEB93 /* SocialService.swift */,
 				448BCE141EE00729006DEB93 /* TwitterSocialService.swift */,
+				448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				448BCE041EDDCD4D006DEB93 /* AnalyticsService.swift in Sources */,
 				448BCE0E1EDF0596006DEB93 /* SettingsService.swift in Sources */,
 				148E2B861EAE29FC00743BB1 /* AppDelegate.swift in Sources */,
+				448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */,
 				448BCE061EDDCE7E006DEB93 /* SocialNetwork.swift in Sources */,
 				FDD9BF361EC38ACD007B5179 /* Extensions.swift in Sources */,
 				FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */,

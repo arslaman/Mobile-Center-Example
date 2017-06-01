@@ -41,7 +41,11 @@ class Routing {
     
     func loginController() -> LoginViewController {
         let loginController = mainStoryboard.instantiateInitialViewController() as! LoginViewController
-        loginController.configure(routing: self, analyticsService: services.analyticsService, twitterService: services.twitterService)
+        loginController.configure(routing: self,
+                                  analyticsService: services.analyticsService,
+                                  twitterService: services.twitterService,
+                                  facebookService: services.facebookService
+        )
         
         return loginController;
     }

@@ -8,18 +8,12 @@
 
 import UIKit
 
-import HealthKit
-
-import TwitterKit
-import FBSDKLoginKit
-
-import MobileCenterCrashes
-
 class LoginViewController: UIViewController {
     
     fileprivate var routing: Routing?
     fileprivate var analyticsService: AnalyticsService?
     fileprivate var twitterService: SocialService?
+    fileprivate var facebookService: SocialService?
     
     @IBOutlet var errorIcon: UIView?
     @IBOutlet var errorLabel1: UIView?
@@ -31,18 +25,15 @@ class LoginViewController: UIViewController {
     @IBOutlet var twitterLoginButton: UIButton?
     @IBOutlet var facebookLoginButton: UIButton?
     
-    func configure(routing: Routing, analyticsService: AnalyticsService, twitterService: SocialService) {
+    func configure(routing: Routing,
+                   analyticsService: AnalyticsService,
+                   twitterService: SocialService,
+                   facebookService: SocialService) {
+        
         self.routing = routing
         self.analyticsService = analyticsService
         self.twitterService = twitterService
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        self.facebookService = facebookService
     }
     
     func showMainPage(user: User) {
@@ -67,14 +58,6 @@ class LoginViewController: UIViewController {
         self.facebookLoginButton?.isEnabled = enabled
     }
     
-    func trackSignInResult(socialNetwork: SocialNetwork, success: Bool, errorMessage: String? ) {
-        var errorMessage = errorMessage
-        if !success {
-            errorMessage = errorMessage ?? "Unknown error"
-        }
-        self.analyticsService?.trackSocialSignInResult(socialNetwork: socialNetwork, success: success, errorMessage: errorMessage)
-    }
-    
     @IBAction func loginViaTwitter() {
         // track click event
         analyticsService?.trackLoginTwitterClick()
@@ -82,58 +65,43 @@ class LoginViewController: UIViewController {
         // disable buttons to prevent clicks while authenticating
         setLoginButtons(enabled: false)
         
-        self.twitterService?.logIn(with: self, completion: { (user, error) in
-            // it's time to enable buttons back
-            self.setLoginButtons(enabled: true)
-            
-            // if user is nil, then there were some problems
-            guard let myUser = user else {
-                self.trackSignInResult(socialNetwork: .Twitter, success: false, errorMessage: error?.localizedDescription)
-                self.showErrorState()
-                return
-            }
-            
-            self.analyticsService?.trackSocialSignInResult(socialNetwork: .Twitter, success: true, errorMessage: nil)
-            
-            // proceed to main screen
-            self.showMainPage(user: myUser)
-        })
+        socialLogIn(.Twitter)
     }
     
     @IBAction func loginViaFacebook() {
         // track click event
         analyticsService?.trackLoginFacebookClick()
         
-        // disable log in buttons to prevent clicks while authenticating
+        // disable buttons to prevent clicks while authenticating
         setLoginButtons(enabled: false)
         
-        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logIn(withReadPermissions: [], from: self, handler: { ( loginResult, error ) in
-            if let error = error {
-                self.trackSignInResult(socialNetwork: .Facebook, success: false, errorMessage: error.localizedDescription)
+        socialLogIn(.Facebook)
+    }
+    
+    func socialLogIn(_ socialNetwork: SocialNetwork) {
+        let completion: SocialLogInCompletion = { (user, error) in
+            // it's time to enable buttons back
+            self.setLoginButtons(enabled: true)
+            
+            // if user is nil, then there were some problems
+            guard let myUser = user else {
+                self.analyticsService?.trackSocialSignInResult(socialNetwork: socialNetwork, success: false, errorMessage: error?.localizedDescription)
                 self.showErrorState()
+                return
             }
-            else {
-                if let loginResult = loginResult {
-                    if loginResult.isCancelled {
-                        self.setLoginButtons(enabled: true)
-                    }
-                    else {
-                        FBSDKProfile.loadCurrentProfile(completion: { (profile, error) in
-                            if let profile = profile {
-                                let myUser = User(fullName: profile.name, accessToken: loginResult.token.tokenString, socialNetwork: SocialNetwork.Facebook, imageUrlString: profile.imageURL(for: .square, size: CGSize(width: 100, height: 100 )).absoluteString)
-                                self.trackSignInResult(socialNetwork: .Facebook, success: true, errorMessage: nil)
-                                self.showMainPage(user: myUser)
-                            }
-                            else {
-                                self.trackSignInResult(socialNetwork: .Facebook, success: false, errorMessage: error?.localizedDescription)
-                                self.showErrorState()
-                            }
-                        })
-                    }
-                }
-            }
-        })
+            
+            self.analyticsService?.trackSocialSignInResult(socialNetwork: socialNetwork, success: true, errorMessage: nil)
+            
+            // proceed to main screen
+            self.showMainPage(user: myUser)
+        }
+        
+        switch socialNetwork {
+        case .Facebook:
+            facebookService?.logIn(with: self, completion: completion)
+        case .Twitter:
+            twitterService?.logIn(with: self, completion: completion)
+        }
     }
 }
 

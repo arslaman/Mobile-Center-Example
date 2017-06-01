@@ -20,5 +20,7 @@ class ServicesFactory {
         return TwitterSocialService(settingsService: self.settingsService)
     }()
     
+    lazy var facebookService: SocialService = FacebookSocialService()
+    
     lazy var settingsService: SettingsService = MCSettingsService()
 }

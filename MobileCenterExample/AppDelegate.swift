@@ -8,15 +8,6 @@
 
 import UIKit
 
-import MobileCenter
-import MobileCenterAnalytics
-import MobileCenterCrashes
-
-import Fabric
-import TwitterKit
-
-import FBSDKCoreKit
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,21 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         routing.installToWindow(window!)
         
         // init Facebook SDK
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        if let facebook = servicesFactory.facebookService as? FacebookSocialService {
+            facebook.application(application, didFinishLaunchingWithOptions: launchOptions)
+        }
         
         return true
     }
     
-    var config: [String: AnyObject] {
-        if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
-            let configDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-            return configDict
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        // process Facebook interaction
+        if let facebook = servicesFactory.facebookService as? FacebookSocialService {
+            return facebook.application(app, open: url, options: options)
         }
-        return [String: AnyObject]()
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        // return false if the application can't open for some reason
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -63,10 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -6,13 +6,15 @@
 //  Copyright © 2017 Akvelon. All rights reserved.
 //
 
-import Foundation
 import UIKit
+
+import Fabric
 import TwitterKit
 
 class TwitterSocialService: SocialService {
     
     init(settingsService: SettingsService) {
+        Fabric.with( [Twitter.self] )
         Twitter.sharedInstance().start( withConsumerKey: settingsService.twitterConsumerKey, consumerSecret: settingsService.twitterConsumerSecret )
     }
     

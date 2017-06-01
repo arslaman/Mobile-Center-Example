@@ -6,7 +6,6 @@
 //  Copyright © 2017 Akvelon. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 typealias SocialLogInCompletion = (User?, Error?) -> Void
