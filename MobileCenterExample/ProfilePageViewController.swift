@@ -8,8 +8,6 @@
 
 import UIKit
 
-import HealthKit
-
 class ProfilePageViewController: UIViewController {
 
     @IBOutlet var caloriesLabel: UILabel?
@@ -35,7 +33,7 @@ class ProfilePageViewController: UIViewController {
         return formatter
     }
     
-    open var userStats: TimedData<FitnessDailyData>? {
+    open var fitnessData: TimedData<FitnessDailyData>? {
         didSet {
             self.updateData()
         }
@@ -83,7 +81,7 @@ class ProfilePageViewController: UIViewController {
     }
     
     func updateStatisticsLabels() {
-        guard let daylyData = userStats?.last() else {
+        guard let daylyData = fitnessData?.last() else {
             return
         }
         

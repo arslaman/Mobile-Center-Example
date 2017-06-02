@@ -12,6 +12,13 @@ import HealthKit
 typealias FitnessDataCompletion = (TimedData<FitnessDailyData>?, Error?) -> Void
 typealias FitnessAuthorizationCompletion = (Bool, Error?) -> Void
 
+enum FitnessType: Int {
+    case Steps
+    case Calories
+    case Distance
+    case ActiveTime
+}
+
 protocol FitnessService {
     var  userStats: TimedData<FitnessDailyData> { get }
     func requestAuthorization(completion: @escaping FitnessAuthorizationCompletion)
@@ -77,7 +84,6 @@ class HealthKitFitnessService: FitnessService {
         }
     }
 
-    
     func querySample( _ type: HKQuantityType, for days: Int ) -> Void {
         
         increaseOperationsCounter()
@@ -85,7 +91,7 @@ class HealthKitFitnessService: FitnessService {
         var interval = DateComponents()
         interval.day = 1
         
-        let anchorDate = Date().endOfDay
+        let anchorDate = Date().startOfDay
         let startDate = anchorDate.daysAgo(days: days)
         
         let query = HKStatisticsCollectionQuery(quantityType: type,

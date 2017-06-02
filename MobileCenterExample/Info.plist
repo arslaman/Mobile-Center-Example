@@ -59,12 +59,18 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MSMobileCenterAppSecret</key>
+	<string>365e6ee8-1b17-44f1-9bad-0ae049b287ad</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>This application uses HealthKit data</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>This application fills your HealthKit data randomly</string>
 	<key>NSMotionUsageDescription</key>
 	<string>This application uses pedometer</string>
+	<key>TwitterConsumerKey</key>
+	<string>UtyB9L1SkXkQiy46wUeqESGOH</string>
+	<key>TwitterConsumerSecret</key>
+	<string>HQGeRBYRfh38mIc6m7OWuLhXsBPMm0lnt2NXb8LHUuCER4wFPh</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -78,11 +84,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>MSMobileCenterAppSecret</key>
-	<string>365e6ee8-1b17-44f1-9bad-0ae049b287ad</string>
-	<key>TwitterConsumerKey</key>
-	<string>UtyB9L1SkXkQiy46wUeqESGOH</string>
-	<key>TwitterConsumerSecret</key>
-	<string>HQGeRBYRfh38mIc6m7OWuLhXsBPMm0lnt2NXb8LHUuCER4wFPh</string>
 </dict>
 </plist>

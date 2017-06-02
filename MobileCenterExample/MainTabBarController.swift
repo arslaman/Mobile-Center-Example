@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import HealthKit
 
 class MainTabBarController: UITabBarController {
 
@@ -30,7 +29,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidAppear( animated )
         self.fitnessService?.requestAuthorization() { (success, errror) in
             if success {
-                self.fitnessService?.loadHealthKitData(days: 5) { (data, error) in
+                self.fitnessService?.loadHealthKitData(days: 4) { (data, error) in
                     if let data = data {
                         self.fitnessData = data
                         self.updateContent()
@@ -41,8 +40,8 @@ class MainTabBarController: UITabBarController {
     }
     
     func updateContent() {
-        (self.childViewControllers.first as! ProfilePageViewController).userStats = fitnessData
-//        (self.childViewControllers.last as! StatisticsViewController).userStats = userStats
+        (self.childViewControllers.first as! ProfilePageViewController).fitnessData = fitnessData
+        (self.childViewControllers.last as! StatisticsViewController).fitnessData = fitnessData
     }
     
 }

@@ -22,36 +22,3 @@ class User {
         self.imageUrlString = imageUrlString
     }
 }
-
-class UserStats : Initable, Addable {
-    fileprivate var quantities = [String : Double]()
-    
-    subscript( index: String ) -> Double {
-        get {
-            if let quantity = quantities[index] {
-                return quantity
-            }
-            
-            return 0
-        }
-        
-        set ( value ) {
-            quantities[index] = value
-        }
-    }
-    
-    required init(date: Date) {
-        
-    }
-    
-    static func +(lhs: UserStats, rhs: UserStats) -> Self {
-        let result: UserStats = UserStats(date: Date())
-        result.quantities = lhs.quantities
-        
-        for ( key, value ) in rhs.quantities {
-            result[key] = result[key] + value
-        }
-        
-        return autocast( some: result )
-    }
-}
