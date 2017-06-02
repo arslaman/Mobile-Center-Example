@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>MobileCenterIOSNative</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -11,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>MobileCenterIOSNative</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -21,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1896184063978698</string>
+				<string>fb131289977431256</string>
 			</array>
 		</dict>
 	</array>
@@ -47,7 +49,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>1896184063978698</string>
+	<string>131289977431256</string>
 	<key>FacebookDisplayName</key>
 	<string>Mobile Center Test</string>
 	<key>LSApplicationQueriesSchemes</key>
