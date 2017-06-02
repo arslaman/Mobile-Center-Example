@@ -22,5 +22,7 @@ class ServicesFactory {
     
     lazy var facebookService: SocialService = FacebookSocialService()
     
+    lazy var fitnessService: FitnessService = HealthKitFitnessService()
+    
     lazy var settingsService: SettingsService = MCSettingsService()
 }

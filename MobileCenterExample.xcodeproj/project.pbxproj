@@ -17,6 +17,7 @@
 		14BC0BB71EAF41580073BF27 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB61EAF41580073BF27 /* CoreMotion.framework */; };
 		14BC0BB91EAF64B10073BF27 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC0BB81EAF64B10073BF27 /* HealthKit.framework */; };
 		14BCA97A1EB0A69500492815 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCA9791EB0A69500492815 /* User.swift */; };
+		443465851EE06C83003E38AD /* FitnessDailyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443465841EE06C83003E38AD /* FitnessDailyData.swift */; };
 		448BCE061EDDCE7E006DEB93 /* SocialNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE051EDDCE7E006DEB93 /* SocialNetwork.swift */; };
 		448BCE081EDECC1C006DEB93 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */; };
 		448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */; };
@@ -27,6 +28,7 @@
 		448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE141EE00729006DEB93 /* TwitterSocialService.swift */; };
 		448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE171EE015B1006DEB93 /* NSError+Creation.swift */; };
 		448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */; };
+		448BCE1D1EE05116006DEB93 /* FitnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE1C1EE05116006DEB93 /* FitnessService.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
@@ -49,6 +51,7 @@
 		14BC0BBA1EAF6CC70073BF27 /* MobileCenterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MobileCenterExample.entitlements; path = ../MobileCenterExample.entitlements; sourceTree = "<group>"; };
 		14BCA9791EB0A69500492815 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23526EE9354409E0D6899FEF /* Pods-MobileCenterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.release.xcconfig"; sourceTree = "<group>"; };
+		443465841EE06C83003E38AD /* FitnessDailyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessDailyData.swift; sourceTree = "<group>"; };
 		448BCE051EDDCE7E006DEB93 /* SocialNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetwork.swift; sourceTree = "<group>"; };
 		448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		448BCE091EDEDA0C006DEB93 /* ServicesFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesFactory.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		448BCE141EE00729006DEB93 /* TwitterSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSocialService.swift; sourceTree = "<group>"; };
 		448BCE171EE015B1006DEB93 /* NSError+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Creation.swift"; sourceTree = "<group>"; };
 		448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSocialService.swift; sourceTree = "<group>"; };
+		448BCE1C1EE05116006DEB93 /* FitnessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessService.swift; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		448BCDFE1EDDC63A006DEB93 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				448BCE1B1EE050F5006DEB93 /* Fitness */,
 				448BCE111EE00554006DEB93 /* Social */,
 				448BCE071EDECC1C006DEB93 /* AnalyticsService.swift */,
 				448BCE0F1EDF0DDF006DEB93 /* CrashesService.swift */,
@@ -194,6 +199,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		448BCE1B1EE050F5006DEB93 /* Fitness */ = {
+			isa = PBXGroup;
+			children = (
+				448BCE1C1EE05116006DEB93 /* FitnessService.swift */,
+				443465841EE06C83003E38AD /* FitnessDailyData.swift */,
+			);
+			name = Fitness;
+			sourceTree = "<group>";
+		};
 		75A97D6C31245D6389A13188 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +263,7 @@
 				TargetAttributes = {
 					148E2B811EAE29FC00743BB1 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 26V7Q54ATN;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -356,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443465851EE06C83003E38AD /* FitnessDailyData.swift in Sources */,
 				448BCE151EE00729006DEB93 /* TwitterSocialService.swift in Sources */,
 				448BCE081EDECC1C006DEB93 /* AnalyticsService.swift in Sources */,
 				FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */,
@@ -364,6 +380,7 @@
 				14BCA97A1EB0A69500492815 /* User.swift in Sources */,
 				148E2B881EAE29FC00743BB1 /* LoginViewController.swift in Sources */,
 				FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */,
+				448BCE1D1EE05116006DEB93 /* FitnessService.swift in Sources */,
 				448BCE0A1EDEDA0C006DEB93 /* ServicesFactory.swift in Sources */,
 				448BCE131EE0057A006DEB93 /* SocialService.swift in Sources */,
 				14B6BB741EB0A05300AA523D /* ProfilePageViewController.swift in Sources */,
@@ -499,11 +516,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MobileCenterExample/MobileCenterExample.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 26V7Q54ATN;
 				INFOPLIST_FILE = MobileCenterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Akvelon.MobileCenterExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akvelon.MobileCenteriOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -515,11 +532,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MobileCenterExample/MobileCenterExample.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 26V7Q54ATN;
 				INFOPLIST_FILE = MobileCenterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Akvelon.MobileCenterExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akvelon.MobileCenteriOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

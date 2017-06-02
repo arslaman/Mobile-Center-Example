@@ -121,13 +121,13 @@ class StatisticsViewController: UIViewController, ChartViewDelegate {
             
             if let userStats = userStats {
                 for i in (0...4).reversed() {
-                    if let stats = userStats.get(for: i ) {
-                        let value = stats[typeId.rawValue]
-                        values.append( ChartDataEntry( x: Double(4 - i), y: value ) )
-                    }
-                    else {
-                        values.append( ChartDataEntry( x: Double(4 - i), y: 0 ) )
-                    }
+//                    if let stats = userStats.get(for: i ) {
+//                        let value = stats[typeId.rawValue]
+//                        values.append( ChartDataEntry( x: Double(4 - i), y: value ) )
+//                    }
+//                    else {
+//                        values.append( ChartDataEntry( x: Double(4 - i), y: 0 ) )
+//                    }
                     
                 }
             }

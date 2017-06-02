@@ -40,12 +40,12 @@ class UserStats : Initable, Addable {
         }
     }
     
-    required init() {
+    required init(date: Date) {
         
     }
     
     static func +(lhs: UserStats, rhs: UserStats) -> Self {
-        let result: UserStats = UserStats()
+        let result: UserStats = UserStats(date: Date())
         result.quantities = lhs.quantities
         
         for ( key, value ) in rhs.quantities {

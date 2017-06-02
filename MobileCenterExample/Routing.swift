@@ -33,8 +33,7 @@ class Routing {
     
     func presentMainController(user: User) {
         let controller = mainController()
-        controller.viewControllers = [profileController(), statisticsController()]
-        controller.user = user
+        controller.viewControllers = [profileController(user: user), statisticsController()]
         
         window.rootViewController?.present(controller, animated: true, completion: nil)
     }
@@ -53,14 +52,15 @@ class Routing {
     func mainController() -> MainTabBarController {
         let identifier = String(describing: MainTabBarController.self)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! MainTabBarController
-        controller.configure(analyticsService: services.analyticsService)
+        controller.configure(analyticsService: services.analyticsService, fitnessService: services.fitnessService)
         
         return controller;
     }
     
-    func profileController() -> ProfilePageViewController {
+    func profileController(user: User) -> ProfilePageViewController {
         let identifier = String(describing: ProfilePageViewController.self)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! ProfilePageViewController
+        controller.user = user
         
         return controller;
     }

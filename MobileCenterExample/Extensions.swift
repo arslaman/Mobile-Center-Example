@@ -22,11 +22,18 @@ extension Date {
         return Calendar.current.startOfDay( for: self )
     }
     
-    var endOfDay: Date? {
+    var endOfDay: Date {
         var components = DateComponents()
         components.day = 1
         components.second = -1
-        return Calendar.current.date( byAdding: components, to: startOfDay )
+        return Calendar.current.date( byAdding: components, to: startOfDay )!
+    }
+    
+    func daysAgo(days: Int) -> Date {
+        var components = DateComponents()
+        components.day = -days
+        let date = Calendar.current.date(byAdding: components, to: self)!.startOfDay
+        return date
     }
 }
 
