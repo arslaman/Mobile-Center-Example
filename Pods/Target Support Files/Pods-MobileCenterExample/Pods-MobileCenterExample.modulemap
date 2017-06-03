@@ -1,6 +1,0 @@
-framework module Pods_MobileCenterExample {
-  umbrella header "Pods-MobileCenterExample-umbrella.h"
-
-  export *
-  module * { export * }
-}
