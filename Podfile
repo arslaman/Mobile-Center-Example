@@ -12,6 +12,10 @@ target 'MobileCenterExample' do
 	pod 'FacebookCore', '~> 0.2.0'
 	pod 'FacebookLogin', '~> 0.2.0'
 	pod 'FacebookShare', '~> 0.2.0'
+
+	pod 'FBSDKCoreKit', '~> 4.22.0’
+	pod 'FBSDKLoginKit', '~> 4.22.0’
+	pod 'FBSDKShareKit', '~> 4.22.0’
     
     pod 'Charts', '~> 3.0.0'
     
