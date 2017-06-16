@@ -1,5 +1,5 @@
 //
-//  MobileCenterIOSNativeTests.swift
+//  TimedDataTests.swift
 //  MobileCenterIOSNativeTests
 //
 //  Created by Ruslan Mansurov on 6/15/17.
@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Cuckoo
 @testable import MobileCenterExample
 
 class StubInitable: Initable, Equatable {
