@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "44B7825C1EF2D6EA00C8F835"
-               BuildableName = "MobileCenterIOSNativeTests.xctest"
-               BlueprintName = "MobileCenterIOSNativeTests"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
                ReferencedContainer = "container:MobileCenterExample.xcodeproj">
             </BuildableReference>
          </TestableReference>

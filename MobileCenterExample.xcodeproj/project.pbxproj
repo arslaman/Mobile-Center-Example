@@ -29,7 +29,8 @@
 		448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE171EE015B1006DEB93 /* NSError+Creation.swift */; };
 		448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */; };
 		448BCE1D1EE05116006DEB93 /* FitnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE1C1EE05116006DEB93 /* FitnessService.swift */; };
-		44B782601EF2D6EA00C8F835 /* TimedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7825F1EF2D6EA00C8F835 /* TimedDataTests.swift */; };
+		44B7826D1EF4233000C8F835 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B7826B1EF4233000C8F835 /* Info.plist */; };
+		44B7826E1EF4233000C8F835 /* TimedDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7826C1EF4233000C8F835 /* TimedDataTests.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
@@ -74,9 +75,9 @@
 		448BCE171EE015B1006DEB93 /* NSError+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Creation.swift"; sourceTree = "<group>"; };
 		448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSocialService.swift; sourceTree = "<group>"; };
 		448BCE1C1EE05116006DEB93 /* FitnessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessService.swift; sourceTree = "<group>"; };
-		44B7825D1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileCenterIOSNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44B7825F1EF2D6EA00C8F835 /* TimedDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedDataTests.swift; sourceTree = "<group>"; };
-		44B782611EF2D6EA00C8F835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B7825D1EF2D6EA00C8F835 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B7826B1EF4233000C8F835 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B7826C1EF4233000C8F835 /* TimedDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedDataTests.swift; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		DD174C3730A4CEB8169B57AF /* Pods_MobileCenterIOSNativeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterIOSNativeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				148E2B841EAE29FC00743BB1 /* MobileCenterExample */,
-				44B7825E1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests */,
+				44B7826A1EF4233000C8F835 /* UnitTests */,
 				148E2B831EAE29FC00743BB1 /* Products */,
 				75A97D6C31245D6389A13188 /* Pods */,
 				B30848137C178AF7DE39A9DD /* Frameworks */,
@@ -122,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				148E2B821EAE29FC00743BB1 /* MobileCenterExample.app */,
-				44B7825D1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests.xctest */,
+				44B7825D1EF2D6EA00C8F835 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,13 +233,13 @@
 			name = Fitness;
 			sourceTree = "<group>";
 		};
-		44B7825E1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests */ = {
+		44B7826A1EF4233000C8F835 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				44B7825F1EF2D6EA00C8F835 /* TimedDataTests.swift */,
-				44B782611EF2D6EA00C8F835 /* Info.plist */,
+				44B7826B1EF4233000C8F835 /* Info.plist */,
+				44B7826C1EF4233000C8F835 /* TimedDataTests.swift */,
 			);
-			path = MobileCenterIOSNativeTests;
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		75A97D6C31245D6389A13188 /* Pods */ = {
@@ -285,9 +286,9 @@
 			productReference = 148E2B821EAE29FC00743BB1 /* MobileCenterExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44B7825C1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests */ = {
+		44B7825C1EF2D6EA00C8F835 /* UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44B782661EF2D6EA00C8F835 /* Build configuration list for PBXNativeTarget "MobileCenterIOSNativeTests" */;
+			buildConfigurationList = 44B782661EF2D6EA00C8F835 /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
 				44B782591EF2D6EA00C8F835 /* Sources */,
 				44B7825A1EF2D6EA00C8F835 /* Frameworks */,
@@ -298,9 +299,9 @@
 			dependencies = (
 				44B782631EF2D6EA00C8F835 /* PBXTargetDependency */,
 			);
-			name = MobileCenterIOSNativeTests;
+			name = UnitTests;
 			productName = MobileCenterIOSNativeTests;
-			productReference = 44B7825D1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests.xctest */;
+			productReference = 44B7825D1EF2D6EA00C8F835 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -345,7 +346,7 @@
 			projectRoot = "";
 			targets = (
 				148E2B811EAE29FC00743BB1 /* MobileCenterExample */,
-				44B7825C1EF2D6EA00C8F835 /* MobileCenterIOSNativeTests */,
+				44B7825C1EF2D6EA00C8F835 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -365,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B7826D1EF4233000C8F835 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44B782601EF2D6EA00C8F835 /* TimedDataTests.swift in Sources */,
+				44B7826E1EF4233000C8F835 /* TimedDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MobileCenterIOSNativeTests/Info.plist;
+				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobileCenter.iOSNativeTests.MobileCenterIOSNativeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -640,7 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MobileCenterIOSNativeTests/Info.plist;
+				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MobileCenter.iOSNativeTests.MobileCenterIOSNativeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -670,7 +672,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44B782661EF2D6EA00C8F835 /* Build configuration list for PBXNativeTarget "MobileCenterIOSNativeTests" */ = {
+		44B782661EF2D6EA00C8F835 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44B782641EF2D6EA00C8F835 /* Debug */,
