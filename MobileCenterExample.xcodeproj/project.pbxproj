@@ -29,12 +29,23 @@
 		448BCE181EE015B1006DEB93 /* NSError+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE171EE015B1006DEB93 /* NSError+Creation.swift */; };
 		448BCE1A1EE01B93006DEB93 /* FacebookSocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */; };
 		448BCE1D1EE05116006DEB93 /* FitnessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448BCE1C1EE05116006DEB93 /* FitnessService.swift */; };
+		44B782841EF7D19800C8F835 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B782831EF7D19800C8F835 /* UnitTests.swift */; };
 		CBD35E9704C6289362C6157D /* Pods_MobileCenterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */; };
 		FD2665D01EC3A76A007EF9AF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */; };
 		FD2665D21EC4FDA9007EF9AF /* TimedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D11EC4FDA9007EF9AF /* TimedData.swift */; };
 		FD2665D41EC62D0D007EF9AF /* CenteredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2665D31EC62D0D007EF9AF /* CenteredButton.swift */; };
 		FDD9BF361EC38ACD007B5179 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9BF351EC38ACD007B5179 /* Extensions.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44B782861EF7D19800C8F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 148E2B7A1EAE29FC00743BB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 148E2B811EAE29FC00743BB1;
+			remoteInfo = MobileCenterExample;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		144CE3B11EB2373B00A49DA5 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +74,9 @@
 		448BCE171EE015B1006DEB93 /* NSError+Creation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Creation.swift"; sourceTree = "<group>"; };
 		448BCE191EE01B93006DEB93 /* FacebookSocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSocialService.swift; sourceTree = "<group>"; };
 		448BCE1C1EE05116006DEB93 /* FitnessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessService.swift; sourceTree = "<group>"; };
+		44B782811EF7D19800C8F835 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B782831EF7D19800C8F835 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
+		44B782851EF7D19800C8F835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3DDE058EC60212111F918E /* Pods_MobileCenterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileCenterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09FEB5BFBF70C35BDA5C36C /* Pods-MobileCenterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileCenterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileCenterExample/Pods-MobileCenterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2665CF1EC3A76A007EF9AF /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -82,6 +96,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44B7827E1EF7D19800C8F835 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -89,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				148E2B841EAE29FC00743BB1 /* MobileCenterExample */,
+				44B782821EF7D19800C8F835 /* UnitTests */,
 				148E2B831EAE29FC00743BB1 /* Products */,
 				75A97D6C31245D6389A13188 /* Pods */,
 				B30848137C178AF7DE39A9DD /* Frameworks */,
@@ -99,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				148E2B821EAE29FC00743BB1 /* MobileCenterExample.app */,
+				44B782811EF7D19800C8F835 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +231,15 @@
 			name = Fitness;
 			sourceTree = "<group>";
 		};
+		44B782821EF7D19800C8F835 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				44B782831EF7D19800C8F835 /* UnitTests.swift */,
+				44B782851EF7D19800C8F835 /* Info.plist */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		75A97D6C31245D6389A13188 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +283,24 @@
 			productReference = 148E2B821EAE29FC00743BB1 /* MobileCenterExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		44B782801EF7D19800C8F835 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44B7828A1EF7D19800C8F835 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				44B7827D1EF7D19800C8F835 /* Sources */,
+				44B7827E1EF7D19800C8F835 /* Frameworks */,
+				44B7827F1EF7D19800C8F835 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44B782871EF7D19800C8F835 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 44B782811EF7D19800C8F835 /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -272,6 +322,11 @@
 							};
 						};
 					};
+					44B782801EF7D19800C8F835 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 148E2B811EAE29FC00743BB1;
+					};
 				};
 			};
 			buildConfigurationList = 148E2B7D1EAE29FC00743BB1 /* Build configuration list for PBXProject "MobileCenterExample" */;
@@ -288,6 +343,7 @@
 			projectRoot = "";
 			targets = (
 				148E2B811EAE29FC00743BB1 /* MobileCenterExample */,
+				44B782801EF7D19800C8F835 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -300,6 +356,13 @@
 				148E2B901EAE29FC00743BB1 /* LaunchScreen.storyboard in Resources */,
 				148E2B8D1EAE29FC00743BB1 /* Assets.xcassets in Resources */,
 				148E2B8B1EAE29FC00743BB1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B7827F1EF7D19800C8F835 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +458,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44B7827D1EF7D19800C8F835 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B782841EF7D19800C8F835 /* UnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44B782871EF7D19800C8F835 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 148E2B811EAE29FC00743BB1 /* MobileCenterExample */;
+			targetProxy = 44B782861EF7D19800C8F835 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		148E2B891EAE29FC00743BB1 /* Main.storyboard */ = {
@@ -542,6 +621,32 @@
 			};
 			name = Release;
 		};
+		44B782881EF7D19800C8F835 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MobileCenter.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileCenterExample.app/MobileCenterExample";
+			};
+			name = Debug;
+		};
+		44B782891EF7D19800C8F835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MobileCenter.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileCenterExample.app/MobileCenterExample";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -562,6 +667,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		44B7828A1EF7D19800C8F835 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B782881EF7D19800C8F835 /* Debug */,
+				44B782891EF7D19800C8F835 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

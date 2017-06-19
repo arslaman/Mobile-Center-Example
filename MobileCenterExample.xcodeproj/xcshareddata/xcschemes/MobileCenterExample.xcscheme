@@ -37,14 +37,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44B782801EF7D19800C8F835"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:MobileCenterExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "148E2B811EAE29FC00743BB1"
-            BuildableName = "MobileCenterTest.app"
-            BlueprintName = "MobileCenterTest"
-            ReferencedContainer = "container:MobileCenterTest.xcodeproj">
+            BuildableName = "MobileCenterExample.app"
+            BlueprintName = "MobileCenterExample"
+            ReferencedContainer = "container:MobileCenterExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,6 +89,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "148E2B811EAE29FC00743BB1"
+            BuildableName = "MobileCenterExample.app"
+            BlueprintName = "MobileCenterExample"
+            ReferencedContainer = "container:MobileCenterExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
